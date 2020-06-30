@@ -1,0 +1,13 @@
+/.gradle
+/build
+/elm-stuff
+
+# IDEA
+/.idea
+/.idea_modules
+
+
+# Eclipse
+/.classpath
+/.project
+/.settings

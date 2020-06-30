@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>OpenCV Cascade Classifier Visualizer</title>
+  <script src="js/elm.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      font-family: sans-serif;
+      font-size: 0.8em;
+      overflow: hidden;
+    }
+    .error {
+      color: red;
+    }
+
+    #image-column {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      overflow-y: scroll;
+    }
+    #image-container {
+      position: relative;
+    }
+    #detection-candidate {
+      position: absolute;
+      border: dotted #aaa 2px;
+    }
+
+    #model-column {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      overflow-y: scroll;
+    }
+    .running {
+      /*border: solid #666 1px;*/
+    }
+    .positive {
+      color: #080;
+    }
+    .negative {
+      color: #800;
+    }
+    .feature {
+      position: relative;
+      border: solid black 1px;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2) 10px,
+        rgba(0, 0, 0, 0.3) 10px,
+        rgba(0, 0, 0, 0.3) 20px
+      );
+    }
+    .feature .rect {
+      position: absolute;
+      transform-origin: 0% 0%;
+    }
+  </style>
+</head>
+
+<body>
+<div id="app"></div>
+<script type="application/javascript">
+  let app = Elm.Main.init({
+    node: document.getElementById('app')
+  });
+  // app.ports.parseXmlCmd.subscribe(
+  //   function (xml) {
+  //     if (window.DOMParser) {
+  //       let cascade = new DOMParser().parseFromString(xml, 'text/xml');
+  //
+  //       console.log(cascade.querySelector('cascade'));
+  //     }
+  //   }
+  // );
+  app.ports.getImagePixelsCmd.subscribe(
+    function(image) {
+      let img = new Image();
+      img.src = image.url;
+      img.onload = () => {
+        let canvas = document.createElement('canvas');
+        if (img.width > img.height) {
+          canvas.width = image.longEdgePx;
+          canvas.height = img.height / img.width * canvas.width;
+        } else {
+          canvas.height = image.longEdgePx;
+          canvas.width = img.width / img.height * canvas.height;
+        }
+
+        // TODO call this on Elm animation frame instead
+        setTimeout(
+          function() {
+            let ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            app.ports.getImagePixelsSub.send(
+              {
+                width: imgData.width,
+                height: imgData.height,
+                pixels: Array.from(imgData.data)
+              }
+            );
+          },
+          50
+        );
+      };
+    }
+  );
+  // app.ports.drawImagePixelsCmd.subscribe(
+  //   function(image) {
+  //     let canvas = document.getElementById('canvas');
+  //     canvas.width = image.width;
+  //     canvas.height = image.height;
+  //     if (image.width > 0 && image.height > 0) {
+  //       let ctx = canvas.getContext('2d');
+  //       let imgData = ctx.createImageData(image.width, image.height);
+  //       for (let i = 0; i < image.data.length; i++) {
+  //         imgData.data[i] = image.data[i];
+  //       }
+  //       ctx.putImageData(imgData, 0, 0);
+  //     }
+  //   }
+  // );
+</script>
+</body>
+</html>

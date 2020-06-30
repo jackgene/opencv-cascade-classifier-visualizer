@@ -1,0 +1,68 @@
+plugins {
+  id 'java'
+}
+
+group = 'my.edu.clhs.opencv'
+version = '1.0'
+archivesBaseName = 'model-visualizer'
+
+configurations {
+  jslint
+}
+
+repositories {
+  if (rootProject.hasProperty('repositories.MAVEN_CENTRAL_MIRROR_URL')) {
+    maven {
+      url getProperty('repositories.MAVEN_CENTRAL_MIRROR_URL')
+    }
+  } else {
+    mavenCentral()
+  }
+}
+
+dependencies {
+  jslint 'com.googlecode.jslint4java:jslint4java-ant:2.0.5'
+}
+
+clean {
+  delete 'elm-stuff'
+}
+
+build.doLast {
+  ext.elmDebug = project.hasProperty('elmDebug') && project.getProperty('elmDebug').toBoolean()
+  def elmMakeProc =
+    [ 'bash', '-c'
+    , 'elm make '
+    + 'src/main/elm/Main.elm'
+    + " --output src/main/webapp/js/elm.js ${elmDebug ? '--debug' : '--optimize'}"
+    ].
+    execute()
+  def stdout = new StringBuilder()
+  def stderr = new StringBuilder()
+  elmMakeProc.consumeProcessOutput(stdout, stderr)
+  
+  switch(elmMakeProc.waitFor()) {
+    case 0:
+      logger.quiet(stdout.toString())
+      logger.warn(stderr.toString())
+      break
+    
+    case 127:
+      logger.warn('elm-make not found in PATH. Skipping Elm build.')
+      break
+    
+    default:
+      logger.error(stdout.toString())
+      logger.error(stderr.toString())
+      throw new IllegalArgumentException(
+        "elm-make failed with non-zero exit ${elmMakeProc.exitValue()}"
+      )
+  }
+}
+
+task jar(type: Jar, dependsOn: check, overwrite: true) {
+  from ('src/main/webapp') {
+    into("META-INF/resources/webjars/${archiveBaseName.get()}/${archiveVersion.get()}")
+  }
+}
+
