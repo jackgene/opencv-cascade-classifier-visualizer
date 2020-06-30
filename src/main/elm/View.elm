@@ -127,7 +127,7 @@ weakClassifierView cascadeSize maybeDetectionStatus maybeClassification stageIdx
             [ text (String.fromFloat classification.value) ]
           , br [] []
           , img
-            [ width 120, height 120, style "border" "solid black 1px"
+            [ width 120, style "border" "solid black 1px"
             , src classification.featureExtractedImageDataUrl
             ]
             []

@@ -13734,21 +13734,19 @@ var $author$project$Main$update = F2(
 										_Utils_update(
 											detection,
 											{
-												bG: A3(
-													$elm$core$Array$set,
-													lastStageIdx,
-													function () {
-														var _v11 = A2($elm$core$Array$get, lastStageIdx, detection.bG);
-														if (!_v11.$) {
-															var weakClassifications = _v11.a;
-															return A2($elm$core$Array$push, weakClassification, weakClassifications);
-														} else {
-															return $elm$core$Array$fromList(
-																_List_fromArray(
-																	[weakClassification]));
-														}
-													}(),
-													detection.bG),
+												bG: function () {
+													var _v11 = A2($elm$core$Array$get, lastStageIdx, detection.bG);
+													if (!_v11.$) {
+														var weakClassifications = _v11.a;
+														return A3(
+															$elm$core$Array$set,
+															lastStageIdx,
+															A2($elm$core$Array$push, weakClassification, weakClassifications),
+															detection.bG);
+													} else {
+														return detection.bG;
+													}
+												}(),
 												cU: (!weakClassification.cW) ? $author$project$Common$Failed : A3($author$project$Common$Running, lastStageIdx, lastClassifierIdx + 1, image)
 											}))
 								}),
@@ -14116,12 +14114,6 @@ var $author$project$View$featureView = F2(
 				},
 				feature.bV));
 	});
-var $elm$html$Html$Attributes$height = function (n) {
-	return A2(
-		_VirtualDom_attribute,
-		'height',
-		$elm$core$String$fromInt(n));
-};
 var $elm$html$Html$li = _VirtualDom_node('li');
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$html$Html$Attributes$title = $elm$html$Html$Attributes$stringProperty('title');
@@ -14180,7 +14172,6 @@ var $author$project$View$weakClassifierView = F6(
 							_List_fromArray(
 								[
 									$elm$html$Html$Attributes$width(120),
-									$elm$html$Html$Attributes$height(120),
 									A2($elm$html$Html$Attributes$style, 'border', 'solid black 1px'),
 									$elm$html$Html$Attributes$src(classification.cd)
 								]),
