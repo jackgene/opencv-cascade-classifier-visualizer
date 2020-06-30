@@ -566,12 +566,13 @@ update msg model =
                   Just
                   { detection
                   | stages =
-                    Array.set lastStageIdx
-                    ( case Array.get lastStageIdx detection.stages of -- TODO fuck this
-                        Just weakClassifications -> Array.push weakClassification weakClassifications
-                        Nothing -> Array.fromList [ weakClassification ]
-                    )
-                    detection.stages
+                    case Array.get lastStageIdx detection.stages of
+                      Just weakClassifications ->
+                        Array.set lastStageIdx
+                        ( Array.push weakClassification weakClassifications )
+                        detection.stages
+                      Nothing ->
+                        detection.stages
                   , status =
                     if not weakClassification.success then Failed
                     else Running lastStageIdx (lastClassifierIdx + 1) image
