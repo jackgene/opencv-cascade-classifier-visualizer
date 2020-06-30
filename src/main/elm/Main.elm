@@ -372,6 +372,7 @@ update msg model =
           Ok cascade ->
             { model
             | cascade = cascade
+            , maybeDetection = Nothing
             , maybeErrorMsg = Nothing
             }
           Err err ->
