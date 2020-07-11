@@ -34,7 +34,7 @@ build.doLast {
     [ 'bash', '-c'
     , 'elm make '
     + 'src/main/elm/Main.elm'
-    + " --output src/main/webapp/js/elm.js ${elmDebug ? '--debug' : '--optimize'}"
+    + " --output js/elm.js ${elmDebug ? '--debug' : '--optimize'}"
     ].
     execute()
   def stdout = new StringBuilder()

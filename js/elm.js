@@ -77,7 +77,7 @@ function A9(fun, a, b, c, d, e, f, g, h, i) {
   return fun.a === 9 ? fun.f(a, b, c, d, e, f, g, h, i) : fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
 }
 
-console.warn('Compiled in DEV mode. Follow the advice at https://elm-lang.org/0.19.1/optimize for better performance and smaller assets.');
+
 
 
 var _JsArray_empty = [];
@@ -234,12 +234,12 @@ var _JsArray_appendN = F3(function(n, dest, source)
 
 // LOG
 
-var _Debug_log_UNUSED = F2(function(tag, value)
+var _Debug_log = F2(function(tag, value)
 {
 	return value;
 });
 
-var _Debug_log = F2(function(tag, value)
+var _Debug_log_UNUSED = F2(function(tag, value)
 {
 	console.log(tag + ': ' + _Debug_toString(value));
 	return value;
@@ -265,12 +265,12 @@ function _Debug_todoCase(moduleName, region, value)
 
 // TO STRING
 
-function _Debug_toString_UNUSED(value)
+function _Debug_toString(value)
 {
 	return '<internals>';
 }
 
-function _Debug_toString(value)
+function _Debug_toString_UNUSED(value)
 {
 	return _Debug_toAnsiString(false, value);
 }
@@ -455,13 +455,13 @@ function _Debug_toHexDigit(n)
 // CRASH
 
 
-function _Debug_crash_UNUSED(identifier)
+function _Debug_crash(identifier)
 {
 	throw new Error('https://github.com/elm/core/blob/1.0.0/hints/' + identifier + '.md');
 }
 
 
-function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
+function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 {
 	switch(identifier)
 	{
@@ -519,11 +519,11 @@ function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.start.line === region.end.line)
+	if (region.aH.U === region.aW.U)
 	{
-		return 'on line ' + region.start.line;
+		return 'on line ' + region.aH.U;
 	}
-	return 'on lines ' + region.start.line + ' through ' + region.end.line;
+	return 'on lines ' + region.aH.U + ' through ' + region.aW.U;
 }
 
 
@@ -561,7 +561,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 		return true;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x.$ === 'Set_elm_builtin')
 	{
 		x = $elm$core$Set$toList(x);
@@ -574,7 +574,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (x.$ < 0)
 	{
 		x = $elm$core$Dict$toList(x);
@@ -609,7 +609,7 @@ function _Utils_cmp(x, y, ord)
 		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x instanceof String)
 	{
 		var a = x.valueOf();
@@ -618,10 +618,10 @@ function _Utils_cmp(x, y, ord)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (typeof x.$ === 'undefined')
 	//*/
-	/**/
+	/**_UNUSED/
 	if (x.$[0] === '#')
 	//*/
 	{
@@ -651,17 +651,17 @@ var _Utils_compare = F2(function(x, y)
 
 // COMMON VALUES
 
-var _Utils_Tuple0_UNUSED = 0;
-var _Utils_Tuple0 = { $: '#0' };
+var _Utils_Tuple0 = 0;
+var _Utils_Tuple0_UNUSED = { $: '#0' };
 
-function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
-function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
+function _Utils_Tuple2(a, b) { return { a: a, b: b }; }
+function _Utils_Tuple2_UNUSED(a, b) { return { $: '#2', a: a, b: b }; }
 
-function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
-function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
+function _Utils_Tuple3(a, b, c) { return { a: a, b: b, c: c }; }
+function _Utils_Tuple3_UNUSED(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
 
-function _Utils_chr_UNUSED(c) { return c; }
-function _Utils_chr(c) { return new String(c); }
+function _Utils_chr(c) { return c; }
+function _Utils_chr_UNUSED(c) { return new String(c); }
 
 
 // RECORDS
@@ -712,11 +712,11 @@ function _Utils_ap(xs, ys)
 
 
 
-var _List_Nil_UNUSED = { $: 0 };
-var _List_Nil = { $: '[]' };
+var _List_Nil = { $: 0 };
+var _List_Nil_UNUSED = { $: '[]' };
 
-function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
-function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
+function _List_Cons(hd, tl) { return { $: 1, a: hd, b: tl }; }
+function _List_Cons_UNUSED(hd, tl) { return { $: '::', a: hd, b: tl }; }
 
 
 var _List_cons = F2(_List_Cons);
@@ -1212,7 +1212,7 @@ function _Char_toLocaleLower(char)
 
 
 
-/**/
+/**_UNUSED/
 function _Json_errorToString(error)
 {
 	return $elm$json$Json$Decode$errorToString(error);
@@ -1616,11 +1616,11 @@ var _Json_encode = F2(function(indentLevel, value)
 	return JSON.stringify(_Json_unwrap(value), null, indentLevel) + '';
 });
 
-function _Json_wrap(value) { return { $: 0, a: value }; }
-function _Json_unwrap(value) { return value.a; }
+function _Json_wrap_UNUSED(value) { return { $: 0, a: value }; }
+function _Json_unwrap_UNUSED(value) { return value.a; }
 
-function _Json_wrap_UNUSED(value) { return value; }
-function _Json_unwrap_UNUSED(value) { return value; }
+function _Json_wrap(value) { return value; }
+function _Json_unwrap(value) { return value; }
 
 function _Json_emptyArray() { return []; }
 function _Json_emptyObject() { return {}; }
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.cn,
+		impl.c3,
+		impl.cW,
 		function() { return function() {} }
 	);
 });
@@ -1872,7 +1872,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 function _Platform_initialize(flagDecoder, args, init, update, subscriptions, stepperBuilder)
 {
 	var result = A2(_Json_run, flagDecoder, _Json_wrap(args ? args['flags'] : undefined));
-	$elm$core$Result$isOk(result) || _Debug_crash(2 /**/, _Json_errorToString(result.a) /**/);
+	$elm$core$Result$isOk(result) || _Debug_crash(2 /**_UNUSED/, _Json_errorToString(result.a) /**/);
 	var managers = {};
 	var initPair = init(result.a);
 	var model = initPair.a;
@@ -2316,7 +2316,7 @@ function _Platform_setupIncomingPort(name, sendToApp)
 //
 
 
-function _Platform_export_UNUSED(exports)
+function _Platform_export(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsProd(scope['Elm'], exports)
@@ -2337,7 +2337,7 @@ function _Platform_mergeExportsProd(obj, exports)
 }
 
 
-function _Platform_export(exports)
+function _Platform_export_UNUSED(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsDebug('Elm', scope['Elm'], exports)
@@ -2377,10 +2377,10 @@ var _VirtualDom_init = F4(function(virtualNode, flagDecoder, debugMetadata, args
 {
 	// NOTE: this function needs _Platform_export available to work
 
-	/**_UNUSED/
+	/**/
 	var node = args['node'];
 	//*/
-	/**/
+	/**_UNUSED/
 	var node = args && args['node'] ? args['node'] : _Debug_crash(0);
 	//*/
 
@@ -2635,24 +2635,24 @@ function _VirtualDom_noInnerHtmlOrFormAction(key)
 	return key == 'innerHTML' || key == 'formAction' ? 'data-' + key : key;
 }
 
-function _VirtualDom_noJavaScriptUri_UNUSED(value)
+function _VirtualDom_noJavaScriptUri(value)
 {
 	return /^javascript:/i.test(value.replace(/\s/g,'')) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptUri(value)
+function _VirtualDom_noJavaScriptUri_UNUSED(value)
 {
 	return /^javascript:/i.test(value.replace(/\s/g,''))
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
 		: value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
+function _VirtualDom_noJavaScriptOrHtmlUri(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri(value)
+function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value)
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
@@ -2704,9 +2704,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		message: func(record.message),
-		stopPropagation: record.stopPropagation,
-		preventDefault: record.preventDefault
+		C: func(record.C),
+		aI: record.aI,
+		aC: record.aC
 	}
 });
 
@@ -2974,11 +2974,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.message;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.stopPropagation;
+		var message = !tag ? value : tag < 3 ? value.a : value.C;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.aI;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.preventDefault) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.aC) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3928,15 +3928,15 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.cn,
+		impl.c3,
+		impl.cW,
 		function(sendToApp, initialModel) {
-			var view = impl.view;
-			/**_UNUSED/
+			var view = impl.c6;
+			/**/
 			var domNode = args['node'];
 			//*/
-			/**/
+			/**_UNUSED/
 			var domNode = args && args['node'] ? args['node'] : _Debug_crash(0);
 			//*/
 			var currNode = _VirtualDom_virtualize(domNode);
@@ -3964,12 +3964,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.cn,
+		impl.c3,
+		impl.cW,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.setup && impl.setup(sendToApp)
-			var view = impl.view;
+			var divertHrefToApp = impl.aF && impl.aF(sendToApp)
+			var view = impl.c6;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3977,12 +3977,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.body);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.bR);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.title) && (_VirtualDom_doc.title = title = doc.title);
+				(title !== doc.c1) && (_VirtualDom_doc.title = title = doc.c1);
 			});
 		}
 	);
@@ -4038,12 +4038,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.onUrlChange;
-	var onUrlRequest = impl.onUrlRequest;
+	var onUrlChange = impl.cC;
+	var onUrlRequest = impl.cD;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		setup: function(sendToApp)
+		aF: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4059,9 +4059,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.protocol === next.protocol
-							&& curr.host === next.host
-							&& curr.port_.a === next.port_.a
+							&& curr.bu === next.bu
+							&& curr.a2 === next.a2
+							&& curr.bp.a === next.bp.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4069,13 +4069,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		init: function(flags)
+		cn: function(flags)
 		{
-			return A3(impl.init, flags, _Browser_getUrl(), key);
+			return A3(impl.cn, flags, _Browser_getUrl(), key);
 		},
-		view: impl.view,
-		update: impl.update,
-		subscriptions: impl.subscriptions
+		c6: impl.c6,
+		c3: impl.c3,
+		cW: impl.cW
 	});
 }
 
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { hidden: 'hidden', change: 'visibilitychange' }
+		? { cj: 'hidden', bX: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { hidden: 'mozHidden', change: 'mozvisibilitychange' }
+		? { cj: 'mozHidden', bX: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { hidden: 'msHidden', change: 'msvisibilitychange' }
+		? { cj: 'msHidden', bX: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { hidden: 'webkitHidden', change: 'webkitvisibilitychange' }
-		: { hidden: 'hidden', change: 'visibilitychange' };
+		? { cj: 'webkitHidden', bX: 'webkitvisibilitychange' }
+		: { cj: 'hidden', bX: 'visibilitychange' };
 }
 
 
@@ -4232,12 +4232,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		scene: _Browser_getScene(),
-		viewport: {
-			x: _Browser_window.pageXOffset,
-			y: _Browser_window.pageYOffset,
-			width: _Browser_doc.documentElement.clientWidth,
-			height: _Browser_doc.documentElement.clientHeight
+		bD: _Browser_getScene(),
+		aK: {
+			da: _Browser_window.pageXOffset,
+			db: _Browser_window.pageYOffset,
+			bL: _Browser_doc.documentElement.clientWidth,
+			a1: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4247,8 +4247,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		width: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		height: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		bL: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		a1: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4271,15 +4271,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			scene: {
-				width: node.scrollWidth,
-				height: node.scrollHeight
+			bD: {
+				bL: node.scrollWidth,
+				a1: node.scrollHeight
 			},
-			viewport: {
-				x: node.scrollLeft,
-				y: node.scrollTop,
-				width: node.clientWidth,
-				height: node.clientHeight
+			aK: {
+				da: node.scrollLeft,
+				db: node.scrollTop,
+				bL: node.clientWidth,
+				a1: node.clientHeight
 			}
 		};
 	});
@@ -4309,18 +4309,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			scene: _Browser_getScene(),
-			viewport: {
-				x: x,
-				y: y,
-				width: _Browser_doc.documentElement.clientWidth,
-				height: _Browser_doc.documentElement.clientHeight
+			bD: _Browser_getScene(),
+			aK: {
+				da: x,
+				db: y,
+				bL: _Browser_doc.documentElement.clientWidth,
+				a1: _Browser_doc.documentElement.clientHeight
 			},
-			element: {
-				x: x + rect.left,
-				y: y + rect.top,
-				width: rect.width,
-				height: rect.height
+			at: {
+				da: x + rect.left,
+				db: y + rect.top,
+				bL: rect.width,
+				a1: rect.height
 			}
 		};
 	});
@@ -4802,7 +4802,7 @@ var $elm$core$Array$foldr = F3(
 		var tail = _v0.d;
 		var helper = F2(
 			function (node, acc) {
-				if (node.$ === 'SubTree') {
+				if (!node.$) {
 					var subTree = node.a;
 					return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
 				} else {
@@ -4823,7 +4823,7 @@ var $elm$core$Dict$foldr = F3(
 	function (func, acc, t) {
 		foldr:
 		while (true) {
-			if (t.$ === 'RBEmpty_elm_builtin') {
+			if (t.$ === -2) {
 				return acc;
 			} else {
 				var key = t.b;
@@ -4868,39 +4868,39 @@ var $elm$core$Dict$keys = function (dict) {
 		dict);
 };
 var $elm$core$Set$toList = function (_v0) {
-	var dict = _v0.a;
+	var dict = _v0;
 	return $elm$core$Dict$keys(dict);
 };
-var $elm$core$Basics$EQ = {$: 'EQ'};
-var $elm$core$Basics$GT = {$: 'GT'};
-var $elm$core$Basics$LT = {$: 'LT'};
+var $elm$core$Basics$EQ = 1;
+var $elm$core$Basics$GT = 2;
+var $elm$core$Basics$LT = 0;
 var $elm$core$Result$Err = function (a) {
-	return {$: 'Err', a: a};
+	return {$: 1, a: a};
 };
 var $elm$json$Json$Decode$Failure = F2(
 	function (a, b) {
-		return {$: 'Failure', a: a, b: b};
+		return {$: 3, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Field = F2(
 	function (a, b) {
-		return {$: 'Field', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Index = F2(
 	function (a, b) {
-		return {$: 'Index', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $elm$core$Result$Ok = function (a) {
-	return {$: 'Ok', a: a};
+	return {$: 0, a: a};
 };
 var $elm$json$Json$Decode$OneOf = function (a) {
-	return {$: 'OneOf', a: a};
+	return {$: 2, a: a};
 };
-var $elm$core$Basics$False = {$: 'False'};
+var $elm$core$Basics$False = 1;
 var $elm$core$Basics$add = _Basics_add;
 var $elm$core$Maybe$Just = function (a) {
-	return {$: 'Just', a: a};
+	return {$: 0, a: a};
 };
-var $elm$core$Maybe$Nothing = {$: 'Nothing'};
+var $elm$core$Maybe$Nothing = {$: 1};
 var $elm$core$String$all = _String_all;
 var $elm$core$Basics$and = _Basics_and;
 var $elm$core$Basics$append = _Utils_append;
@@ -5025,12 +5025,12 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 		errorToStringHelp:
 		while (true) {
 			switch (error.$) {
-				case 'Field':
+				case 0:
 					var f = error.a;
 					var err = error.b;
 					var isSimple = function () {
 						var _v1 = $elm$core$String$uncons(f);
-						if (_v1.$ === 'Nothing') {
+						if (_v1.$ === 1) {
 							return false;
 						} else {
 							var _v2 = _v1.a;
@@ -5045,7 +5045,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'Index':
+				case 1:
 					var i = error.a;
 					var err = error.b;
 					var indexName = '[' + ($elm$core$String$fromInt(i) + ']');
@@ -5054,7 +5054,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'OneOf':
+				case 2:
 					var errors = error.a;
 					if (!errors.b) {
 						return 'Ran into a Json.Decode.oneOf with no possibilities' + function () {
@@ -5118,7 +5118,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 var $elm$core$Array$branchFactor = 32;
 var $elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
-		return {$: 'Array_elm_builtin', a: a, b: b, c: c, d: d};
+		return {$: 0, a: a, b: b, c: c, d: d};
 	});
 var $elm$core$Elm$JsArray$empty = _JsArray_empty;
 var $elm$core$Basics$ceiling = _Basics_ceiling;
@@ -5133,7 +5133,7 @@ var $elm$core$Array$shiftStep = $elm$core$Basics$ceiling(
 var $elm$core$Array$empty = A4($elm$core$Array$Array_elm_builtin, 0, $elm$core$Array$shiftStep, $elm$core$Elm$JsArray$empty, $elm$core$Elm$JsArray$empty);
 var $elm$core$Elm$JsArray$initialize = _JsArray_initialize;
 var $elm$core$Array$Leaf = function (a) {
-	return {$: 'Leaf', a: a};
+	return {$: 1, a: a};
 };
 var $elm$core$Basics$apL = F2(
 	function (f, x) {
@@ -5153,7 +5153,7 @@ var $elm$core$Basics$max = F2(
 	});
 var $elm$core$Basics$mul = _Basics_mul;
 var $elm$core$Array$SubTree = function (a) {
-	return {$: 'SubTree', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Elm$JsArray$initializeFromList = _JsArray_initializeFromList;
 var $elm$core$Array$compressNodes = F2(
@@ -5200,25 +5200,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.nodeListSize) {
+		if (!builder.f) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail),
+				$elm$core$Elm$JsArray$length(builder.i),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.tail);
+				builder.i);
 		} else {
-			var treeLen = builder.nodeListSize * $elm$core$Array$branchFactor;
+			var treeLen = builder.f * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.nodeList) : builder.nodeList;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.nodeListSize);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.j) : builder.j;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.f);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.i) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.tail);
+				builder.i);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -5231,7 +5231,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{nodeList: nodeList, nodeListSize: (len / $elm$core$Array$branchFactor) | 0, tail: tail});
+					{j: nodeList, f: (len / $elm$core$Array$branchFactor) | 0, i: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -5261,9 +5261,9 @@ var $elm$core$Array$initialize = F2(
 			return A5($elm$core$Array$initializeHelp, fn, initialFromIndex, len, _List_Nil, tail);
 		}
 	});
-var $elm$core$Basics$True = {$: 'True'};
+var $elm$core$Basics$True = 0;
 var $elm$core$Result$isOk = function (result) {
-	if (result.$ === 'Ok') {
+	if (!result.$) {
 		return true;
 	} else {
 		return false;
@@ -5275,33 +5275,31 @@ var $elm$json$Json$Decode$map2 = _Json_map2;
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 	switch (handler.$) {
-		case 'Normal':
+		case 0:
 			return 0;
-		case 'MayStopPropagation':
+		case 1:
 			return 1;
-		case 'MayPreventDefault':
+		case 2:
 			return 2;
 		default:
 			return 3;
 	}
 };
 var $elm$browser$Browser$External = function (a) {
-	return {$: 'External', a: a};
+	return {$: 1, a: a};
 };
 var $elm$browser$Browser$Internal = function (a) {
-	return {$: 'Internal', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Basics$identity = function (x) {
 	return x;
 };
-var $elm$browser$Browser$Dom$NotFound = function (a) {
-	return {$: 'NotFound', a: a};
-};
-var $elm$url$Url$Http = {$: 'Http'};
-var $elm$url$Url$Https = {$: 'Https'};
+var $elm$browser$Browser$Dom$NotFound = $elm$core$Basics$identity;
+var $elm$url$Url$Http = 0;
+var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {fragment: fragment, host: host, path: path, port_: port_, protocol: protocol, query: query};
+		return {a0: fragment, a2: host, bn: path, bp: port_, bu: protocol, bv: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5337,7 +5335,7 @@ var $elm$url$Url$chompBeforePath = F5(
 					var i = _v0.a;
 					var _v1 = $elm$core$String$toInt(
 						A2($elm$core$String$dropLeft, i + 1, str));
-					if (_v1.$ === 'Nothing') {
+					if (_v1.$ === 1) {
 						return $elm$core$Maybe$Nothing;
 					} else {
 						var port_ = _v1;
@@ -5420,26 +5418,24 @@ var $elm$core$String$startsWith = _String_startsWith;
 var $elm$url$Url$fromString = function (str) {
 	return A2($elm$core$String$startsWith, 'http://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Http,
+		0,
 		A2($elm$core$String$dropLeft, 7, str)) : (A2($elm$core$String$startsWith, 'https://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Https,
+		1,
 		A2($elm$core$String$dropLeft, 8, str)) : $elm$core$Maybe$Nothing);
 };
 var $elm$core$Basics$never = function (_v0) {
 	never:
 	while (true) {
-		var nvr = _v0.a;
+		var nvr = _v0;
 		var $temp$_v0 = nvr;
 		_v0 = $temp$_v0;
 		continue never;
 	}
 };
-var $elm$core$Task$Perform = function (a) {
-	return {$: 'Perform', a: a};
-};
+var $elm$core$Task$Perform = $elm$core$Basics$identity;
 var $elm$core$Task$succeed = _Scheduler_succeed;
-var $elm$core$Task$init = $elm$core$Task$succeed(_Utils_Tuple0);
+var $elm$core$Task$init = $elm$core$Task$succeed(0);
 var $elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -5545,7 +5541,7 @@ var $elm$core$Task$sequence = function (tasks) {
 var $elm$core$Platform$sendToApp = _Platform_sendToApp;
 var $elm$core$Task$spawnCmd = F2(
 	function (router, _v0) {
-		var task = _v0.a;
+		var task = _v0;
 		return _Scheduler_spawn(
 			A2(
 				$elm$core$Task$andThen,
@@ -5557,7 +5553,7 @@ var $elm$core$Task$onEffects = F3(
 		return A2(
 			$elm$core$Task$map,
 			function (_v0) {
-				return _Utils_Tuple0;
+				return 0;
 			},
 			$elm$core$Task$sequence(
 				A2(
@@ -5567,26 +5563,24 @@ var $elm$core$Task$onEffects = F3(
 	});
 var $elm$core$Task$onSelfMsg = F3(
 	function (_v0, _v1, _v2) {
-		return $elm$core$Task$succeed(_Utils_Tuple0);
+		return $elm$core$Task$succeed(0);
 	});
 var $elm$core$Task$cmdMap = F2(
 	function (tagger, _v0) {
-		var task = _v0.a;
-		return $elm$core$Task$Perform(
-			A2($elm$core$Task$map, tagger, task));
+		var task = _v0;
+		return A2($elm$core$Task$map, tagger, task);
 	});
 _Platform_effectManagers['Task'] = _Platform_createManager($elm$core$Task$init, $elm$core$Task$onEffects, $elm$core$Task$onSelfMsg, $elm$core$Task$cmdMap);
 var $elm$core$Task$command = _Platform_leaf('Task');
 var $elm$core$Task$perform = F2(
 	function (toMessage, task) {
 		return $elm$core$Task$command(
-			$elm$core$Task$Perform(
-				A2($elm$core$Task$map, toMessage, task)));
+			A2($elm$core$Task$map, toMessage, task));
 	});
 var $elm$browser$Browser$element = _Browser_element;
 var $elm$json$Json$Decode$field = _Json_decodeField;
 var $author$project$Common$RenderedImageSize = function (a) {
-	return {$: 'RenderedImageSize', a: a};
+	return {$: 11, a: a};
 };
 var $elm$core$Basics$composeL = F3(
 	function (g, f, x) {
@@ -5597,37 +5591,36 @@ var $elm$core$Task$onError = _Scheduler_onError;
 var $elm$core$Task$attempt = F2(
 	function (resultToMessage, task) {
 		return $elm$core$Task$command(
-			$elm$core$Task$Perform(
+			A2(
+				$elm$core$Task$onError,
 				A2(
-					$elm$core$Task$onError,
+					$elm$core$Basics$composeL,
+					A2($elm$core$Basics$composeL, $elm$core$Task$succeed, resultToMessage),
+					$elm$core$Result$Err),
+				A2(
+					$elm$core$Task$andThen,
 					A2(
 						$elm$core$Basics$composeL,
 						A2($elm$core$Basics$composeL, $elm$core$Task$succeed, resultToMessage),
-						$elm$core$Result$Err),
-					A2(
-						$elm$core$Task$andThen,
-						A2(
-							$elm$core$Basics$composeL,
-							A2($elm$core$Basics$composeL, $elm$core$Task$succeed, resultToMessage),
-							$elm$core$Result$Ok),
-						task))));
+						$elm$core$Result$Ok),
+					task)));
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $author$project$Common$Cascade = F2(
 	function (size, stages) {
-		return {size: size, stages: stages};
+		return {aG: size, bG: stages};
 	});
 var $author$project$Common$Size = F2(
 	function (width, height) {
-		return {height: height, width: width};
+		return {a1: height, bL: width};
 	});
 var $author$project$Common$Stage = F2(
 	function (threshold, weakClassifiers) {
-		return {threshold: threshold, weakClassifiers: weakClassifiers};
+		return {bJ: threshold, c7: weakClassifiers};
 	});
 var $author$project$Common$WeakClassifier = F3(
 	function (feature, threshold, leafValues) {
-		return {feature: feature, leafValues: leafValues, threshold: threshold};
+		return {cd: feature, cr: leafValues, bJ: threshold};
 	});
 var $elm$json$Json$Decode$array = _Json_decodeArray;
 var $elm$json$Json$Decode$at = F2(
@@ -5636,11 +5629,11 @@ var $elm$json$Json$Decode$at = F2(
 	});
 var $elm$core$Maybe$map2 = F3(
 	function (func, ma, mb) {
-		if (ma.$ === 'Nothing') {
+		if (ma.$ === 1) {
 			return $elm$core$Maybe$Nothing;
 		} else {
 			var a = ma.a;
-			if (mb.$ === 'Nothing') {
+			if (mb.$ === 1) {
 				return $elm$core$Maybe$Nothing;
 			} else {
 				var b = mb.a;
@@ -5696,20 +5689,20 @@ var $author$project$Main$decodeSpaceDelimitedInternalNode = function (spaceDelim
 var $elm$json$Json$Decode$fail = _Json_fail;
 var $author$project$Common$Feature = F2(
 	function (cells, tilted) {
-		return {cells: cells, tilted: tilted};
+		return {bW: cells, c0: tilted};
 	});
 var $elm$json$Json$Decode$bool = _Json_decodeBool;
 var $author$project$Common$Cell = F2(
 	function (rect, factor) {
-		return {factor: factor, rect: rect};
+		return {cc: factor, cN: rect};
 	});
 var $author$project$Common$Point = F2(
 	function (x, y) {
-		return {x: x, y: y};
+		return {da: x, db: y};
 	});
 var $author$project$Common$Rect = F2(
 	function (location, size) {
-		return {location: location, size: size};
+		return {cs: location, aG: size};
 	});
 var $author$project$Main$decodeSpaceDelimitedCell = function (spaceDelimited) {
 	var _v0 = A2(
@@ -5760,7 +5753,7 @@ var $elm$json$Json$Decode$maybe = function (decoder) {
 var $elm$json$Json$Decode$string = _Json_decodeString;
 var $elm$core$Maybe$withDefault = F2(
 	function (_default, maybe) {
-		if (maybe.$ === 'Just') {
+		if (!maybe.$) {
 			var value = maybe.a;
 			return value;
 		} else {
@@ -5779,7 +5772,7 @@ var $author$project$Main$featureJsonDecoder = A3(
 				$elm$json$Json$Decode$andThen,
 				function (spaceDelimitedRect) {
 					var _v0 = $author$project$Main$decodeSpaceDelimitedCell(spaceDelimitedRect);
-					if (_v0.$ === 'Just') {
+					if (!_v0.$) {
 						var rect = _v0.a;
 						return $elm$json$Json$Decode$succeed(rect);
 					} else {
@@ -5804,7 +5797,7 @@ var $elm$core$Array$getHelp = F3(
 		while (true) {
 			var pos = $elm$core$Array$bitMask & (index >>> shift);
 			var _v0 = A2($elm$core$Elm$JsArray$unsafeGet, pos, tree);
-			if (_v0.$ === 'SubTree') {
+			if (!_v0.$) {
 				var subTree = _v0.a;
 				var $temp$shift = shift - $elm$core$Array$shiftStep,
 					$temp$index = index,
@@ -5876,7 +5869,7 @@ var $author$project$Main$cascadeNewJsonDecoder = A2(
 										var threshold = _v0.b;
 										var leafValues = _v0.c;
 										var _v1 = A2($elm$core$Array$get, featureIdx, features);
-										if (_v1.$ === 'Just') {
+										if (!_v1.$) {
 											var feature = _v1.a;
 											return $elm$json$Json$Decode$succeed(
 												A3($author$project$Common$WeakClassifier, feature, threshold, leafValues));
@@ -5901,7 +5894,7 @@ var $author$project$Main$cascadeNewJsonDecoder = A2(
 												$elm$json$Json$Decode$andThen,
 												function (spaceDelimitedInternalNodes) {
 													var _v3 = $author$project$Main$decodeSpaceDelimitedInternalNode(spaceDelimitedInternalNodes);
-													if (_v3.$ === 'Just') {
+													if (!_v3.$) {
 														var featureIdxThreshold = _v3.a;
 														return $elm$json$Json$Decode$succeed(featureIdxThreshold);
 													} else {
@@ -5916,7 +5909,7 @@ var $author$project$Main$cascadeNewJsonDecoder = A2(
 												$elm$json$Json$Decode$andThen,
 												function (spaceDelimitedPair) {
 													var _v4 = $author$project$Main$decodeSpaceDelimitedFloatPair(spaceDelimitedPair);
-													if (_v4.$ === 'Just') {
+													if (!_v4.$) {
 														var leafValues = _v4.a;
 														return $elm$json$Json$Decode$succeed(leafValues);
 													} else {
@@ -5960,7 +5953,7 @@ var $author$project$Main$cascadeOldJsonDecoder = A2(
 			$elm$json$Json$Decode$andThen,
 			function (spaceDelimitedSize) {
 				var _v0 = $author$project$Main$decodeSpaceDelimitedSize(spaceDelimitedSize);
-				if (_v0.$ === 'Just') {
+				if (!_v0.$) {
 					var cascade = _v0.a;
 					return $elm$json$Json$Decode$succeed(cascade);
 				} else {
@@ -6018,7 +6011,7 @@ var $elm$json$Json$Encode$object = function (pairs) {
 					var v = _v0.b;
 					return A3(_Json_addField, k, v, obj);
 				}),
-			_Json_emptyObject(_Utils_Tuple0),
+			_Json_emptyObject(0),
 			pairs));
 };
 var $elm$json$Json$Encode$string = _Json_wrap;
@@ -6030,10 +6023,10 @@ var $author$project$Main$getImagePixelsCmd = _Platform_outgoingPort(
 				[
 					_Utils_Tuple2(
 					'longEdgePx',
-					$elm$json$Json$Encode$int($.longEdgePx)),
+					$elm$json$Json$Encode$int($.af)),
 					_Utils_Tuple2(
 					'url',
-					$elm$json$Json$Encode$string($.url))
+					$elm$json$Json$Encode$string($.c4))
 				]));
 	});
 var $author$project$Common$imageLongEdgePx = 480;
@@ -6041,28 +6034,28 @@ var $author$project$Main$init = function (flags) {
 	return _Utils_Tuple2(
 		function () {
 			var model = {
-				cascade: {
-					size: {height: 0, width: 0},
-					stages: $elm$core$Array$empty
+				bU: {
+					aG: {a1: 0, bL: 0},
+					bG: $elm$core$Array$empty
 				},
-				image: {maybeGrayscalePixels: $elm$core$Maybe$Nothing, url: $author$project$Common$defaultImageUrl},
-				maybeDetection: $elm$core$Maybe$Nothing,
-				maybeErrorMsg: $elm$core$Maybe$Nothing,
-				otherContentWidthPx: $author$project$Common$defaultOtherContentWidthPx,
-				renderedImageWidthPx: 0
+				cl: {cx: $elm$core$Maybe$Nothing, c4: $author$project$Common$defaultImageUrl},
+				cu: $elm$core$Maybe$Nothing,
+				cw: $elm$core$Maybe$Nothing,
+				cF: $author$project$Common$defaultOtherContentWidthPx,
+				cO: 0
 			};
-			var _v0 = A2($elm$json$Json$Decode$decodeValue, $author$project$Main$cascadeJsonDecoder, flags.cascadeJsonValue);
-			if (_v0.$ === 'Ok') {
+			var _v0 = A2($elm$json$Json$Decode$decodeValue, $author$project$Main$cascadeJsonDecoder, flags.bV);
+			if (!_v0.$) {
 				var cascade = _v0.a;
 				return _Utils_update(
 					model,
-					{cascade: cascade});
+					{bU: cascade});
 			} else {
 				var jsonErr = _v0.a;
 				return _Utils_update(
 					model,
 					{
-						maybeErrorMsg: $elm$core$Maybe$Just(
+						cw: $elm$core$Maybe$Just(
 							$elm$json$Json$Decode$errorToString(jsonErr))
 					});
 			}
@@ -6071,7 +6064,7 @@ var $author$project$Main$init = function (flags) {
 			_List_fromArray(
 				[
 					$author$project$Main$getImagePixelsCmd(
-					{longEdgePx: $author$project$Common$imageLongEdgePx, url: $author$project$Common$defaultImageUrl}),
+					{af: $author$project$Common$imageLongEdgePx, c4: $author$project$Common$defaultImageUrl}),
 					A2(
 					$elm$core$Task$attempt,
 					$author$project$Common$RenderedImageSize,
@@ -6079,14 +6072,14 @@ var $author$project$Main$init = function (flags) {
 				])));
 };
 var $author$project$Common$CascadeResult = function (a) {
-	return {$: 'CascadeResult', a: a};
+	return {$: 2, a: a};
 };
 var $author$project$Common$ImagePixels = function (a) {
-	return {$: 'ImagePixels', a: a};
+	return {$: 5, a: a};
 };
-var $author$project$Common$PerformNextDetectionStep = {$: 'PerformNextDetectionStep'};
+var $author$project$Common$PerformNextDetectionStep = {$: 9};
 var $author$project$Common$WindowWidthPx = function (a) {
-	return {$: 'WindowWidthPx', a: a};
+	return {$: 10, a: a};
 };
 var $elm$core$Basics$always = F2(
 	function (a, _v0) {
@@ -6095,13 +6088,13 @@ var $elm$core$Basics$always = F2(
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$time$Time$Every = F2(
 	function (a, b) {
-		return {$: 'Every', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$time$Time$State = F2(
 	function (taggers, processes) {
-		return {processes: processes, taggers: taggers};
+		return {bs: processes, bI: taggers};
 	});
-var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
+var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$time$Time$init = $elm$core$Task$succeed(
 	A2($elm$time$Time$State, $elm$core$Dict$empty, $elm$core$Dict$empty));
@@ -6110,7 +6103,7 @@ var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
 		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
+			if (dict.$ === -2) {
 				return $elm$core$Maybe$Nothing;
 			} else {
 				var key = dict.b;
@@ -6118,14 +6111,14 @@ var $elm$core$Dict$get = F2(
 				var left = dict.d;
 				var right = dict.e;
 				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1.$) {
-					case 'LT':
+				switch (_v1) {
+					case 0:
 						var $temp$targetKey = targetKey,
 							$temp$dict = left;
 						targetKey = $temp$targetKey;
 						dict = $temp$dict;
 						continue get;
-					case 'EQ':
+					case 1:
 						return $elm$core$Maybe$Just(value);
 					default:
 						var $temp$targetKey = targetKey,
@@ -6137,21 +6130,21 @@ var $elm$core$Dict$get = F2(
 			}
 		}
 	});
-var $elm$core$Dict$Black = {$: 'Black'};
+var $elm$core$Dict$Black = 1;
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
-		return {$: 'RBNode_elm_builtin', a: a, b: b, c: c, d: d, e: e};
+		return {$: -1, a: a, b: b, c: c, d: d, e: e};
 	});
-var $elm$core$Dict$Red = {$: 'Red'};
+var $elm$core$Dict$Red = 0;
 var $elm$core$Dict$balance = F5(
 	function (color, key, value, left, right) {
-		if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Red')) {
+		if ((right.$ === -1) && (!right.a)) {
 			var _v1 = right.a;
 			var rK = right.b;
 			var rV = right.c;
 			var rLeft = right.d;
 			var rRight = right.e;
-			if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
+			if ((left.$ === -1) && (!left.a)) {
 				var _v3 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -6159,22 +6152,22 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					key,
 					value,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
 					color,
 					rK,
 					rV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, left, rLeft),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, left, rLeft),
 					rRight);
 			}
 		} else {
-			if ((((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) && (left.d.$ === 'RBNode_elm_builtin')) && (left.d.a.$ === 'Red')) {
+			if ((((left.$ === -1) && (!left.a)) && (left.d.$ === -1)) && (!left.d.a)) {
 				var _v5 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -6187,11 +6180,11 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					lK,
 					lV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, key, value, lRight, right));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, key, value, lRight, right));
 			} else {
 				return A5($elm$core$Dict$RBNode_elm_builtin, color, key, value, left, right);
 			}
@@ -6199,8 +6192,8 @@ var $elm$core$Dict$balance = F5(
 	});
 var $elm$core$Dict$insertHelp = F3(
 	function (key, value, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
+		if (dict.$ === -2) {
+			return A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
 		} else {
 			var nColor = dict.a;
 			var nKey = dict.b;
@@ -6208,8 +6201,8 @@ var $elm$core$Dict$insertHelp = F3(
 			var nLeft = dict.d;
 			var nRight = dict.e;
 			var _v1 = A2($elm$core$Basics$compare, key, nKey);
-			switch (_v1.$) {
-				case 'LT':
+			switch (_v1) {
+				case 0:
 					return A5(
 						$elm$core$Dict$balance,
 						nColor,
@@ -6217,7 +6210,7 @@ var $elm$core$Dict$insertHelp = F3(
 						nValue,
 						A3($elm$core$Dict$insertHelp, key, value, nLeft),
 						nRight);
-				case 'EQ':
+				case 1:
 					return A5($elm$core$Dict$RBNode_elm_builtin, nColor, nKey, value, nLeft, nRight);
 				default:
 					return A5(
@@ -6233,13 +6226,13 @@ var $elm$core$Dict$insertHelp = F3(
 var $elm$core$Dict$insert = F3(
 	function (key, value, dict) {
 		var _v0 = A3($elm$core$Dict$insertHelp, key, value, dict);
-		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
+		if ((_v0.$ === -1) && (!_v0.a)) {
 			var _v1 = _v0.a;
 			var k = _v0.b;
 			var v = _v0.c;
 			var l = _v0.d;
 			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
 		} else {
 			var x = _v0;
 			return x;
@@ -6250,7 +6243,7 @@ var $elm$time$Time$addMySub = F2(
 		var interval = _v0.a;
 		var tagger = _v0.b;
 		var _v1 = A2($elm$core$Dict$get, interval, state);
-		if (_v1.$ === 'Nothing') {
+		if (_v1.$ === 1) {
 			return A3(
 				$elm$core$Dict$insert,
 				interval,
@@ -6271,7 +6264,7 @@ var $elm$core$Dict$foldl = F3(
 	function (func, acc, dict) {
 		foldl:
 		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
+			if (dict.$ === -2) {
 				return acc;
 			} else {
 				var key = dict.b;
@@ -6355,14 +6348,14 @@ var $elm$core$Dict$merge = F6(
 	});
 var $elm$core$Platform$sendToSelf = _Platform_sendToSelf;
 var $elm$time$Time$Name = function (a) {
-	return {$: 'Name', a: a};
+	return {$: 0, a: a};
 };
 var $elm$time$Time$Offset = function (a) {
-	return {$: 'Offset', a: a};
+	return {$: 1, a: a};
 };
 var $elm$time$Time$Zone = F2(
 	function (a, b) {
-		return {$: 'Zone', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$time$Time$customZone = $elm$time$Time$Zone;
 var $elm$time$Time$setInterval = _Time_setInterval;
@@ -6391,7 +6384,7 @@ var $elm$time$Time$spawnHelp = F3(
 	});
 var $elm$time$Time$onEffects = F3(
 	function (router, subs, _v0) {
-		var processes = _v0.processes;
+		var processes = _v0.bs;
 		var rightStep = F3(
 			function (_v6, id, _v7) {
 				var spawns = _v7.a;
@@ -6438,7 +6431,7 @@ var $elm$time$Time$onEffects = F3(
 			_Utils_Tuple3(
 				_List_Nil,
 				$elm$core$Dict$empty,
-				$elm$core$Task$succeed(_Utils_Tuple0)));
+				$elm$core$Task$succeed(0)));
 		var spawnList = _v1.a;
 		var existingDict = _v1.b;
 		var killTask = _v1.c;
@@ -6455,15 +6448,13 @@ var $elm$time$Time$onEffects = F3(
 				},
 				killTask));
 	});
-var $elm$time$Time$Posix = function (a) {
-	return {$: 'Posix', a: a};
-};
-var $elm$time$Time$millisToPosix = $elm$time$Time$Posix;
+var $elm$time$Time$Posix = $elm$core$Basics$identity;
+var $elm$time$Time$millisToPosix = $elm$core$Basics$identity;
 var $elm$time$Time$now = _Time_now($elm$time$Time$millisToPosix);
 var $elm$time$Time$onSelfMsg = F3(
 	function (router, interval, state) {
-		var _v0 = A2($elm$core$Dict$get, interval, state.taggers);
-		if (_v0.$ === 'Nothing') {
+		var _v0 = A2($elm$core$Dict$get, interval, state.bI);
+		if (_v0.$ === 1) {
 			return $elm$core$Task$succeed(state);
 		} else {
 			var taggers = _v0.a;
@@ -6515,7 +6506,7 @@ var $author$project$Main$getImagePixelsSub = _Platform_incomingPort(
 						$elm$json$Json$Decode$andThen,
 						function (height) {
 							return $elm$json$Json$Decode$succeed(
-								{height: height, pixels: pixels, width: width});
+								{a1: height, cI: pixels, bL: width});
 						},
 						A2($elm$json$Json$Decode$field, 'height', $elm$json$Json$Decode$int));
 				},
@@ -6533,7 +6524,7 @@ var $elm$core$Array$map = F2(
 		var tree = _v0.c;
 		var tail = _v0.d;
 		var helper = function (node) {
-			if (node.$ === 'SubTree') {
+			if (!node.$) {
 				var subTree = node.a;
 				return $elm$core$Array$SubTree(
 					A2($elm$core$Elm$JsArray$map, helper, subTree));
@@ -6569,7 +6560,7 @@ var $elm$core$Array$foldl = F3(
 		var tail = _v0.d;
 		var helper = F2(
 			function (node, acc) {
-				if (node.$ === 'SubTree') {
+				if (!node.$) {
 					var subTree = node.a;
 					return A3($elm$core$Elm$JsArray$foldl, helper, acc, subTree);
 				} else {
@@ -6604,7 +6595,7 @@ var $elm$core$Array$insertTailInTree = F4(
 			}
 		} else {
 			var value = A2($elm$core$Elm$JsArray$unsafeGet, pos, tree);
-			if (value.$ === 'SubTree') {
+			if (!value.$) {
 				var subTree = value.a;
 				var newSub = $elm$core$Array$SubTree(
 					A4($elm$core$Array$insertTailInTree, shift - $elm$core$Array$shiftStep, index, tail, subTree));
@@ -6694,7 +6685,7 @@ var $author$project$Main$groupSubPixels = function (subPixels) {
 };
 var $elm$core$Maybe$map = F2(
 	function (f, maybe) {
-		if (maybe.$ === 'Just') {
+		if (!maybe.$) {
 			var value = maybe.a;
 			return $elm$core$Maybe$Just(
 				f(value));
@@ -6704,7 +6695,7 @@ var $elm$core$Maybe$map = F2(
 	});
 var $elm$core$Result$mapError = F2(
 	function (f, result) {
-		if (result.$ === 'Ok') {
+		if (!result.$) {
 			var v = result.a;
 			return $elm$core$Result$Ok(v);
 		} else {
@@ -6714,19 +6705,19 @@ var $elm$core$Result$mapError = F2(
 		}
 	});
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
-var $elm$browser$Browser$Events$Window = {$: 'Window'};
+var $elm$browser$Browser$Events$Window = 1;
 var $elm$browser$Browser$Events$MySub = F3(
 	function (a, b, c) {
-		return {$: 'MySub', a: a, b: b, c: c};
+		return {$: 0, a: a, b: b, c: c};
 	});
 var $elm$browser$Browser$Events$State = F2(
 	function (subs, pids) {
-		return {pids: pids, subs: subs};
+		return {bo: pids, bH: subs};
 	});
 var $elm$browser$Browser$Events$init = $elm$core$Task$succeed(
 	A2($elm$browser$Browser$Events$State, _List_Nil, $elm$core$Dict$empty));
 var $elm$browser$Browser$Events$nodeToKey = function (node) {
-	if (node.$ === 'Document') {
+	if (!node) {
 		return 'd_';
 	} else {
 		return 'w_';
@@ -6755,14 +6746,14 @@ var $elm$core$Dict$fromList = function (assocs) {
 };
 var $elm$browser$Browser$Events$Event = F2(
 	function (key, event) {
-		return {event: event, key: key};
+		return {aX: event, a9: key};
 	});
 var $elm$browser$Browser$Events$spawn = F3(
 	function (router, key, _v0) {
 		var node = _v0.a;
 		var name = _v0.b;
 		var actualNode = function () {
-			if (node.$ === 'Document') {
+			if (!node) {
 				return _Browser_doc;
 			} else {
 				return _Browser_window;
@@ -6829,7 +6820,7 @@ var $elm$browser$Browser$Events$onEffects = F3(
 			stepLeft,
 			stepBoth,
 			stepRight,
-			state.pids,
+			state.bo,
 			$elm$core$Dict$fromList(newSubs),
 			_Utils_Tuple3(_List_Nil, $elm$core$Dict$empty, _List_Nil));
 		var deadPids = _v0.a;
@@ -6858,7 +6849,7 @@ var $elm$browser$Browser$Events$onEffects = F3(
 var $elm$core$List$maybeCons = F3(
 	function (f, mx, xs) {
 		var _v0 = f(mx);
-		if (_v0.$ === 'Just') {
+		if (!_v0.$) {
 			var x = _v0.a;
 			return A2($elm$core$List$cons, x, xs);
 		} else {
@@ -6875,8 +6866,8 @@ var $elm$core$List$filterMap = F2(
 	});
 var $elm$browser$Browser$Events$onSelfMsg = F3(
 	function (router, _v0, state) {
-		var key = _v0.key;
-		var event = _v0.event;
+		var key = _v0.a9;
+		var event = _v0.aX;
 		var toMessage = function (_v2) {
 			var subKey = _v2.a;
 			var _v3 = _v2.b;
@@ -6885,7 +6876,7 @@ var $elm$browser$Browser$Events$onSelfMsg = F3(
 			var decoder = _v3.c;
 			return _Utils_eq(subKey, key) ? A2(_Browser_decodeEvent, decoder, event) : $elm$core$Maybe$Nothing;
 		};
-		var messages = A2($elm$core$List$filterMap, toMessage, state.subs);
+		var messages = A2($elm$core$List$filterMap, toMessage, state.bH);
 		return A2(
 			$elm$core$Task$andThen,
 			function (_v1) {
@@ -6918,7 +6909,7 @@ var $elm$browser$Browser$Events$on = F3(
 var $elm$browser$Browser$Events$onResize = function (func) {
 	return A3(
 		$elm$browser$Browser$Events$on,
-		$elm$browser$Browser$Events$Window,
+		1,
 		'resize',
 		A2(
 			$elm$json$Json$Decode$field,
@@ -6939,9 +6930,9 @@ var $author$project$Main$subscriptions = function (model) {
 				function (imgData) {
 					return $author$project$Common$ImagePixels(
 						{
-							data: $author$project$Main$grayscale(
-								$author$project$Main$groupSubPixels(imgData.pixels)),
-							size: {height: imgData.height, width: imgData.width}
+							b3: $author$project$Main$grayscale(
+								$author$project$Main$groupSubPixels(imgData.cI)),
+							aG: {a1: imgData.a1, bL: imgData.bL}
 						});
 				}),
 				$author$project$Main$parseXmlSub(
@@ -6956,10 +6947,10 @@ var $author$project$Main$subscriptions = function (model) {
 				var _v0 = A2(
 					$elm$core$Maybe$map,
 					function ($) {
-						return $.status;
+						return $.cV;
 					},
-					model.maybeDetection);
-				if ((_v0.$ === 'Just') && (_v0.a.$ === 'Running')) {
+					model.cu);
+				if ((!_v0.$) && (_v0.a.$ === 1)) {
 					var _v1 = _v0.a;
 					return A2(
 						$elm$time$Time$every,
@@ -6977,40 +6968,40 @@ var $author$project$Main$subscriptions = function (model) {
 			]));
 };
 var $author$project$Common$CascadeXml = function (a) {
-	return {$: 'CascadeXml', a: a};
+	return {$: 1, a: a};
 };
-var $author$project$Common$Failed = {$: 'Failed'};
+var $author$project$Common$Failed = {$: 3};
 var $author$project$Common$ImageDataUrl = function (a) {
-	return {$: 'ImageDataUrl', a: a};
+	return {$: 4, a: a};
 };
-var $author$project$Common$Initializing = {$: 'Initializing'};
+var $author$project$Common$Initializing = {$: 0};
 var $author$project$Common$Running = F3(
 	function (a, b, c) {
-		return {$: 'Running', a: a, b: b, c: c};
+		return {$: 1, a: a, b: b, c: c};
 	});
-var $author$project$Common$Succeeded = {$: 'Succeeded'};
+var $author$project$Common$Succeeded = {$: 2};
 var $elm$core$Elm$JsArray$appendN = _JsArray_appendN;
 var $elm$core$Elm$JsArray$slice = _JsArray_slice;
 var $elm$core$Array$appendHelpBuilder = F2(
 	function (tail, builder) {
 		var tailLen = $elm$core$Elm$JsArray$length(tail);
-		var notAppended = ($elm$core$Array$branchFactor - $elm$core$Elm$JsArray$length(builder.tail)) - tailLen;
-		var appended = A3($elm$core$Elm$JsArray$appendN, $elm$core$Array$branchFactor, builder.tail, tail);
+		var notAppended = ($elm$core$Array$branchFactor - $elm$core$Elm$JsArray$length(builder.i)) - tailLen;
+		var appended = A3($elm$core$Elm$JsArray$appendN, $elm$core$Array$branchFactor, builder.i, tail);
 		return (notAppended < 0) ? {
-			nodeList: A2(
+			j: A2(
 				$elm$core$List$cons,
 				$elm$core$Array$Leaf(appended),
-				builder.nodeList),
-			nodeListSize: builder.nodeListSize + 1,
-			tail: A3($elm$core$Elm$JsArray$slice, notAppended, tailLen, tail)
+				builder.j),
+			f: builder.f + 1,
+			i: A3($elm$core$Elm$JsArray$slice, notAppended, tailLen, tail)
 		} : ((!notAppended) ? {
-			nodeList: A2(
+			j: A2(
 				$elm$core$List$cons,
 				$elm$core$Array$Leaf(appended),
-				builder.nodeList),
-			nodeListSize: builder.nodeListSize + 1,
-			tail: $elm$core$Elm$JsArray$empty
-		} : {nodeList: builder.nodeList, nodeListSize: builder.nodeListSize, tail: appended});
+				builder.j),
+			f: builder.f + 1,
+			i: $elm$core$Elm$JsArray$empty
+		} : {j: builder.j, f: builder.f, i: appended});
 	});
 var $elm$core$Array$appendHelpTree = F2(
 	function (toAppend, array) {
@@ -7034,7 +7025,7 @@ var $elm$core$Array$builderFromArray = function (_v0) {
 	var tail = _v0.d;
 	var helper = F2(
 		function (node, acc) {
-			if (node.$ === 'SubTree') {
+			if (!node.$) {
 				var subTree = node.a;
 				return A3($elm$core$Elm$JsArray$foldl, helper, acc, subTree);
 			} else {
@@ -7042,9 +7033,9 @@ var $elm$core$Array$builderFromArray = function (_v0) {
 			}
 		});
 	return {
-		nodeList: A3($elm$core$Elm$JsArray$foldl, helper, _List_Nil, tree),
-		nodeListSize: (len / $elm$core$Array$branchFactor) | 0,
-		tail: tail
+		j: A3($elm$core$Elm$JsArray$foldl, helper, _List_Nil, tree),
+		f: (len / $elm$core$Array$branchFactor) | 0,
+		i: tail
 	};
 };
 var $elm$core$Array$append = F2(
@@ -7056,7 +7047,7 @@ var $elm$core$Array$append = F2(
 		if (_Utils_cmp(bLen, $elm$core$Array$branchFactor * 4) < 1) {
 			var foldHelper = F2(
 				function (node, array) {
-					if (node.$ === 'SubTree') {
+					if (!node.$) {
 						var tree = node.a;
 						return A3($elm$core$Elm$JsArray$foldl, foldHelper, array, tree);
 					} else {
@@ -7071,7 +7062,7 @@ var $elm$core$Array$append = F2(
 		} else {
 			var foldHelper = F2(
 				function (node, builder) {
-					if (node.$ === 'SubTree') {
+					if (!node.$) {
 						var tree = node.a;
 						return A3($elm$core$Elm$JsArray$foldl, foldHelper, builder, tree);
 					} else {
@@ -7105,7 +7096,7 @@ var $elm$core$Array$fromListHelp = F3(
 				return A2(
 					$elm$core$Array$builderToArray,
 					true,
-					{nodeList: nodeList, nodeListSize: nodeListSize, tail: jsArray});
+					{j: nodeList, f: nodeListSize, i: jsArray});
 			} else {
 				var $temp$list = remainingItems,
 					$temp$nodeList = A2(
@@ -7134,7 +7125,7 @@ var $elm$core$Basics$negate = function (n) {
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $elm$core$Basics$not = _Basics_not;
 var $author$project$Main$parseXmlCmd = _Platform_outgoingPort('parseXmlCmd', $elm$json$Json$Encode$string);
-var $author$project$Common$NoOp = {$: 'NoOp'};
+var $author$project$Common$NoOp = {$: 12};
 var $elm$browser$Browser$Dom$getViewportOf = _Browser_getViewportOf;
 var $elm$browser$Browser$Dom$setViewportOf = _Browser_setViewportOf;
 var $author$project$Main$scrollToClassification = function (id) {
@@ -7150,7 +7141,7 @@ var $author$project$Main$scrollToClassification = function (id) {
 				$elm$core$Task$map2,
 				F2(
 					function (containerInfo, classifierInfo) {
-						return containerInfo.viewport.y + classifierInfo.element.y;
+						return containerInfo.aK.db + classifierInfo.at.db;
 					}),
 				$elm$browser$Browser$Dom$getViewportOf('model-column'),
 				$elm$browser$Browser$Dom$getElement(id))));
@@ -7159,7 +7150,7 @@ var $elm$core$Array$setHelp = F4(
 	function (shift, index, value, tree) {
 		var pos = $elm$core$Array$bitMask & (index >>> shift);
 		var _v0 = A2($elm$core$Elm$JsArray$unsafeGet, pos, tree);
-		if (_v0.$ === 'SubTree') {
+		if (!_v0.$) {
 			var subTree = _v0.a;
 			var newSub = A4($elm$core$Array$setHelp, shift - $elm$core$Array$shiftStep, index, value, subTree);
 			return A3(
@@ -7243,7 +7234,7 @@ var $elm$core$Array$sliceLeft = F2(
 				var skipNodes = (from / $elm$core$Array$branchFactor) | 0;
 				var helper = F2(
 					function (node, acc) {
-						if (node.$ === 'SubTree') {
+						if (!node.$) {
 							var subTree = node.a;
 							return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
 						} else {
@@ -7265,9 +7256,9 @@ var $elm$core$Array$sliceLeft = F2(
 					var rest = nodesToInsert.b;
 					var firstSlice = from - (skipNodes * $elm$core$Array$branchFactor);
 					var initialBuilder = {
-						nodeList: _List_Nil,
-						nodeListSize: 0,
-						tail: A3(
+						j: _List_Nil,
+						f: 0,
+						i: A3(
 							$elm$core$Elm$JsArray$slice,
 							firstSlice,
 							$elm$core$Elm$JsArray$length(head),
@@ -7287,7 +7278,7 @@ var $elm$core$Array$fetchNewTail = F4(
 		while (true) {
 			var pos = $elm$core$Array$bitMask & (treeEnd >>> shift);
 			var _v0 = A2($elm$core$Elm$JsArray$unsafeGet, pos, tree);
-			if (_v0.$ === 'SubTree') {
+			if (!_v0.$) {
 				var sub = _v0.a;
 				var $temp$shift = shift - $elm$core$Array$shiftStep,
 					$temp$end = end,
@@ -7312,7 +7303,7 @@ var $elm$core$Array$hoistTree = F3(
 				return tree;
 			} else {
 				var _v0 = A2($elm$core$Elm$JsArray$unsafeGet, 0, tree);
-				if (_v0.$ === 'SubTree') {
+				if (!_v0.$) {
 					var sub = _v0.a;
 					var $temp$oldShift = oldShift - $elm$core$Array$shiftStep,
 						$temp$newShift = newShift,
@@ -7331,7 +7322,7 @@ var $elm$core$Array$sliceTree = F3(
 	function (shift, endIdx, tree) {
 		var lastPos = $elm$core$Array$bitMask & (endIdx >>> shift);
 		var _v0 = A2($elm$core$Elm$JsArray$unsafeGet, lastPos, tree);
-		if (_v0.$ === 'SubTree') {
+		if (!_v0.$) {
 			var sub = _v0.a;
 			var newSub = A3($elm$core$Array$sliceTree, shift - $elm$core$Array$shiftStep, endIdx, sub);
 			return (!$elm$core$Elm$JsArray$length(newSub)) ? A3($elm$core$Elm$JsArray$slice, 0, lastPos, tree) : A3(
@@ -7401,7 +7392,7 @@ var $elm$file$File$toString = _File_toString;
 var $elm$file$File$toUrl = _File_toUrl;
 var $elm$core$Maybe$andThen = F2(
 	function (callback, maybeValue) {
-		if (maybeValue.$ === 'Just') {
+		if (!maybeValue.$) {
 			var value = maybeValue.a;
 			return callback(value);
 		} else {
@@ -7410,14 +7401,14 @@ var $elm$core$Maybe$andThen = F2(
 	});
 var $justgook$elm_image$Image$Internal$ImageData$Array = F2(
 	function (a, b) {
-		return {$: 'Array', a: a, b: b};
+		return {$: 2, a: a, b: b};
 	});
 var $justgook$elm_image$Image$Info$FromData = function (a) {
-	return {$: 'FromData', a: a};
+	return {$: 3, a: a};
 };
-var $justgook$elm_image$Image$Info$FromDataBitDepth8 = {$: 'FromDataBitDepth8'};
+var $justgook$elm_image$Image$Info$FromDataBitDepth8 = 3;
 var $justgook$elm_image$Image$Info$FromDataChannel4 = function (a) {
-	return {$: 'FromDataChannel4', a: a};
+	return {$: 3, a: a};
 };
 var $elm$core$Array$length = function (_v0) {
 	var len = _v0.a;
@@ -7429,9 +7420,9 @@ var $justgook$elm_image$Image$fromArray = F2(
 			$justgook$elm_image$Image$Internal$ImageData$Array,
 			$justgook$elm_image$Image$Info$FromData(
 				{
-					color: $justgook$elm_image$Image$Info$FromDataChannel4($justgook$elm_image$Image$Info$FromDataBitDepth8),
-					height: ($elm$core$Array$length(arr) / w) | 0,
-					width: w
+					ab: $justgook$elm_image$Image$Info$FromDataChannel4(3),
+					a1: ($elm$core$Array$length(arr) / w) | 0,
+					bL: w
 				}),
 			arr);
 	});
@@ -7442,7 +7433,7 @@ var $elm$core$Basics$min = F2(
 var $author$project$Main$featureExtractionImage = function (pixels) {
 	return A2(
 		$justgook$elm_image$Image$fromArray,
-		pixels.size.width,
+		pixels.aG.bL,
 		A2(
 			$elm$core$Array$map,
 			function (unadjPx) {
@@ -7455,7 +7446,7 @@ var $author$project$Main$featureExtractionImage = function (pixels) {
 						(unadjPx < 0) ? (255 + unadjPx) : unadjPx));
 				return (((px << 24) + (px << 16)) + (px << 8)) + 255;
 			},
-			pixels.data));
+			pixels.b3));
 };
 var $elm$core$Elm$JsArray$indexedMap = _JsArray_indexedMap;
 var $elm$core$Array$indexedMap = F2(
@@ -7464,9 +7455,9 @@ var $elm$core$Array$indexedMap = F2(
 		var tree = _v0.c;
 		var tail = _v0.d;
 		var initialBuilder = {
-			nodeList: _List_Nil,
-			nodeListSize: 0,
-			tail: A3(
+			j: _List_Nil,
+			f: 0,
+			i: A3(
 				$elm$core$Elm$JsArray$indexedMap,
 				func,
 				$elm$core$Array$tailIndex(len),
@@ -7474,18 +7465,18 @@ var $elm$core$Array$indexedMap = F2(
 		};
 		var helper = F2(
 			function (node, builder) {
-				if (node.$ === 'SubTree') {
+				if (!node.$) {
 					var subTree = node.a;
 					return A3($elm$core$Elm$JsArray$foldl, helper, builder, subTree);
 				} else {
 					var leaf = node.a;
-					var offset = builder.nodeListSize * $elm$core$Array$branchFactor;
+					var offset = builder.f * $elm$core$Array$branchFactor;
 					var mappedLeaf = $elm$core$Array$Leaf(
 						A3($elm$core$Elm$JsArray$indexedMap, func, offset, leaf));
 					return {
-						nodeList: A2($elm$core$List$cons, mappedLeaf, builder.nodeList),
-						nodeListSize: builder.nodeListSize + 1,
-						tail: builder.tail
+						j: A2($elm$core$List$cons, mappedLeaf, builder.j),
+						f: builder.f + 1,
+						i: builder.i
 					};
 				}
 			});
@@ -7511,26 +7502,26 @@ var $elm$core$Basics$composeR = F3(
 	});
 var $elm$bytes$Bytes$Encode$getWidth = function (builder) {
 	switch (builder.$) {
-		case 'I8':
+		case 0:
 			return 1;
-		case 'I16':
+		case 1:
 			return 2;
-		case 'I32':
+		case 2:
 			return 4;
-		case 'U8':
+		case 3:
 			return 1;
-		case 'U16':
+		case 4:
 			return 2;
-		case 'U32':
+		case 5:
 			return 4;
-		case 'F32':
+		case 6:
 			return 4;
-		case 'F64':
+		case 7:
 			return 8;
-		case 'Seq':
+		case 8:
 			var w = builder.a;
 			return w;
-		case 'Utf8':
+		case 9:
 			var w = builder.a;
 			return w;
 		default:
@@ -7538,74 +7529,44 @@ var $elm$bytes$Bytes$Encode$getWidth = function (builder) {
 			return _Bytes_width(bs);
 	}
 };
-var $elm$bytes$Bytes$LE = {$: 'LE'};
+var $elm$bytes$Bytes$LE = 0;
 var $elm$bytes$Bytes$Encode$write = F3(
 	function (builder, mb, offset) {
 		switch (builder.$) {
-			case 'I8':
+			case 0:
 				var n = builder.a;
 				return A3(_Bytes_write_i8, mb, offset, n);
-			case 'I16':
+			case 1:
 				var e = builder.a;
 				var n = builder.b;
-				return A4(
-					_Bytes_write_i16,
-					mb,
-					offset,
-					n,
-					_Utils_eq(e, $elm$bytes$Bytes$LE));
-			case 'I32':
+				return A4(_Bytes_write_i16, mb, offset, n, !e);
+			case 2:
 				var e = builder.a;
 				var n = builder.b;
-				return A4(
-					_Bytes_write_i32,
-					mb,
-					offset,
-					n,
-					_Utils_eq(e, $elm$bytes$Bytes$LE));
-			case 'U8':
+				return A4(_Bytes_write_i32, mb, offset, n, !e);
+			case 3:
 				var n = builder.a;
 				return A3(_Bytes_write_u8, mb, offset, n);
-			case 'U16':
+			case 4:
 				var e = builder.a;
 				var n = builder.b;
-				return A4(
-					_Bytes_write_u16,
-					mb,
-					offset,
-					n,
-					_Utils_eq(e, $elm$bytes$Bytes$LE));
-			case 'U32':
+				return A4(_Bytes_write_u16, mb, offset, n, !e);
+			case 5:
 				var e = builder.a;
 				var n = builder.b;
-				return A4(
-					_Bytes_write_u32,
-					mb,
-					offset,
-					n,
-					_Utils_eq(e, $elm$bytes$Bytes$LE));
-			case 'F32':
+				return A4(_Bytes_write_u32, mb, offset, n, !e);
+			case 6:
 				var e = builder.a;
 				var n = builder.b;
-				return A4(
-					_Bytes_write_f32,
-					mb,
-					offset,
-					n,
-					_Utils_eq(e, $elm$bytes$Bytes$LE));
-			case 'F64':
+				return A4(_Bytes_write_f32, mb, offset, n, !e);
+			case 7:
 				var e = builder.a;
 				var n = builder.b;
-				return A4(
-					_Bytes_write_f64,
-					mb,
-					offset,
-					n,
-					_Utils_eq(e, $elm$bytes$Bytes$LE));
-			case 'Seq':
+				return A4(_Bytes_write_f64, mb, offset, n, !e);
+			case 8:
 				var bs = builder.b;
 				return A3($elm$bytes$Bytes$Encode$writeSequence, bs, mb, offset);
-			case 'Utf8':
+			case 9:
 				var s = builder.b;
 				return A3(_Bytes_write_string, mb, offset, s);
 			default:
@@ -7634,22 +7595,20 @@ var $elm$bytes$Bytes$Encode$writeSequence = F3(
 	});
 var $elm$bytes$Bytes$Decode$decode = F2(
 	function (_v0, bs) {
-		var decoder = _v0.a;
+		var decoder = _v0;
 		return A2(_Bytes_decode, decoder, bs);
 	});
-var $elm$bytes$Bytes$Decode$Decoder = function (a) {
-	return {$: 'Decoder', a: a};
-};
+var $elm$bytes$Bytes$Decode$Decoder = $elm$core$Basics$identity;
 var $elm$bytes$Bytes$Decode$loopHelp = F4(
 	function (state, callback, bites, offset) {
 		loopHelp:
 		while (true) {
 			var _v0 = callback(state);
-			var decoder = _v0.a;
+			var decoder = _v0;
 			var _v1 = A2(decoder, bites, offset);
 			var newOffset = _v1.a;
 			var step = _v1.b;
-			if (step.$ === 'Loop') {
+			if (!step.$) {
 				var newState = step.a;
 				var $temp$state = newState,
 					$temp$callback = callback,
@@ -7668,14 +7627,13 @@ var $elm$bytes$Bytes$Decode$loopHelp = F4(
 	});
 var $elm$bytes$Bytes$Decode$loop = F2(
 	function (state, callback) {
-		return $elm$bytes$Bytes$Decode$Decoder(
-			A2($elm$bytes$Bytes$Decode$loopHelp, state, callback));
+		return A2($elm$bytes$Bytes$Decode$loopHelp, state, callback);
 	});
 var $elm$bytes$Bytes$Decode$Done = function (a) {
-	return {$: 'Done', a: a};
+	return {$: 1, a: a};
 };
 var $elm$bytes$Bytes$Decode$Loop = function (a) {
-	return {$: 'Loop', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$String$cons = _String_cons;
 var $elm$core$String$fromChar = function (_char) {
@@ -7695,11 +7653,11 @@ var $danfishgold$base64_bytes$Decode$unsafeToChar = function (n) {
 			} else {
 				switch (n) {
 					case 62:
-						return _Utils_chr('+');
+						return '+';
 					case 63:
-						return _Utils_chr('/');
+						return '/';
 					default:
-						return _Utils_chr('\u0000');
+						return '\u0000';
 				}
 			}
 		}
@@ -7807,121 +7765,112 @@ var $danfishgold$base64_bytes$Decode$decode18Help = F5(
 	});
 var $elm$bytes$Bytes$Decode$map5 = F6(
 	function (func, _v0, _v1, _v2, _v3, _v4) {
-		var decodeA = _v0.a;
-		var decodeB = _v1.a;
-		var decodeC = _v2.a;
-		var decodeD = _v3.a;
-		var decodeE = _v4.a;
-		return $elm$bytes$Bytes$Decode$Decoder(
-			F2(
-				function (bites, offset) {
-					var _v5 = A2(decodeA, bites, offset);
-					var aOffset = _v5.a;
-					var a = _v5.b;
-					var _v6 = A2(decodeB, bites, aOffset);
-					var bOffset = _v6.a;
-					var b = _v6.b;
-					var _v7 = A2(decodeC, bites, bOffset);
-					var cOffset = _v7.a;
-					var c = _v7.b;
-					var _v8 = A2(decodeD, bites, cOffset);
-					var dOffset = _v8.a;
-					var d = _v8.b;
-					var _v9 = A2(decodeE, bites, dOffset);
-					var eOffset = _v9.a;
-					var e = _v9.b;
-					return _Utils_Tuple2(
-						eOffset,
-						A5(func, a, b, c, d, e));
-				}));
+		var decodeA = _v0;
+		var decodeB = _v1;
+		var decodeC = _v2;
+		var decodeD = _v3;
+		var decodeE = _v4;
+		return F2(
+			function (bites, offset) {
+				var _v5 = A2(decodeA, bites, offset);
+				var aOffset = _v5.a;
+				var a = _v5.b;
+				var _v6 = A2(decodeB, bites, aOffset);
+				var bOffset = _v6.a;
+				var b = _v6.b;
+				var _v7 = A2(decodeC, bites, bOffset);
+				var cOffset = _v7.a;
+				var c = _v7.b;
+				var _v8 = A2(decodeD, bites, cOffset);
+				var dOffset = _v8.a;
+				var d = _v8.b;
+				var _v9 = A2(decodeE, bites, dOffset);
+				var eOffset = _v9.a;
+				var e = _v9.b;
+				return _Utils_Tuple2(
+					eOffset,
+					A5(func, a, b, c, d, e));
+			});
 	});
-var $elm$bytes$Bytes$BE = {$: 'BE'};
+var $elm$bytes$Bytes$BE = 1;
 var $elm$bytes$Bytes$Decode$unsignedInt16 = function (endianness) {
-	return $elm$bytes$Bytes$Decode$Decoder(
-		_Bytes_read_u16(
-			_Utils_eq(endianness, $elm$bytes$Bytes$LE)));
+	return _Bytes_read_u16(!endianness);
 };
-var $danfishgold$base64_bytes$Decode$u16BE = $elm$bytes$Bytes$Decode$unsignedInt16($elm$bytes$Bytes$BE);
+var $danfishgold$base64_bytes$Decode$u16BE = $elm$bytes$Bytes$Decode$unsignedInt16(1);
 var $elm$bytes$Bytes$Decode$unsignedInt32 = function (endianness) {
-	return $elm$bytes$Bytes$Decode$Decoder(
-		_Bytes_read_u32(
-			_Utils_eq(endianness, $elm$bytes$Bytes$LE)));
+	return _Bytes_read_u32(!endianness);
 };
-var $danfishgold$base64_bytes$Decode$u32BE = $elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE);
+var $danfishgold$base64_bytes$Decode$u32BE = $elm$bytes$Bytes$Decode$unsignedInt32(1);
 var $danfishgold$base64_bytes$Decode$decode18Bytes = A6($elm$bytes$Bytes$Decode$map5, $danfishgold$base64_bytes$Decode$decode18Help, $danfishgold$base64_bytes$Decode$u32BE, $danfishgold$base64_bytes$Decode$u32BE, $danfishgold$base64_bytes$Decode$u32BE, $danfishgold$base64_bytes$Decode$u32BE, $danfishgold$base64_bytes$Decode$u16BE);
 var $elm$bytes$Bytes$Decode$map = F2(
 	function (func, _v0) {
-		var decodeA = _v0.a;
-		return $elm$bytes$Bytes$Decode$Decoder(
-			F2(
-				function (bites, offset) {
-					var _v1 = A2(decodeA, bites, offset);
-					var aOffset = _v1.a;
-					var a = _v1.b;
-					return _Utils_Tuple2(
-						aOffset,
-						func(a));
-				}));
+		var decodeA = _v0;
+		return F2(
+			function (bites, offset) {
+				var _v1 = A2(decodeA, bites, offset);
+				var aOffset = _v1.a;
+				var a = _v1.b;
+				return _Utils_Tuple2(
+					aOffset,
+					func(a));
+			});
 	});
 var $elm$bytes$Bytes$Decode$map2 = F3(
 	function (func, _v0, _v1) {
-		var decodeA = _v0.a;
-		var decodeB = _v1.a;
-		return $elm$bytes$Bytes$Decode$Decoder(
-			F2(
-				function (bites, offset) {
-					var _v2 = A2(decodeA, bites, offset);
-					var aOffset = _v2.a;
-					var a = _v2.b;
-					var _v3 = A2(decodeB, bites, aOffset);
-					var bOffset = _v3.a;
-					var b = _v3.b;
-					return _Utils_Tuple2(
-						bOffset,
-						A2(func, a, b));
-				}));
+		var decodeA = _v0;
+		var decodeB = _v1;
+		return F2(
+			function (bites, offset) {
+				var _v2 = A2(decodeA, bites, offset);
+				var aOffset = _v2.a;
+				var a = _v2.b;
+				var _v3 = A2(decodeB, bites, aOffset);
+				var bOffset = _v3.a;
+				var b = _v3.b;
+				return _Utils_Tuple2(
+					bOffset,
+					A2(func, a, b));
+			});
 	});
 var $elm$bytes$Bytes$Decode$map3 = F4(
 	function (func, _v0, _v1, _v2) {
-		var decodeA = _v0.a;
-		var decodeB = _v1.a;
-		var decodeC = _v2.a;
-		return $elm$bytes$Bytes$Decode$Decoder(
-			F2(
-				function (bites, offset) {
-					var _v3 = A2(decodeA, bites, offset);
-					var aOffset = _v3.a;
-					var a = _v3.b;
-					var _v4 = A2(decodeB, bites, aOffset);
-					var bOffset = _v4.a;
-					var b = _v4.b;
-					var _v5 = A2(decodeC, bites, bOffset);
-					var cOffset = _v5.a;
-					var c = _v5.b;
-					return _Utils_Tuple2(
-						cOffset,
-						A3(func, a, b, c));
-				}));
+		var decodeA = _v0;
+		var decodeB = _v1;
+		var decodeC = _v2;
+		return F2(
+			function (bites, offset) {
+				var _v3 = A2(decodeA, bites, offset);
+				var aOffset = _v3.a;
+				var a = _v3.b;
+				var _v4 = A2(decodeB, bites, aOffset);
+				var bOffset = _v4.a;
+				var b = _v4.b;
+				var _v5 = A2(decodeC, bites, bOffset);
+				var cOffset = _v5.a;
+				var c = _v5.b;
+				return _Utils_Tuple2(
+					cOffset,
+					A3(func, a, b, c));
+			});
 	});
 var $elm$bytes$Bytes$Decode$succeed = function (a) {
-	return $elm$bytes$Bytes$Decode$Decoder(
-		F2(
-			function (_v0, offset) {
-				return _Utils_Tuple2(offset, a);
-			}));
+	return F2(
+		function (_v0, offset) {
+			return _Utils_Tuple2(offset, a);
+		});
 };
-var $elm$bytes$Bytes$Decode$unsignedInt8 = $elm$bytes$Bytes$Decode$Decoder(_Bytes_read_u8);
+var $elm$bytes$Bytes$Decode$unsignedInt8 = _Bytes_read_u8;
 var $danfishgold$base64_bytes$Decode$loopHelp = function (_v0) {
-	var remaining = _v0.remaining;
-	var string = _v0.string;
+	var remaining = _v0.al;
+	var string = _v0.am;
 	if (remaining >= 18) {
 		return A2(
 			$elm$bytes$Bytes$Decode$map,
 			function (result) {
 				return $elm$bytes$Bytes$Decode$Loop(
 					{
-						remaining: remaining - 18,
-						string: _Utils_ap(string, result)
+						al: remaining - 18,
+						am: _Utils_ap(string, result)
 					});
 			},
 			$danfishgold$base64_bytes$Decode$decode18Bytes);
@@ -7932,8 +7881,8 @@ var $danfishgold$base64_bytes$Decode$loopHelp = function (_v0) {
 					var combined = ((a << 16) | (b << 8)) | c;
 					return $elm$bytes$Bytes$Decode$Loop(
 						{
-							remaining: remaining - 3,
-							string: _Utils_ap(
+							al: remaining - 3,
+							am: _Utils_ap(
 								string,
 								A2($danfishgold$base64_bytes$Decode$bitsToChars, combined, 0))
 						});
@@ -7972,7 +7921,7 @@ var $danfishgold$base64_bytes$Decode$loopHelp = function (_v0) {
 var $danfishgold$base64_bytes$Decode$decoder = function (width) {
 	return A2(
 		$elm$bytes$Bytes$Decode$loop,
-		{remaining: width, string: ''},
+		{al: width, am: ''},
 		$danfishgold$base64_bytes$Decode$loopHelp);
 };
 var $elm$bytes$Bytes$width = _Bytes_width;
@@ -7984,12 +7933,12 @@ var $danfishgold$base64_bytes$Decode$fromBytes = function (bytes) {
 		bytes);
 };
 var $danfishgold$base64_bytes$Base64$fromBytes = $danfishgold$base64_bytes$Decode$fromBytes;
-var $justgook$elm_image$Image$Internal$ImageData$RGBA = {$: 'RGBA'};
-var $justgook$elm_image$Image$Internal$ImageData$RightDown = {$: 'RightDown'};
-var $justgook$elm_image$Image$Internal$ImageData$defaultOptions = {format: $justgook$elm_image$Image$Internal$ImageData$RGBA, order: $justgook$elm_image$Image$Internal$ImageData$RightDown};
+var $justgook$elm_image$Image$Internal$ImageData$RGBA = 0;
+var $justgook$elm_image$Image$Internal$ImageData$RightDown = 0;
+var $justgook$elm_image$Image$Internal$ImageData$defaultOptions = {a$: 0, bl: 0};
 var $elm$bytes$Bytes$Encode$encode = _Bytes_encode;
 var $elm$bytes$Bytes$Encode$Bytes = function (a) {
-	return {$: 'Bytes', a: a};
+	return {$: 10, a: a};
 };
 var $elm$bytes$Bytes$Encode$bytes = $elm$bytes$Bytes$Encode$Bytes;
 var $folkertdev$elm_flate$Checksum$Crc32$tinf_crc32case = function (i) {
@@ -8037,8 +7986,8 @@ var $folkertdev$elm_flate$Checksum$Crc32$step = F2(
 		return c;
 	});
 var $folkertdev$elm_flate$Checksum$Crc32$crc32Help = function (_v0) {
-	var remaining = _v0.remaining;
-	var crc = _v0.crc;
+	var remaining = _v0.al;
+	var crc = _v0.ac;
 	return (remaining >= 8) ? A3(
 		$elm$bytes$Bytes$Decode$map2,
 		F2(
@@ -8053,7 +8002,7 @@ var $folkertdev$elm_flate$Checksum$Crc32$crc32Help = function (_v0) {
 				var byte1 = 255 & (word1 >>> 24);
 				return $elm$bytes$Bytes$Decode$Loop(
 					{
-						crc: A2(
+						ac: A2(
 							$folkertdev$elm_flate$Checksum$Crc32$step,
 							byte8,
 							A2(
@@ -8075,17 +8024,17 @@ var $folkertdev$elm_flate$Checksum$Crc32$crc32Help = function (_v0) {
 													$folkertdev$elm_flate$Checksum$Crc32$step,
 													byte2,
 													A2($folkertdev$elm_flate$Checksum$Crc32$step, byte1, crc)))))))),
-						remaining: remaining - 8
+						al: remaining - 8
 					});
 			}),
-		$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-		$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE)) : ((remaining > 0) ? A2(
+		$elm$bytes$Bytes$Decode$unsignedInt32(1),
+		$elm$bytes$Bytes$Decode$unsignedInt32(1)) : ((remaining > 0) ? A2(
 		$elm$bytes$Bytes$Decode$map,
 		function (_byte) {
 			return $elm$bytes$Bytes$Decode$Loop(
 				{
-					crc: A2($folkertdev$elm_flate$Checksum$Crc32$step, _byte, crc),
-					remaining: remaining - 1
+					ac: A2($folkertdev$elm_flate$Checksum$Crc32$step, _byte, crc),
+					al: remaining - 1
 				});
 		},
 		$elm$bytes$Bytes$Decode$unsignedInt8) : $elm$bytes$Bytes$Decode$succeed(
@@ -8101,7 +8050,7 @@ var $folkertdev$elm_flate$Checksum$Crc32$tinf_crc32 = function (buffer) {
 			$elm$bytes$Bytes$Decode$decode,
 			A2(
 				$elm$bytes$Bytes$Decode$loop,
-				{crc: initialCrc, remaining: length},
+				{ac: initialCrc, al: length},
 				$folkertdev$elm_flate$Checksum$Crc32$crc32Help),
 			buffer));
 };
@@ -8109,7 +8058,7 @@ var $folkertdev$elm_flate$Checksum$Crc32$crc32 = $folkertdev$elm_flate$Checksum$
 var $folkertdev$elm_flate$Flate$crc32 = $folkertdev$elm_flate$Checksum$Crc32$crc32;
 var $elm$bytes$Bytes$Encode$Seq = F2(
 	function (a, b) {
-		return {$: 'Seq', a: a, b: b};
+		return {$: 8, a: a, b: b};
 	});
 var $elm$bytes$Bytes$Encode$getWidths = F2(
 	function (width, builders) {
@@ -8136,7 +8085,7 @@ var $elm$bytes$Bytes$Encode$sequence = function (builders) {
 };
 var $elm$bytes$Bytes$Encode$U32 = F2(
 	function (a, b) {
-		return {$: 'U32', a: a, b: b};
+		return {$: 5, a: a, b: b};
 	});
 var $elm$bytes$Bytes$Encode$unsignedInt32 = $elm$bytes$Bytes$Encode$U32;
 var $justgook$elm_image$Image$Internal$PNG$encodeChunk = F2(
@@ -8146,27 +8095,27 @@ var $justgook$elm_image$Image$Internal$PNG$encodeChunk = F2(
 			$elm$bytes$Bytes$Encode$sequence(
 				_List_fromArray(
 					[
-						A2($elm$bytes$Bytes$Encode$unsignedInt32, $elm$bytes$Bytes$BE, kind),
+						A2($elm$bytes$Bytes$Encode$unsignedInt32, 1, kind),
 						$elm$bytes$Bytes$Encode$bytes(data)
 					])));
 		return $elm$bytes$Bytes$Encode$sequence(
 			_List_fromArray(
 				[
-					A2($elm$bytes$Bytes$Encode$unsignedInt32, $elm$bytes$Bytes$BE, length),
+					A2($elm$bytes$Bytes$Encode$unsignedInt32, 1, length),
 					$elm$bytes$Bytes$Encode$bytes(kindAndData),
 					A2(
 					$elm$bytes$Bytes$Encode$unsignedInt32,
-					$elm$bytes$Bytes$BE,
+					1,
 					$folkertdev$elm_flate$Flate$crc32(kindAndData))
 				]));
 	});
 var $folkertdev$elm_flate$Flate$Dynamic = function (a) {
-	return {$: 'Dynamic', a: a};
+	return {$: 1, a: a};
 };
 var $folkertdev$elm_flate$Flate$WithWindowSize = function (a) {
-	return {$: 'WithWindowSize', a: a};
+	return {$: 1, a: a};
 };
-var $folkertdev$elm_flate$Checksum$Adler32$a32 = {base: 65521, nmax: 5552};
+var $folkertdev$elm_flate$Checksum$Adler32$a32 = {ao: 65521, bg: 5552};
 var $folkertdev$elm_flate$Checksum$Adler32$step8Bytes = F5(
 	function (remaining, s1, s2, word1, word2) {
 		var byte8 = 255 & word2;
@@ -8194,54 +8143,54 @@ var $folkertdev$elm_flate$Checksum$Adler32$step8Bytes = F5(
 		var s2b_3 = s2b_2 + s1b_3;
 		var s2b_4 = s2b_3 + s1b_4;
 		return $elm$bytes$Bytes$Decode$Loop(
-			{remaining: remaining - 8, s1: s1b_4, s2: s2b_4});
+			{al: remaining - 8, r: s1b_4, s: s2b_4});
 	});
 var $folkertdev$elm_flate$Checksum$Adler32$processChunkHelp = function (_v0) {
-	var remaining = _v0.remaining;
-	var s1 = _v0.s1;
-	var s2 = _v0.s2;
+	var remaining = _v0.al;
+	var s1 = _v0.r;
+	var s2 = _v0.s;
 	return (remaining >= 8) ? A3(
 		$elm$bytes$Bytes$Decode$map2,
 		A3($folkertdev$elm_flate$Checksum$Adler32$step8Bytes, remaining, s1, s2),
-		$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-		$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE)) : ((remaining > 0) ? A2(
+		$elm$bytes$Bytes$Decode$unsignedInt32(1),
+		$elm$bytes$Bytes$Decode$unsignedInt32(1)) : ((remaining > 0) ? A2(
 		$elm$bytes$Bytes$Decode$map,
 		function (_byte) {
 			return $elm$bytes$Bytes$Decode$Loop(
-				{remaining: remaining - 1, s1: s1 + _byte, s2: (s1 + _byte) + s2});
+				{al: remaining - 1, r: s1 + _byte, s: (s1 + _byte) + s2});
 		},
 		$elm$bytes$Bytes$Decode$unsignedInt8) : $elm$bytes$Bytes$Decode$succeed(
 		$elm$bytes$Bytes$Decode$Done(
-			{s1: s1 % $folkertdev$elm_flate$Checksum$Adler32$a32.base, s2: s2 % $folkertdev$elm_flate$Checksum$Adler32$a32.base})));
+			{r: s1 % $folkertdev$elm_flate$Checksum$Adler32$a32.ao, s: s2 % $folkertdev$elm_flate$Checksum$Adler32$a32.ao})));
 };
 var $folkertdev$elm_flate$Checksum$Adler32$processChunk = function (config) {
 	return A2($elm$bytes$Bytes$Decode$loop, config, $folkertdev$elm_flate$Checksum$Adler32$processChunkHelp);
 };
 var $folkertdev$elm_flate$Checksum$Adler32$chunkedFold = function (_v0) {
-	var bufferSize = _v0.bufferSize;
-	var maxBlockSize = _v0.maxBlockSize;
+	var bufferSize = _v0.aN;
+	var maxBlockSize = _v0.bc;
 	var go = function (_v1) {
-		var remainingLength = _v1.remainingLength;
-		var s1 = _v1.s1;
-		var s2 = _v1.s2;
+		var remainingLength = _v1.aE;
+		var s1 = _v1.r;
+		var s2 = _v1.s;
 		return (!remainingLength) ? $elm$bytes$Bytes$Decode$succeed(
 			$elm$bytes$Bytes$Decode$Done(
-				{s1: s1, s2: s2})) : ((_Utils_cmp(remainingLength, maxBlockSize) < 0) ? A2(
+				{r: s1, s: s2})) : ((_Utils_cmp(remainingLength, maxBlockSize) < 0) ? A2(
 			$elm$bytes$Bytes$Decode$map,
 			$elm$bytes$Bytes$Decode$Done,
 			$folkertdev$elm_flate$Checksum$Adler32$processChunk(
-				{remaining: remainingLength, s1: s1, s2: s2})) : A2(
+				{al: remainingLength, r: s1, s: s2})) : A2(
 			$elm$bytes$Bytes$Decode$map,
 			function (result) {
 				return $elm$bytes$Bytes$Decode$Loop(
-					{remainingLength: remainingLength - maxBlockSize, s1: result.s1, s2: result.s2});
+					{aE: remainingLength - maxBlockSize, r: result.r, s: result.s});
 			},
 			$folkertdev$elm_flate$Checksum$Adler32$processChunk(
-				{remaining: maxBlockSize, s1: s1, s2: s2})));
+				{al: maxBlockSize, r: s1, s: s2})));
 	};
 	return A2(
 		$elm$bytes$Bytes$Decode$loop,
-		{remainingLength: bufferSize, s1: 1, s2: 0},
+		{aE: bufferSize, r: 1, s: 0},
 		go);
 };
 var $folkertdev$elm_flate$Checksum$Adler32$adler32 = function (buffer) {
@@ -8249,21 +8198,20 @@ var $folkertdev$elm_flate$Checksum$Adler32$adler32 = function (buffer) {
 		$elm$bytes$Bytes$Decode$decode,
 		$folkertdev$elm_flate$Checksum$Adler32$chunkedFold(
 			{
-				bufferSize: $elm$bytes$Bytes$width(buffer),
-				maxBlockSize: $folkertdev$elm_flate$Checksum$Adler32$a32.nmax
+				aN: $elm$bytes$Bytes$width(buffer),
+				bc: $folkertdev$elm_flate$Checksum$Adler32$a32.bg
 			}),
 		buffer);
-	if (_v0.$ === 'Nothing') {
+	if (_v0.$ === 1) {
 		return 0;
 	} else {
-		var s1 = _v0.a.s1;
-		var s2 = _v0.a.s2;
+		var s1 = _v0.a.r;
+		var s2 = _v0.a.s;
 		return ((s2 << 16) | s1) >>> 0;
 	}
 };
 var $elm$bytes$Bytes$Decode$bytes = function (n) {
-	return $elm$bytes$Bytes$Decode$Decoder(
-		_Bytes_read_bytes(n));
+	return _Bytes_read_bytes(n);
 };
 var $folkertdev$elm_flate$Deflate$Internal$chunksHelp = F2(
 	function (chunkSize, _v0) {
@@ -8304,7 +8252,7 @@ var $folkertdev$elm_flate$Deflate$Internal$chunks = F2(
 					_List_Nil),
 				$folkertdev$elm_flate$Deflate$Internal$chunksHelp(chunkSize)),
 			buffer);
-		if (_v0.$ === 'Nothing') {
+		if (_v0.$ === 1) {
 			return _List_fromArray(
 				[
 					_Utils_Tuple2(
@@ -8328,13 +8276,13 @@ var $folkertdev$elm_flate$Deflate$Internal$chunks = F2(
 		}
 	});
 var $folkertdev$elm_flate$Deflate$Internal$default_block_size = 1024 * 1024;
-var $folkertdev$elm_flate$Deflate$BitWriter$empty = {bitsWritten: 0, encoders: _List_Nil, tag: 0};
+var $folkertdev$elm_flate$Deflate$BitWriter$empty = {u: 0, v: _List_Nil, A: 0};
 var $folkertdev$elm_flate$Deflate$Symbol$code = function (symbol) {
 	switch (symbol.$) {
-		case 'Literal':
+		case 1:
 			var _byte = symbol.a;
 			return _byte;
-		case 'EndOfBlock':
+		case 0:
 			return 256;
 		default:
 			var length = symbol.a;
@@ -8342,7 +8290,7 @@ var $folkertdev$elm_flate$Deflate$Symbol$code = function (symbol) {
 	}
 };
 var $folkertdev$elm_flate$Deflate$Symbol$distance = function (symbol) {
-	if (symbol.$ === 'Share') {
+	if (symbol.$ === 2) {
 		var distance_ = symbol.b;
 		if (distance_ <= 4) {
 			return $elm$core$Maybe$Just(
@@ -8388,7 +8336,7 @@ var $folkertdev$elm_flate$Deflate$Symbol$distance = function (symbol) {
 var $folkertdev$elm_flate$Deflate$Symbol$update = F3(
 	function (index, tagger, array) {
 		var _v0 = A2($elm$core$Array$get, index, array);
-		if (_v0.$ === 'Nothing') {
+		if (_v0.$ === 1) {
 			return array;
 		} else {
 			var value = _v0.a;
@@ -8405,7 +8353,7 @@ var $folkertdev$elm_flate$Deflate$Symbol$dynamicFindFrequencies = F2(
 		var distanceCounts = _v0.b;
 		var emptyDistanceCount = _v0.c;
 		var _v1 = $folkertdev$elm_flate$Deflate$Symbol$distance(symbol);
-		if (_v1.$ === 'Nothing') {
+		if (_v1.$ === 1) {
 			return _Utils_Tuple3(
 				A3(
 					$folkertdev$elm_flate$Deflate$Symbol$update,
@@ -8537,7 +8485,7 @@ var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$mergeLoop = F3(
 					var _v2 = _v0.b;
 					var y = _v2.a;
 					var yrest = _v2.b;
-					if (_Utils_cmp(x.weight, y.weight) < 0) {
+					if (_Utils_cmp(x.y, y.y) < 0) {
 						var $temp$xarr = xrest,
 							$temp$yarr = yarr,
 							$temp$accum = A2($elm$core$Array$push, x, accum);
@@ -8569,8 +8517,8 @@ var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$merge = F2(
 var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$mergeNodes = F2(
 	function (node1, node2) {
 		return {
-			symbols: A2($elm$core$Array$append, node1.symbols, node2.symbols),
-			weight: node1.weight + node2.weight
+			L: A2($elm$core$Array$append, node1.L, node2.L),
+			y: node1.y + node2.y
 		};
 	});
 var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$package = function (nodes) {
@@ -8610,8 +8558,8 @@ var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$package = function (nodes) {
 var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$singletonNode = F2(
 	function (symbol, weight) {
 		return {
-			symbols: A2($elm$core$Array$repeat, 1, symbol),
-			weight: weight
+			L: A2($elm$core$Array$repeat, 1, symbol),
+			y: weight
 		};
 	});
 var $elm_community$list_extra$List$Extra$stableSortWith = F2(
@@ -8623,7 +8571,7 @@ var $elm_community$list_extra$List$Extra$stableSortWith = F2(
 				var a2 = _v2.a;
 				var i2 = _v2.b;
 				var result = A2(pred, a1, a2);
-				if (result.$ === 'EQ') {
+				if (result === 1) {
 					return A2($elm$core$Basics$compare, i1, i2);
 				} else {
 					return result;
@@ -8644,7 +8592,7 @@ var $elm_community$list_extra$List$Extra$stableSortWith = F2(
 var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$update = F3(
 	function (index, tagger, array) {
 		var _v0 = A2($elm$core$Array$get, index, array);
-		if (_v0.$ === 'Nothing') {
+		if (_v0.$ === 1) {
 			return array;
 		} else {
 			var value = _v0.a;
@@ -8662,7 +8610,7 @@ var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$calculate = F2(
 				$elm_community$list_extra$List$Extra$stableSortWith,
 				F2(
 					function (a, b) {
-						return A2($elm$core$Basics$compare, a.weight, b.weight);
+						return A2($elm$core$Basics$compare, a.y, b.y);
 					}),
 				$elm$core$Array$toList(
 					A2(
@@ -8718,7 +8666,7 @@ var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$calculate = F2(
 			A2(
 				$elm$core$Basics$composeR,
 				function ($) {
-					return $.symbols;
+					return $.L;
 				},
 				$elm$core$Array$toList),
 			$elm$core$Array$toList(
@@ -8731,20 +8679,15 @@ var $folkertdev$elm_flate$LengthLimitedHuffmanCodes$calculate = F2(
 				$elm$core$Array$length(frequencies),
 				0));
 	});
-var $folkertdev$elm_flate$Huffman$Tree = function (a) {
-	return {$: 'Tree', a: a};
-};
-var $folkertdev$elm_flate$Huffman$Code = function (a) {
-	return {$: 'Code', a: a};
-};
-var $folkertdev$elm_flate$Huffman$codeFromRecord = $folkertdev$elm_flate$Huffman$Code;
+var $folkertdev$elm_flate$Huffman$Tree = $elm$core$Basics$identity;
+var $folkertdev$elm_flate$Huffman$Code = $elm$core$Basics$identity;
+var $folkertdev$elm_flate$Huffman$codeFromRecord = $elm$core$Basics$identity;
 var $folkertdev$elm_flate$Huffman$new = function (n) {
-	return $folkertdev$elm_flate$Huffman$Tree(
-		A2(
-			$elm$core$Array$repeat,
-			n,
-			$folkertdev$elm_flate$Huffman$codeFromRecord(
-				{bits: 0, width: 0})));
+	return A2(
+		$elm$core$Array$repeat,
+		n,
+		$folkertdev$elm_flate$Huffman$codeFromRecord(
+			{a: 0, bL: 0}));
 };
 var $elm$core$Bitwise$shiftRightBy = _Bitwise_shiftRightBy;
 var $folkertdev$elm_flate$Huffman$inverseEndianLoop = F4(
@@ -8767,21 +8710,19 @@ var $folkertdev$elm_flate$Huffman$inverseEndianLoop = F4(
 		}
 	});
 var $folkertdev$elm_flate$Huffman$inverseEndian = function (_v0) {
-	var width = _v0.a.width;
-	var bits = _v0.a.bits;
+	var width = _v0.bL;
+	var bits = _v0.a;
 	var inverseBits = A4($folkertdev$elm_flate$Huffman$inverseEndianLoop, 0, width, bits, 0);
-	return $folkertdev$elm_flate$Huffman$Code(
-		{bits: inverseBits, width: width});
+	return {a: inverseBits, bL: width};
 };
 var $folkertdev$elm_flate$Huffman$setMapping = F3(
 	function (symbol, code, _v0) {
-		var array = _v0.a;
-		return $folkertdev$elm_flate$Huffman$Tree(
-			A3(
-				$elm$core$Array$set,
-				symbol,
-				$folkertdev$elm_flate$Huffman$inverseEndian(code),
-				array));
+		var array = _v0;
+		return A3(
+			$elm$core$Array$set,
+			symbol,
+			$folkertdev$elm_flate$Huffman$inverseEndian(code),
+			array);
 	});
 var $folkertdev$elm_flate$Huffman$restoreCanonicalHuffmanCodes = F2(
 	function (bitWidths, tree) {
@@ -8809,8 +8750,7 @@ var $folkertdev$elm_flate$Huffman$restoreCanonicalHuffmanCodes = F2(
 				var prevWidth = _v2.b;
 				var currentTree = _v2.c;
 				var newBits = code << (bitWidth - prevWidth);
-				var nextCode = $folkertdev$elm_flate$Huffman$Code(
-					{bits: newBits, width: bitWidth});
+				var nextCode = {a: newBits, bL: bitWidth};
 				return _Utils_Tuple3(
 					newBits + 1,
 					bitWidth,
@@ -8879,23 +8819,23 @@ var $folkertdev$elm_flate$Deflate$Symbol$buildDynamicHuffmanCodec = function (sy
 	var distanceCounts = _v0.b;
 	var emptyDistanceCount = _v0.c;
 	return {
-		distance: emptyDistanceCount ? A2(
+		G: emptyDistanceCount ? A2(
 			$folkertdev$elm_flate$Huffman$fromFrequencies,
 			A3($elm$core$Array$set, 0, 1, distanceCounts),
 			15) : A2($folkertdev$elm_flate$Huffman$fromFrequencies, distanceCounts, 15),
-		literal: A2($folkertdev$elm_flate$Huffman$fromFrequencies, literalCounts, 15)
+		I: A2($folkertdev$elm_flate$Huffman$fromFrequencies, literalCounts, 15)
 	};
 };
-var $folkertdev$elm_flate$Deflate$Symbol$EndOfBlock = {$: 'EndOfBlock'};
+var $folkertdev$elm_flate$Deflate$Symbol$EndOfBlock = {$: 0};
 var $folkertdev$elm_flate$Deflate$Symbol$Literal = function (a) {
-	return {$: 'Literal', a: a};
+	return {$: 1, a: a};
 };
 var $folkertdev$elm_flate$Deflate$Symbol$Share = F2(
 	function (a, b) {
-		return {$: 'Share', a: a, b: b};
+		return {$: 2, a: a, b: b};
 	});
 var $folkertdev$elm_flate$Deflate$Internal$codeToSymbol = function (code) {
-	if (code.$ === 'Literal') {
+	if (!code.$) {
 		var v = code.a;
 		return $folkertdev$elm_flate$Deflate$Symbol$Literal(v);
 	} else {
@@ -8905,21 +8845,19 @@ var $folkertdev$elm_flate$Deflate$Internal$codeToSymbol = function (code) {
 	}
 };
 var $folkertdev$elm_flate$LZ77$Literal = function (a) {
-	return {$: 'Literal', a: a};
+	return {$: 0, a: a};
 };
 var $folkertdev$elm_flate$LZ77$Pointer = F2(
 	function (a, b) {
-		return {$: 'Pointer', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $folkertdev$elm_flate$PrefixTable$Small = function (a) {
-	return {$: 'Small', a: a};
+	return {$: 0, a: a};
 };
 var $folkertdev$elm_flate$PrefixTable$Large = function (a) {
-	return {$: 'Large', a: a};
+	return {$: 1, a: a};
 };
-var $folkertdev$elm_flate$PrefixTable$LargePrefixTable = function (a) {
-	return {$: 'LargePrefixTable', a: a};
-};
+var $folkertdev$elm_flate$PrefixTable$LargePrefixTable = $elm$core$Basics$identity;
 var $folkertdev$elm_flate$PrefixTable$insertInList = F6(
 	function (i, array, p2, position, remaining, accum) {
 		insertInList:
@@ -8931,8 +8869,7 @@ var $folkertdev$elm_flate$PrefixTable$insertInList = F6(
 					accum);
 				return _Utils_Tuple2(
 					$folkertdev$elm_flate$PrefixTable$Large(
-						$folkertdev$elm_flate$PrefixTable$LargePrefixTable(
-							A3($elm$core$Array$set, i, newPositions, array))),
+						A3($elm$core$Array$set, i, newPositions, array)),
 					$elm$core$Maybe$Nothing);
 			} else {
 				var current = remaining.a;
@@ -8948,8 +8885,7 @@ var $folkertdev$elm_flate$PrefixTable$insertInList = F6(
 							rest));
 					return _Utils_Tuple2(
 						$folkertdev$elm_flate$PrefixTable$Large(
-							$folkertdev$elm_flate$PrefixTable$LargePrefixTable(
-								A3($elm$core$Array$set, i, newPositions, array))),
+							A3($elm$core$Array$set, i, newPositions, array)),
 						$elm$core$Maybe$Just(oldValue));
 				} else {
 					var $temp$i = i,
@@ -8971,12 +8907,12 @@ var $folkertdev$elm_flate$PrefixTable$insertInList = F6(
 	});
 var $folkertdev$elm_flate$PrefixTable$insert = F3(
 	function (_v0, position, ptable) {
-		var prefix_ = _v0.a;
+		var prefix_ = _v0;
 		var prefix = 16777215 & (prefix_ >>> 0);
-		if (ptable.$ === 'Small') {
+		if (!ptable.$) {
 			var dict = ptable.a;
 			var _v2 = A2($elm$core$Dict$get, prefix, dict);
-			if (_v2.$ === 'Nothing') {
+			if (_v2.$ === 1) {
 				return _Utils_Tuple2(
 					$folkertdev$elm_flate$PrefixTable$Small(
 						A3($elm$core$Dict$insert, prefix, position, dict)),
@@ -8989,10 +8925,10 @@ var $folkertdev$elm_flate$PrefixTable$insert = F3(
 					$elm$core$Maybe$Just(oldValue));
 			}
 		} else {
-			var array = ptable.a.a;
+			var array = ptable.a;
 			var index = prefix >> 8;
 			var _v3 = A2($elm$core$Array$get, index, array);
-			if (_v3.$ === 'Nothing') {
+			if (_v3.$ === 1) {
 				return _Utils_Tuple2(ptable, $elm$core$Maybe$Nothing);
 			} else {
 				var positions = _v3.a;
@@ -9030,7 +8966,7 @@ var $folkertdev$elm_flate$Experimental$ByteArray$get = F2(
 			} else {
 				var internalIndex = (index / 4) | 0;
 				var _v1 = A2($elm$core$Array$get, internalIndex, array);
-				if (_v1.$ === 'Nothing') {
+				if (_v1.$ === 1) {
 					return $elm$core$Maybe$Nothing;
 				} else {
 					var int32 = _v1.a;
@@ -9045,12 +8981,12 @@ var $folkertdev$elm_flate$LZ77$longestCommonPrefixLoop = F5(
 		while (true) {
 			if (_Utils_cmp(i, limit) < 0) {
 				var _v0 = A2($folkertdev$elm_flate$Experimental$ByteArray$get, i, array);
-				if (_v0.$ === 'Nothing') {
+				if (_v0.$ === 1) {
 					return accum;
 				} else {
 					var value1 = _v0.a;
 					var _v1 = A2($folkertdev$elm_flate$Experimental$ByteArray$get, j, array);
-					if (_v1.$ === 'Nothing') {
+					if (_v1.$ === 1) {
 						return accum;
 					} else {
 						var value2 = _v1.a;
@@ -9085,20 +9021,18 @@ var $folkertdev$elm_flate$LZ77$longestCommonPrefix = F3(
 			$folkertdev$elm_flate$Experimental$ByteArray$length(array) - j);
 		return A5($folkertdev$elm_flate$LZ77$longestCommonPrefixLoop, i, j, i + remaining, 0, array);
 	});
-var $folkertdev$elm_flate$PrefixTable$OutOfBounds = {$: 'OutOfBounds'};
+var $folkertdev$elm_flate$PrefixTable$OutOfBounds = {$: 3};
 var $folkertdev$elm_flate$PrefixTable$Prefix = F2(
 	function (a, b) {
-		return {$: 'Prefix', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
-var $folkertdev$elm_flate$PrefixTable$PrefixCode = function (a) {
-	return {$: 'PrefixCode', a: a};
-};
+var $folkertdev$elm_flate$PrefixTable$PrefixCode = $elm$core$Basics$identity;
 var $folkertdev$elm_flate$PrefixTable$Trailing1 = function (a) {
-	return {$: 'Trailing1', a: a};
+	return {$: 1, a: a};
 };
 var $folkertdev$elm_flate$PrefixTable$Trailing2 = F2(
 	function (a, b) {
-		return {$: 'Trailing2', a: a, b: b};
+		return {$: 2, a: a, b: b};
 	});
 var $folkertdev$elm_flate$Experimental$ByteArray$getInt32 = F2(
 	function (index, _v0) {
@@ -9116,7 +9050,7 @@ var $folkertdev$elm_flate$PrefixTable$prefixAt = F2(
 			} else {
 				if (_Utils_cmp(k + 1, size) > -1) {
 					var _v0 = A2($folkertdev$elm_flate$Experimental$ByteArray$get, k, input);
-					if (_v0.$ === 'Nothing') {
+					if (_v0.$ === 1) {
 						return $folkertdev$elm_flate$PrefixTable$OutOfBounds;
 					} else {
 						var value = _v0.a;
@@ -9124,12 +9058,12 @@ var $folkertdev$elm_flate$PrefixTable$prefixAt = F2(
 					}
 				} else {
 					var _v1 = A2($folkertdev$elm_flate$Experimental$ByteArray$get, k, input);
-					if (_v1.$ === 'Nothing') {
+					if (_v1.$ === 1) {
 						return $folkertdev$elm_flate$PrefixTable$OutOfBounds;
 					} else {
 						var v1 = _v1.a;
 						var _v2 = A2($folkertdev$elm_flate$Experimental$ByteArray$get, k + 1, input);
-						if (_v2.$ === 'Nothing') {
+						if (_v2.$ === 1) {
 							return $folkertdev$elm_flate$PrefixTable$OutOfBounds;
 						} else {
 							var v2 = _v2.a;
@@ -9144,66 +9078,54 @@ var $folkertdev$elm_flate$PrefixTable$prefixAt = F2(
 			switch (offset) {
 				case 0:
 					var _v4 = A2($folkertdev$elm_flate$Experimental$ByteArray$getInt32, internalIndex, input);
-					if (_v4.$ === 'Nothing') {
+					if (_v4.$ === 1) {
 						return $folkertdev$elm_flate$PrefixTable$OutOfBounds;
 					} else {
 						var int32 = _v4.a;
 						var first = 255 & ((int32 >> 24) >>> 0);
 						var code = int32 >> 8;
-						return A2(
-							$folkertdev$elm_flate$PrefixTable$Prefix,
-							first,
-							$folkertdev$elm_flate$PrefixTable$PrefixCode(code));
+						return A2($folkertdev$elm_flate$PrefixTable$Prefix, first, code);
 					}
 				case 1:
 					var _v5 = A2($folkertdev$elm_flate$Experimental$ByteArray$getInt32, internalIndex, input);
-					if (_v5.$ === 'Nothing') {
+					if (_v5.$ === 1) {
 						return $folkertdev$elm_flate$PrefixTable$OutOfBounds;
 					} else {
 						var int32 = _v5.a;
 						var first = 255 & ((255 & (int32 >> 16)) >>> 0);
 						var code = 16777215 & int32;
-						return A2(
-							$folkertdev$elm_flate$PrefixTable$Prefix,
-							first,
-							$folkertdev$elm_flate$PrefixTable$PrefixCode(code));
+						return A2($folkertdev$elm_flate$PrefixTable$Prefix, first, code);
 					}
 				case 2:
 					var _v6 = A2($folkertdev$elm_flate$Experimental$ByteArray$getInt32, internalIndex, input);
-					if (_v6.$ === 'Nothing') {
+					if (_v6.$ === 1) {
 						return $folkertdev$elm_flate$PrefixTable$OutOfBounds;
 					} else {
 						var int32 = _v6.a;
 						var _v7 = A2($folkertdev$elm_flate$Experimental$ByteArray$getInt32, internalIndex + 1, input);
-						if (_v7.$ === 'Nothing') {
+						if (_v7.$ === 1) {
 							return $folkertdev$elm_flate$PrefixTable$OutOfBounds;
 						} else {
 							var nextInt32 = _v7.a;
 							var first = 255 & ((255 & (int32 >> 8)) >>> 0);
 							var code = 16777215 & (((255 & (nextInt32 >> 24)) | ((65535 & int32) << 8)) >>> 0);
-							return A2(
-								$folkertdev$elm_flate$PrefixTable$Prefix,
-								first,
-								$folkertdev$elm_flate$PrefixTable$PrefixCode(code));
+							return A2($folkertdev$elm_flate$PrefixTable$Prefix, first, code);
 						}
 					}
 				default:
 					var _v8 = A2($folkertdev$elm_flate$Experimental$ByteArray$getInt32, internalIndex, input);
-					if (_v8.$ === 'Nothing') {
+					if (_v8.$ === 1) {
 						return $folkertdev$elm_flate$PrefixTable$OutOfBounds;
 					} else {
 						var int32 = _v8.a;
 						var _v9 = A2($folkertdev$elm_flate$Experimental$ByteArray$getInt32, internalIndex + 1, input);
-						if (_v9.$ === 'Nothing') {
+						if (_v9.$ === 1) {
 							return $folkertdev$elm_flate$PrefixTable$OutOfBounds;
 						} else {
 							var nextInt32 = _v9.a;
 							var first = 255 & ((255 & int32) >>> 0);
 							var code = (65535 & (nextInt32 >> 16)) | ((255 & int32) << 16);
-							return A2(
-								$folkertdev$elm_flate$PrefixTable$Prefix,
-								first,
-								$folkertdev$elm_flate$PrefixTable$PrefixCode(code));
+							return A2($folkertdev$elm_flate$PrefixTable$Prefix, first, code);
 						}
 					}
 			}
@@ -9215,7 +9137,7 @@ var $folkertdev$elm_flate$LZ77$updatePrefixTableLoop = F4(
 		while (true) {
 			if (_Utils_cmp(k, limit) < 0) {
 				var _v0 = A2($folkertdev$elm_flate$PrefixTable$prefixAt, k, buffer);
-				if (_v0.$ === 'Prefix') {
+				if (!_v0.$) {
 					var code = _v0.b;
 					var _v1 = A3($folkertdev$elm_flate$PrefixTable$insert, code, k, prefixTable);
 					var newPrefixTable = _v1.a;
@@ -9242,15 +9164,15 @@ var $folkertdev$elm_flate$LZ77$flushLoop = F5(
 		while (true) {
 			var _v0 = A2($folkertdev$elm_flate$PrefixTable$prefixAt, i, buffer);
 			switch (_v0.$) {
-				case 'OutOfBounds':
+				case 3:
 					return encoders;
-				case 'Trailing1':
+				case 1:
 					var p1 = _v0.a;
 					return A2(
 						$elm$core$Array$push,
 						$folkertdev$elm_flate$LZ77$Literal(p1),
 						encoders);
-				case 'Trailing2':
+				case 2:
 					var p1 = _v0.a;
 					var p2 = _v0.b;
 					return A2(
@@ -9266,7 +9188,7 @@ var $folkertdev$elm_flate$LZ77$flushLoop = F5(
 					var _v1 = A3($folkertdev$elm_flate$PrefixTable$insert, key, i, prefixTable);
 					var newPrefixTable = _v1.a;
 					var matched = _v1.b;
-					if (matched.$ === 'Just') {
+					if (!matched.$) {
 						var j = matched.a;
 						var distance = i - j;
 						if ((distance - windowSize) <= 0) {
@@ -9324,8 +9246,7 @@ var $folkertdev$elm_flate$LZ77$flushLoop = F5(
 	});
 var $folkertdev$elm_flate$PrefixTable$max_distance = 32768;
 var $folkertdev$elm_flate$PrefixTable$max_window_size = $folkertdev$elm_flate$PrefixTable$max_distance;
-var $folkertdev$elm_flate$PrefixTable$newLargePrefixTable = $folkertdev$elm_flate$PrefixTable$LargePrefixTable(
-	A2($elm$core$Array$repeat, 65535, _List_Nil));
+var $folkertdev$elm_flate$PrefixTable$newLargePrefixTable = A2($elm$core$Array$repeat, 65535, _List_Nil);
 var $folkertdev$elm_flate$PrefixTable$new = function (nbytes) {
 	return (_Utils_cmp(nbytes, $folkertdev$elm_flate$PrefixTable$max_window_size) < 0) ? $folkertdev$elm_flate$PrefixTable$Small($elm$core$Dict$empty) : $folkertdev$elm_flate$PrefixTable$Large($folkertdev$elm_flate$PrefixTable$newLargePrefixTable);
 };
@@ -9343,22 +9264,21 @@ var $folkertdev$elm_flate$LZ77$flush = F2(
 	});
 var $folkertdev$elm_flate$Experimental$ByteArray$ByteArray = F3(
 	function (a, b, c) {
-		return {$: 'ByteArray', a: a, b: b, c: c};
+		return {$: 0, a: a, b: b, c: c};
 	});
 var $folkertdev$elm_flate$Experimental$ByteArray$empty = A3($folkertdev$elm_flate$Experimental$ByteArray$ByteArray, $elm$core$Array$empty, 0, 0);
 var $elm$bytes$Bytes$Decode$andThen = F2(
 	function (callback, _v0) {
-		var decodeA = _v0.a;
-		return $elm$bytes$Bytes$Decode$Decoder(
-			F2(
-				function (bites, offset) {
-					var _v1 = A2(decodeA, bites, offset);
-					var newOffset = _v1.a;
-					var a = _v1.b;
-					var _v2 = callback(a);
-					var decodeB = _v2.a;
-					return A2(decodeB, bites, newOffset);
-				}));
+		var decodeA = _v0;
+		return F2(
+			function (bites, offset) {
+				var _v1 = A2(decodeA, bites, offset);
+				var newOffset = _v1.a;
+				var a = _v1.b;
+				var _v2 = callback(a);
+				var decodeB = _v2;
+				return A2(decodeB, bites, newOffset);
+			});
 	});
 var $folkertdev$elm_flate$Experimental$ByteArray$fromBytesHelp = function (_v0) {
 	var remaining = _v0.a;
@@ -9385,17 +9305,17 @@ var $folkertdev$elm_flate$Experimental$ByteArray$fromBytesHelp = function (_v0) 
 													_List_fromArray(
 														[a, b, c, d, e, f, g, h, i, j])))));
 								}),
-							$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-							$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-							$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-							$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-							$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE));
+							$elm$bytes$Bytes$Decode$unsignedInt32(1),
+							$elm$bytes$Bytes$Decode$unsignedInt32(1),
+							$elm$bytes$Bytes$Decode$unsignedInt32(1),
+							$elm$bytes$Bytes$Decode$unsignedInt32(1),
+							$elm$bytes$Bytes$Decode$unsignedInt32(1));
 					}),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE)));
+				$elm$bytes$Bytes$Decode$unsignedInt32(1),
+				$elm$bytes$Bytes$Decode$unsignedInt32(1),
+				$elm$bytes$Bytes$Decode$unsignedInt32(1),
+				$elm$bytes$Bytes$Decode$unsignedInt32(1),
+				$elm$bytes$Bytes$Decode$unsignedInt32(1)));
 	} else {
 		if (remaining >= 20) {
 			return A6(
@@ -9419,11 +9339,11 @@ var $folkertdev$elm_flate$Experimental$ByteArray$fromBytesHelp = function (_v0) 
 												b,
 												A2($elm$core$Array$push, a, array)))))));
 					}),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE),
-				$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE));
+				$elm$bytes$Bytes$Decode$unsignedInt32(1),
+				$elm$bytes$Bytes$Decode$unsignedInt32(1),
+				$elm$bytes$Bytes$Decode$unsignedInt32(1),
+				$elm$bytes$Bytes$Decode$unsignedInt32(1),
+				$elm$bytes$Bytes$Decode$unsignedInt32(1));
 		} else {
 			if (remaining >= 4) {
 				return A2(
@@ -9434,7 +9354,7 @@ var $folkertdev$elm_flate$Experimental$ByteArray$fromBytesHelp = function (_v0) 
 								remaining - 4,
 								A2($elm$core$Array$push, a, array)));
 					},
-					$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE));
+					$elm$bytes$Bytes$Decode$unsignedInt32(1));
 			} else {
 				switch (remaining) {
 					case 0:
@@ -9456,7 +9376,7 @@ var $folkertdev$elm_flate$Experimental$ByteArray$fromBytesHelp = function (_v0) 
 								return $elm$bytes$Bytes$Decode$Done(
 									_Utils_Tuple3(2, _byte << 16, array));
 							},
-							$elm$bytes$Bytes$Decode$unsignedInt16($elm$bytes$Bytes$BE));
+							$elm$bytes$Bytes$Decode$unsignedInt16(1));
 					default:
 						return A3(
 							$elm$bytes$Bytes$Decode$map2,
@@ -9465,7 +9385,7 @@ var $folkertdev$elm_flate$Experimental$ByteArray$fromBytesHelp = function (_v0) 
 									return $elm$bytes$Bytes$Decode$Done(
 										_Utils_Tuple3(3, (bytes << 16) | (_byte << 8), array));
 								}),
-							$elm$bytes$Bytes$Decode$unsignedInt16($elm$bytes$Bytes$BE),
+							$elm$bytes$Bytes$Decode$unsignedInt16(1),
 							$elm$bytes$Bytes$Decode$unsignedInt8);
 				}
 			}
@@ -9482,7 +9402,7 @@ var $folkertdev$elm_flate$Experimental$ByteArray$fromBytes = function (buffer) {
 				$elm$core$Array$empty),
 			$folkertdev$elm_flate$Experimental$ByteArray$fromBytesHelp),
 		buffer);
-	if (_v0.$ === 'Nothing') {
+	if (_v0.$ === 1) {
 		return $folkertdev$elm_flate$Experimental$ByteArray$empty;
 	} else {
 		var _v1 = _v0.a;
@@ -9494,7 +9414,7 @@ var $folkertdev$elm_flate$Experimental$ByteArray$fromBytes = function (buffer) {
 };
 var $folkertdev$elm_flate$LZ77$encodeWithOptions = F2(
 	function (_v0, buffer) {
-		var windowSize = _v0.windowSize;
+		var windowSize = _v0.c8;
 		return A2(
 			$folkertdev$elm_flate$LZ77$flush,
 			windowSize,
@@ -9523,7 +9443,7 @@ var $folkertdev$elm_flate$ByteArray$decodeByteArrayHelp = function (_v0) {
 			return $elm$bytes$Bytes$Decode$Loop(
 				_Utils_Tuple2(remaining - 4, newAccum));
 		},
-		$elm$bytes$Bytes$Decode$unsignedInt32($elm$bytes$Bytes$BE)) : ((remaining > 0) ? A2(
+		$elm$bytes$Bytes$Decode$unsignedInt32(1)) : ((remaining > 0) ? A2(
 		$elm$bytes$Bytes$Decode$map,
 		function (_new) {
 			return $elm$bytes$Bytes$Decode$Loop(
@@ -9546,7 +9466,7 @@ var $folkertdev$elm_flate$ByteArray$fromBytes = function (buffer) {
 		$folkertdev$elm_flate$ByteArray$decoder(
 			$elm$bytes$Bytes$width(buffer)),
 		buffer);
-	if (_v0.$ === 'Nothing') {
+	if (_v0.$ === 1) {
 		return $elm$core$Array$empty;
 	} else {
 		var value = _v0.a;
@@ -9555,7 +9475,7 @@ var $folkertdev$elm_flate$ByteArray$fromBytes = function (buffer) {
 };
 var $folkertdev$elm_flate$Deflate$Internal$compress = F2(
 	function (maybeWindowSize, buf) {
-		if (maybeWindowSize.$ === 'Nothing') {
+		if (maybeWindowSize.$ === 1) {
 			return A2(
 				$elm$core$Array$push,
 				$folkertdev$elm_flate$Deflate$Symbol$EndOfBlock,
@@ -9573,44 +9493,44 @@ var $folkertdev$elm_flate$Deflate$Internal$compress = F2(
 					$folkertdev$elm_flate$Deflate$Internal$codeToSymbol,
 					A2(
 						$folkertdev$elm_flate$LZ77$encodeWithOptions,
-						{windowSize: windowSize},
+						{c8: windowSize},
 						buf)));
 		}
 	});
 var $elm$bytes$Bytes$Encode$U16 = F2(
 	function (a, b) {
-		return {$: 'U16', a: a, b: b};
+		return {$: 4, a: a, b: b};
 	});
 var $elm$bytes$Bytes$Encode$unsignedInt16 = $elm$bytes$Bytes$Encode$U16;
 var $folkertdev$elm_flate$Deflate$BitWriter$flushIfNeeded = F3(
 	function (tag, bitsWritten, encoders) {
 		return (bitsWritten >= 16) ? {
-			bitsWritten: bitsWritten - 16,
-			encoders: A2(
+			u: bitsWritten - 16,
+			v: A2(
 				$elm$core$List$cons,
-				A2($elm$bytes$Bytes$Encode$unsignedInt16, $elm$bytes$Bytes$LE, tag),
+				A2($elm$bytes$Bytes$Encode$unsignedInt16, 0, tag),
 				encoders),
-			tag: tag >> 16
-		} : {bitsWritten: bitsWritten, encoders: encoders, tag: tag};
+			A: tag >> 16
+		} : {u: bitsWritten, v: encoders, A: tag};
 	});
 var $folkertdev$elm_flate$Deflate$BitWriter$writeBits = F3(
 	function (bitwidth, bits, state) {
-		return A3($folkertdev$elm_flate$Deflate$BitWriter$flushIfNeeded, state.tag | (bits << state.bitsWritten), state.bitsWritten + bitwidth, state.encoders);
+		return A3($folkertdev$elm_flate$Deflate$BitWriter$flushIfNeeded, state.A | (bits << state.u), state.u + bitwidth, state.v);
 	});
 var $folkertdev$elm_flate$Huffman$encode = F2(
 	function (symbol, _v0) {
-		var table = _v0.a;
+		var table = _v0;
 		var _v1 = A2($elm$core$Array$get, symbol, table);
-		if (_v1.$ === 'Nothing') {
+		if (_v1.$ === 1) {
 			return A2($folkertdev$elm_flate$Deflate$BitWriter$writeBits, 0, 0);
 		} else {
-			var width = _v1.a.a.width;
-			var bits = _v1.a.a.bits;
+			var width = _v1.a.bL;
+			var bits = _v1.a.a;
 			return A2($folkertdev$elm_flate$Deflate$BitWriter$writeBits, width, bits);
 		}
 	});
 var $folkertdev$elm_flate$Deflate$Symbol$extraLength = function (symbol) {
-	if (symbol.$ === 'Share') {
+	if (symbol.$ === 2) {
 		var length = symbol.a;
 		return (((length >= 3) && (length <= 10)) || (length === 258)) ? $elm$core$Maybe$Nothing : (((length >= 11) && (length <= 18)) ? $elm$core$Maybe$Just(
 			_Utils_Tuple2(
@@ -9636,7 +9556,7 @@ var $folkertdev$elm_flate$Deflate$Symbol$encode = F3(
 	function (symbol, htrees, bitWriter) {
 		var maybeExtra = function () {
 			var _v2 = $folkertdev$elm_flate$Deflate$Symbol$extraLength(symbol);
-			if (_v2.$ === 'Nothing') {
+			if (_v2.$ === 1) {
 				return $elm$core$Basics$identity;
 			} else {
 				var _v3 = _v2.a;
@@ -9647,7 +9567,7 @@ var $folkertdev$elm_flate$Deflate$Symbol$encode = F3(
 		}();
 		var maybeDistance = function () {
 			var _v0 = $folkertdev$elm_flate$Deflate$Symbol$distance(symbol);
-			if (_v0.$ === 'Nothing') {
+			if (_v0.$ === 1) {
 				return $elm$core$Basics$identity;
 			} else {
 				var _v1 = _v0.a;
@@ -9656,7 +9576,7 @@ var $folkertdev$elm_flate$Deflate$Symbol$encode = F3(
 				var extra = _v1.c;
 				return A2(
 					$elm$core$Basics$composeR,
-					A2($folkertdev$elm_flate$Huffman$encode, code_, htrees.distance),
+					A2($folkertdev$elm_flate$Huffman$encode, code_, htrees.G),
 					(bits > 0) ? A2($folkertdev$elm_flate$Deflate$BitWriter$writeBits, bits, extra) : $elm$core$Basics$identity);
 			}
 		}();
@@ -9665,7 +9585,7 @@ var $folkertdev$elm_flate$Deflate$Symbol$encode = F3(
 				A3(
 					$folkertdev$elm_flate$Huffman$encode,
 					$folkertdev$elm_flate$Deflate$Symbol$code(symbol),
-					htrees.literal,
+					htrees.I,
 					bitWriter)));
 	});
 var $folkertdev$elm_flate$Deflate$Symbol$bitwidth_code_order = _List_fromArray(
@@ -9694,7 +9614,7 @@ var $folkertdev$elm_flate$Deflate$Symbol$calculateCodes = function (runLengths) 
 						A2(
 							$elm$core$Array$repeat,
 							c,
-							_Utils_Tuple3(r.value, 0, 0)));
+							_Utils_Tuple3(r.c5, 0, 0)));
 				}
 			}
 		});
@@ -9732,24 +9652,24 @@ var $folkertdev$elm_flate$Deflate$Symbol$calculateCodes = function (runLengths) 
 		});
 	var folder = F2(
 		function (r, codes) {
-			return (!r.value) ? A2(loop1, r.count, codes) : A3(
+			return (!r.c5) ? A2(loop1, r.F, codes) : A3(
 				loop2,
 				r,
-				r.count - 1,
+				r.F - 1,
 				A2(
 					$elm$core$Array$push,
-					_Utils_Tuple3(r.value, 0, 0),
+					_Utils_Tuple3(r.c5, 0, 0),
 					codes));
 		});
 	return A3($elm$core$Array$foldl, folder, $elm$core$Array$empty, runLengths);
 };
 var $folkertdev$elm_flate$Huffman$getWidth = function (_v0) {
-	var width = _v0.a.width;
+	var width = _v0.bL;
 	return width;
 };
 var $folkertdev$elm_flate$Huffman$lookup = F2(
 	function (symbol, _v0) {
-		var array = _v0.a;
+		var array = _v0;
 		return A2($elm$core$Array$get, symbol, array);
 	});
 var $folkertdev$elm_flate$Deflate$Symbol$calculateRunLengths = F2(
@@ -9785,17 +9705,17 @@ var $folkertdev$elm_flate$Deflate$Symbol$calculateRunLengths = F2(
 						if (!runLengths.b) {
 							return A2(
 								$elm$core$List$cons,
-								{count: 1, value: c},
+								{F: 1, c5: c},
 								runLengths);
 						} else {
 							var last = runLengths.a;
 							var remaining = runLengths.b;
-							return _Utils_eq(last.value, c) ? A2(
+							return _Utils_eq(last.c5, c) ? A2(
 								$elm$core$List$cons,
-								{count: last.count + 1, value: last.value},
+								{F: last.F + 1, c5: last.c5},
 								remaining) : A2(
 								$elm$core$List$cons,
-								{count: 1, value: c},
+								{F: 1, c5: c},
 								runLengths);
 						}
 					});
@@ -9813,8 +9733,8 @@ var $folkertdev$elm_flate$Deflate$Symbol$buildBitWidthCodes = F3(
 			$folkertdev$elm_flate$Deflate$Symbol$calculateRunLengths,
 			_List_fromArray(
 				[
-					_Utils_Tuple2(trees.literal, literalCodeCount),
-					_Utils_Tuple2(trees.distance, distanceCodeCount)
+					_Utils_Tuple2(trees.I, literalCodeCount),
+					_Utils_Tuple2(trees.G, distanceCodeCount)
 				]),
 			_List_Nil);
 		return $folkertdev$elm_flate$Deflate$Symbol$calculateCodes(runLengths);
@@ -9978,7 +9898,7 @@ var $folkertdev$elm_flate$Huffman$positionFromTheEnd = F2(
 			function (element, _v1) {
 				var index = _v1.a;
 				var accum = _v1.b;
-				if (accum.$ === 'Just') {
+				if (!accum.$) {
 					return _Utils_Tuple2(index, accum);
 				} else {
 					return predicated(element) ? _Utils_Tuple2(
@@ -9999,7 +9919,7 @@ var $folkertdev$elm_flate$Huffman$positionFromTheEnd = F2(
 				array).b);
 	});
 var $folkertdev$elm_flate$Huffman$usedMaxSymbol = function (_v0) {
-	var array = _v0.a;
+	var array = _v0;
 	return A2(
 		$elm$core$Maybe$map,
 		function (trailingZeros) {
@@ -10008,8 +9928,8 @@ var $folkertdev$elm_flate$Huffman$usedMaxSymbol = function (_v0) {
 		A2(
 			$folkertdev$elm_flate$Huffman$positionFromTheEnd,
 			function (_v1) {
-				var value = _v1.a;
-				return value.width > 0;
+				var value = _v1;
+				return value.bL > 0;
 			},
 			array));
 };
@@ -10021,19 +9941,19 @@ var $folkertdev$elm_flate$Deflate$Symbol$writeDynamicHuffmanCodec = F2(
 			A2(
 				$elm$core$Maybe$withDefault,
 				0,
-				$folkertdev$elm_flate$Huffman$usedMaxSymbol(trees.literal)) + 1);
+				$folkertdev$elm_flate$Huffman$usedMaxSymbol(trees.I)) + 1);
 		var distance_code_count = A2(
 			$elm$core$Basics$max,
 			1,
 			A2(
 				$elm$core$Maybe$withDefault,
 				0,
-				$folkertdev$elm_flate$Huffman$usedMaxSymbol(trees.distance)) + 1);
+				$folkertdev$elm_flate$Huffman$usedMaxSymbol(trees.G)) + 1);
 		var codes = A3(
 			$folkertdev$elm_flate$Deflate$Symbol$buildBitWidthCodes,
 			literal_code_count,
 			distance_code_count,
-			{distance: trees.distance, literal: trees.literal});
+			{G: trees.G, I: trees.I});
 		var codeCounts = A3(
 			$elm$core$Array$foldl,
 			function (_v2) {
@@ -10063,7 +9983,7 @@ var $folkertdev$elm_flate$Deflate$Symbol$writeDynamicHuffmanCodec = F2(
 						$folkertdev$elm_flate$Deflate$Symbol$position,
 						function (i) {
 							var _v1 = A2($folkertdev$elm_flate$Huffman$lookup, i, bitWidthEncoder);
-							if (_v1.$ === 'Nothing') {
+							if (_v1.$ === 1) {
 								return false;
 							} else {
 								var value = _v1.a;
@@ -10155,7 +10075,7 @@ var $folkertdev$elm_flate$Deflate$Internal$encodeDynamicBlock = F3(
 				A2($folkertdev$elm_flate$Deflate$BitWriter$writeBit, isLastBlock, bitWriter)));
 	});
 var $elm$bytes$Bytes$Encode$U8 = function (a) {
-	return {$: 'U8', a: a};
+	return {$: 3, a: a};
 };
 var $elm$bytes$Bytes$Encode$unsignedInt8 = $elm$bytes$Bytes$Encode$U8;
 var $folkertdev$elm_flate$Deflate$BitWriter$flushLoop = F3(
@@ -10174,15 +10094,15 @@ var $folkertdev$elm_flate$Deflate$BitWriter$flushLoop = F3(
 				encoders = $temp$encoders;
 				continue flushLoop;
 			} else {
-				return {bitsWritten: bitsWritten, encoders: encoders, tag: tag};
+				return {u: bitsWritten, v: encoders, A: tag};
 			}
 		}
 	});
 var $folkertdev$elm_flate$Deflate$BitWriter$flush = function (state) {
-	return A3($folkertdev$elm_flate$Deflate$BitWriter$flushLoop, state.tag, state.bitsWritten, state.encoders);
+	return A3($folkertdev$elm_flate$Deflate$BitWriter$flushLoop, state.A, state.u, state.v);
 };
 var $folkertdev$elm_flate$Deflate$BitWriter$run = function (state) {
-	return $elm$core$List$reverse(state.encoders);
+	return $elm$core$List$reverse(state.v);
 };
 var $folkertdev$elm_flate$Deflate$Internal$encodeDynamic = F2(
 	function (windowSize, buffer) {
@@ -10227,7 +10147,7 @@ var $folkertdev$elm_flate$ByteArray$fasterEncodeFolderR = F2(
 					0,
 					A2(
 						$elm$core$List$cons,
-						A2($elm$bytes$Bytes$Encode$unsignedInt32, $elm$bytes$Bytes$BE, value),
+						A2($elm$bytes$Bytes$Encode$unsignedInt32, 1, value),
 						encoders));
 		}
 	});
@@ -10247,14 +10167,14 @@ var $folkertdev$elm_flate$ByteArray$fasterEncodeR = function (_v0) {
 			case 2:
 				return A2(
 					$elm$core$List$cons,
-					A2($elm$bytes$Bytes$Encode$unsignedInt16, $elm$bytes$Bytes$BE, accum),
+					A2($elm$bytes$Bytes$Encode$unsignedInt16, 1, accum),
 					otherEncoders);
 			default:
 				var otherBytes = accum >> 8;
 				var firstByte = 255 & accum;
 				return A2(
 					$elm$core$List$cons,
-					A2($elm$bytes$Bytes$Encode$unsignedInt16, $elm$bytes$Bytes$BE, otherBytes),
+					A2($elm$bytes$Bytes$Encode$unsignedInt16, 1, otherBytes),
 					A2(
 						$elm$core$List$cons,
 						$elm$bytes$Bytes$Encode$unsignedInt8(firstByte),
@@ -10276,9 +10196,9 @@ var $folkertdev$elm_flate$ByteArray$toBytes = function (array) {
 var $folkertdev$elm_flate$Deflate$BitWriter$writeEncoder = F2(
 	function (encoder, state) {
 		return {
-			bitsWritten: state.bitsWritten,
-			encoders: A2($elm$core$List$cons, encoder, state.encoders),
-			tag: state.tag
+			u: state.u,
+			v: A2($elm$core$List$cons, encoder, state.v),
+			A: state.A
 		};
 	});
 var $folkertdev$elm_flate$Deflate$Internal$encodeRawBlock = F2(
@@ -10297,10 +10217,10 @@ var $folkertdev$elm_flate$Deflate$Internal$encodeRawBlock = F2(
 				$folkertdev$elm_flate$ByteArray$toBytes(sliced)),
 			A2(
 				$folkertdev$elm_flate$Deflate$BitWriter$writeEncoder,
-				A2($elm$bytes$Bytes$Encode$unsignedInt16, $elm$bytes$Bytes$LE, ~size),
+				A2($elm$bytes$Bytes$Encode$unsignedInt16, 0, ~size),
 				A2(
 					$folkertdev$elm_flate$Deflate$BitWriter$writeEncoder,
-					A2($elm$bytes$Bytes$Encode$unsignedInt16, $elm$bytes$Bytes$LE, size),
+					A2($elm$bytes$Bytes$Encode$unsignedInt16, 0, size),
 					$folkertdev$elm_flate$Deflate$BitWriter$flush(
 						A3(
 							$folkertdev$elm_flate$Deflate$BitWriter$writeBits,
@@ -10326,334 +10246,334 @@ var $folkertdev$elm_flate$Deflate$Internal$encodeRaw = function (buffer) {
 };
 var $folkertdev$elm_flate$Huffman$fromList = A2(
 	$elm$core$Basics$composeL,
-	A2($elm$core$Basics$composeL, $folkertdev$elm_flate$Huffman$Tree, $elm$core$Array$fromList),
+	A2($elm$core$Basics$composeL, $elm$core$Basics$identity, $elm$core$Array$fromList),
 	$elm$core$List$map($folkertdev$elm_flate$Huffman$codeFromRecord));
 var $folkertdev$elm_flate$Huffman$hardcodedStaticHuffmanTree = {
-	distance: $folkertdev$elm_flate$Huffman$fromList(
+	G: $folkertdev$elm_flate$Huffman$fromList(
 		_List_fromArray(
 			[
-				{bits: 0, width: 5},
-				{bits: 16, width: 5},
-				{bits: 8, width: 5},
-				{bits: 24, width: 5},
-				{bits: 4, width: 5},
-				{bits: 20, width: 5},
-				{bits: 12, width: 5},
-				{bits: 28, width: 5},
-				{bits: 2, width: 5},
-				{bits: 18, width: 5},
-				{bits: 10, width: 5},
-				{bits: 26, width: 5},
-				{bits: 6, width: 5},
-				{bits: 22, width: 5},
-				{bits: 14, width: 5},
-				{bits: 30, width: 5},
-				{bits: 1, width: 5},
-				{bits: 17, width: 5},
-				{bits: 9, width: 5},
-				{bits: 25, width: 5},
-				{bits: 5, width: 5},
-				{bits: 21, width: 5},
-				{bits: 13, width: 5},
-				{bits: 29, width: 5},
-				{bits: 3, width: 5},
-				{bits: 19, width: 5},
-				{bits: 11, width: 5},
-				{bits: 27, width: 5},
-				{bits: 7, width: 5},
-				{bits: 23, width: 5}
+				{a: 0, bL: 5},
+				{a: 16, bL: 5},
+				{a: 8, bL: 5},
+				{a: 24, bL: 5},
+				{a: 4, bL: 5},
+				{a: 20, bL: 5},
+				{a: 12, bL: 5},
+				{a: 28, bL: 5},
+				{a: 2, bL: 5},
+				{a: 18, bL: 5},
+				{a: 10, bL: 5},
+				{a: 26, bL: 5},
+				{a: 6, bL: 5},
+				{a: 22, bL: 5},
+				{a: 14, bL: 5},
+				{a: 30, bL: 5},
+				{a: 1, bL: 5},
+				{a: 17, bL: 5},
+				{a: 9, bL: 5},
+				{a: 25, bL: 5},
+				{a: 5, bL: 5},
+				{a: 21, bL: 5},
+				{a: 13, bL: 5},
+				{a: 29, bL: 5},
+				{a: 3, bL: 5},
+				{a: 19, bL: 5},
+				{a: 11, bL: 5},
+				{a: 27, bL: 5},
+				{a: 7, bL: 5},
+				{a: 23, bL: 5}
 			])),
-	literal: $folkertdev$elm_flate$Huffman$fromList(
+	I: $folkertdev$elm_flate$Huffman$fromList(
 		_List_fromArray(
 			[
-				{bits: 12, width: 8},
-				{bits: 140, width: 8},
-				{bits: 76, width: 8},
-				{bits: 204, width: 8},
-				{bits: 44, width: 8},
-				{bits: 172, width: 8},
-				{bits: 108, width: 8},
-				{bits: 236, width: 8},
-				{bits: 28, width: 8},
-				{bits: 156, width: 8},
-				{bits: 92, width: 8},
-				{bits: 220, width: 8},
-				{bits: 60, width: 8},
-				{bits: 188, width: 8},
-				{bits: 124, width: 8},
-				{bits: 252, width: 8},
-				{bits: 2, width: 8},
-				{bits: 130, width: 8},
-				{bits: 66, width: 8},
-				{bits: 194, width: 8},
-				{bits: 34, width: 8},
-				{bits: 162, width: 8},
-				{bits: 98, width: 8},
-				{bits: 226, width: 8},
-				{bits: 18, width: 8},
-				{bits: 146, width: 8},
-				{bits: 82, width: 8},
-				{bits: 210, width: 8},
-				{bits: 50, width: 8},
-				{bits: 178, width: 8},
-				{bits: 114, width: 8},
-				{bits: 242, width: 8},
-				{bits: 10, width: 8},
-				{bits: 138, width: 8},
-				{bits: 74, width: 8},
-				{bits: 202, width: 8},
-				{bits: 42, width: 8},
-				{bits: 170, width: 8},
-				{bits: 106, width: 8},
-				{bits: 234, width: 8},
-				{bits: 26, width: 8},
-				{bits: 154, width: 8},
-				{bits: 90, width: 8},
-				{bits: 218, width: 8},
-				{bits: 58, width: 8},
-				{bits: 186, width: 8},
-				{bits: 122, width: 8},
-				{bits: 250, width: 8},
-				{bits: 6, width: 8},
-				{bits: 134, width: 8},
-				{bits: 70, width: 8},
-				{bits: 198, width: 8},
-				{bits: 38, width: 8},
-				{bits: 166, width: 8},
-				{bits: 102, width: 8},
-				{bits: 230, width: 8},
-				{bits: 22, width: 8},
-				{bits: 150, width: 8},
-				{bits: 86, width: 8},
-				{bits: 214, width: 8},
-				{bits: 54, width: 8},
-				{bits: 182, width: 8},
-				{bits: 118, width: 8},
-				{bits: 246, width: 8},
-				{bits: 14, width: 8},
-				{bits: 142, width: 8},
-				{bits: 78, width: 8},
-				{bits: 206, width: 8},
-				{bits: 46, width: 8},
-				{bits: 174, width: 8},
-				{bits: 110, width: 8},
-				{bits: 238, width: 8},
-				{bits: 30, width: 8},
-				{bits: 158, width: 8},
-				{bits: 94, width: 8},
-				{bits: 222, width: 8},
-				{bits: 62, width: 8},
-				{bits: 190, width: 8},
-				{bits: 126, width: 8},
-				{bits: 254, width: 8},
-				{bits: 1, width: 8},
-				{bits: 129, width: 8},
-				{bits: 65, width: 8},
-				{bits: 193, width: 8},
-				{bits: 33, width: 8},
-				{bits: 161, width: 8},
-				{bits: 97, width: 8},
-				{bits: 225, width: 8},
-				{bits: 17, width: 8},
-				{bits: 145, width: 8},
-				{bits: 81, width: 8},
-				{bits: 209, width: 8},
-				{bits: 49, width: 8},
-				{bits: 177, width: 8},
-				{bits: 113, width: 8},
-				{bits: 241, width: 8},
-				{bits: 9, width: 8},
-				{bits: 137, width: 8},
-				{bits: 73, width: 8},
-				{bits: 201, width: 8},
-				{bits: 41, width: 8},
-				{bits: 169, width: 8},
-				{bits: 105, width: 8},
-				{bits: 233, width: 8},
-				{bits: 25, width: 8},
-				{bits: 153, width: 8},
-				{bits: 89, width: 8},
-				{bits: 217, width: 8},
-				{bits: 57, width: 8},
-				{bits: 185, width: 8},
-				{bits: 121, width: 8},
-				{bits: 249, width: 8},
-				{bits: 5, width: 8},
-				{bits: 133, width: 8},
-				{bits: 69, width: 8},
-				{bits: 197, width: 8},
-				{bits: 37, width: 8},
-				{bits: 165, width: 8},
-				{bits: 101, width: 8},
-				{bits: 229, width: 8},
-				{bits: 21, width: 8},
-				{bits: 149, width: 8},
-				{bits: 85, width: 8},
-				{bits: 213, width: 8},
-				{bits: 53, width: 8},
-				{bits: 181, width: 8},
-				{bits: 117, width: 8},
-				{bits: 245, width: 8},
-				{bits: 13, width: 8},
-				{bits: 141, width: 8},
-				{bits: 77, width: 8},
-				{bits: 205, width: 8},
-				{bits: 45, width: 8},
-				{bits: 173, width: 8},
-				{bits: 109, width: 8},
-				{bits: 237, width: 8},
-				{bits: 29, width: 8},
-				{bits: 157, width: 8},
-				{bits: 93, width: 8},
-				{bits: 221, width: 8},
-				{bits: 61, width: 8},
-				{bits: 189, width: 8},
-				{bits: 125, width: 8},
-				{bits: 253, width: 8},
-				{bits: 19, width: 9},
-				{bits: 275, width: 9},
-				{bits: 147, width: 9},
-				{bits: 403, width: 9},
-				{bits: 83, width: 9},
-				{bits: 339, width: 9},
-				{bits: 211, width: 9},
-				{bits: 467, width: 9},
-				{bits: 51, width: 9},
-				{bits: 307, width: 9},
-				{bits: 179, width: 9},
-				{bits: 435, width: 9},
-				{bits: 115, width: 9},
-				{bits: 371, width: 9},
-				{bits: 243, width: 9},
-				{bits: 499, width: 9},
-				{bits: 11, width: 9},
-				{bits: 267, width: 9},
-				{bits: 139, width: 9},
-				{bits: 395, width: 9},
-				{bits: 75, width: 9},
-				{bits: 331, width: 9},
-				{bits: 203, width: 9},
-				{bits: 459, width: 9},
-				{bits: 43, width: 9},
-				{bits: 299, width: 9},
-				{bits: 171, width: 9},
-				{bits: 427, width: 9},
-				{bits: 107, width: 9},
-				{bits: 363, width: 9},
-				{bits: 235, width: 9},
-				{bits: 491, width: 9},
-				{bits: 27, width: 9},
-				{bits: 283, width: 9},
-				{bits: 155, width: 9},
-				{bits: 411, width: 9},
-				{bits: 91, width: 9},
-				{bits: 347, width: 9},
-				{bits: 219, width: 9},
-				{bits: 475, width: 9},
-				{bits: 59, width: 9},
-				{bits: 315, width: 9},
-				{bits: 187, width: 9},
-				{bits: 443, width: 9},
-				{bits: 123, width: 9},
-				{bits: 379, width: 9},
-				{bits: 251, width: 9},
-				{bits: 507, width: 9},
-				{bits: 7, width: 9},
-				{bits: 263, width: 9},
-				{bits: 135, width: 9},
-				{bits: 391, width: 9},
-				{bits: 71, width: 9},
-				{bits: 327, width: 9},
-				{bits: 199, width: 9},
-				{bits: 455, width: 9},
-				{bits: 39, width: 9},
-				{bits: 295, width: 9},
-				{bits: 167, width: 9},
-				{bits: 423, width: 9},
-				{bits: 103, width: 9},
-				{bits: 359, width: 9},
-				{bits: 231, width: 9},
-				{bits: 487, width: 9},
-				{bits: 23, width: 9},
-				{bits: 279, width: 9},
-				{bits: 151, width: 9},
-				{bits: 407, width: 9},
-				{bits: 87, width: 9},
-				{bits: 343, width: 9},
-				{bits: 215, width: 9},
-				{bits: 471, width: 9},
-				{bits: 55, width: 9},
-				{bits: 311, width: 9},
-				{bits: 183, width: 9},
-				{bits: 439, width: 9},
-				{bits: 119, width: 9},
-				{bits: 375, width: 9},
-				{bits: 247, width: 9},
-				{bits: 503, width: 9},
-				{bits: 15, width: 9},
-				{bits: 271, width: 9},
-				{bits: 143, width: 9},
-				{bits: 399, width: 9},
-				{bits: 79, width: 9},
-				{bits: 335, width: 9},
-				{bits: 207, width: 9},
-				{bits: 463, width: 9},
-				{bits: 47, width: 9},
-				{bits: 303, width: 9},
-				{bits: 175, width: 9},
-				{bits: 431, width: 9},
-				{bits: 111, width: 9},
-				{bits: 367, width: 9},
-				{bits: 239, width: 9},
-				{bits: 495, width: 9},
-				{bits: 31, width: 9},
-				{bits: 287, width: 9},
-				{bits: 159, width: 9},
-				{bits: 415, width: 9},
-				{bits: 95, width: 9},
-				{bits: 351, width: 9},
-				{bits: 223, width: 9},
-				{bits: 479, width: 9},
-				{bits: 63, width: 9},
-				{bits: 319, width: 9},
-				{bits: 191, width: 9},
-				{bits: 447, width: 9},
-				{bits: 127, width: 9},
-				{bits: 383, width: 9},
-				{bits: 255, width: 9},
-				{bits: 511, width: 9},
-				{bits: 0, width: 7},
-				{bits: 64, width: 7},
-				{bits: 32, width: 7},
-				{bits: 96, width: 7},
-				{bits: 16, width: 7},
-				{bits: 80, width: 7},
-				{bits: 48, width: 7},
-				{bits: 112, width: 7},
-				{bits: 8, width: 7},
-				{bits: 72, width: 7},
-				{bits: 40, width: 7},
-				{bits: 104, width: 7},
-				{bits: 24, width: 7},
-				{bits: 88, width: 7},
-				{bits: 56, width: 7},
-				{bits: 120, width: 7},
-				{bits: 4, width: 7},
-				{bits: 68, width: 7},
-				{bits: 36, width: 7},
-				{bits: 100, width: 7},
-				{bits: 20, width: 7},
-				{bits: 84, width: 7},
-				{bits: 52, width: 7},
-				{bits: 116, width: 7},
-				{bits: 3, width: 8},
-				{bits: 131, width: 8},
-				{bits: 67, width: 8},
-				{bits: 195, width: 8},
-				{bits: 35, width: 8},
-				{bits: 163, width: 8},
-				{bits: 99, width: 8},
-				{bits: 227, width: 8}
+				{a: 12, bL: 8},
+				{a: 140, bL: 8},
+				{a: 76, bL: 8},
+				{a: 204, bL: 8},
+				{a: 44, bL: 8},
+				{a: 172, bL: 8},
+				{a: 108, bL: 8},
+				{a: 236, bL: 8},
+				{a: 28, bL: 8},
+				{a: 156, bL: 8},
+				{a: 92, bL: 8},
+				{a: 220, bL: 8},
+				{a: 60, bL: 8},
+				{a: 188, bL: 8},
+				{a: 124, bL: 8},
+				{a: 252, bL: 8},
+				{a: 2, bL: 8},
+				{a: 130, bL: 8},
+				{a: 66, bL: 8},
+				{a: 194, bL: 8},
+				{a: 34, bL: 8},
+				{a: 162, bL: 8},
+				{a: 98, bL: 8},
+				{a: 226, bL: 8},
+				{a: 18, bL: 8},
+				{a: 146, bL: 8},
+				{a: 82, bL: 8},
+				{a: 210, bL: 8},
+				{a: 50, bL: 8},
+				{a: 178, bL: 8},
+				{a: 114, bL: 8},
+				{a: 242, bL: 8},
+				{a: 10, bL: 8},
+				{a: 138, bL: 8},
+				{a: 74, bL: 8},
+				{a: 202, bL: 8},
+				{a: 42, bL: 8},
+				{a: 170, bL: 8},
+				{a: 106, bL: 8},
+				{a: 234, bL: 8},
+				{a: 26, bL: 8},
+				{a: 154, bL: 8},
+				{a: 90, bL: 8},
+				{a: 218, bL: 8},
+				{a: 58, bL: 8},
+				{a: 186, bL: 8},
+				{a: 122, bL: 8},
+				{a: 250, bL: 8},
+				{a: 6, bL: 8},
+				{a: 134, bL: 8},
+				{a: 70, bL: 8},
+				{a: 198, bL: 8},
+				{a: 38, bL: 8},
+				{a: 166, bL: 8},
+				{a: 102, bL: 8},
+				{a: 230, bL: 8},
+				{a: 22, bL: 8},
+				{a: 150, bL: 8},
+				{a: 86, bL: 8},
+				{a: 214, bL: 8},
+				{a: 54, bL: 8},
+				{a: 182, bL: 8},
+				{a: 118, bL: 8},
+				{a: 246, bL: 8},
+				{a: 14, bL: 8},
+				{a: 142, bL: 8},
+				{a: 78, bL: 8},
+				{a: 206, bL: 8},
+				{a: 46, bL: 8},
+				{a: 174, bL: 8},
+				{a: 110, bL: 8},
+				{a: 238, bL: 8},
+				{a: 30, bL: 8},
+				{a: 158, bL: 8},
+				{a: 94, bL: 8},
+				{a: 222, bL: 8},
+				{a: 62, bL: 8},
+				{a: 190, bL: 8},
+				{a: 126, bL: 8},
+				{a: 254, bL: 8},
+				{a: 1, bL: 8},
+				{a: 129, bL: 8},
+				{a: 65, bL: 8},
+				{a: 193, bL: 8},
+				{a: 33, bL: 8},
+				{a: 161, bL: 8},
+				{a: 97, bL: 8},
+				{a: 225, bL: 8},
+				{a: 17, bL: 8},
+				{a: 145, bL: 8},
+				{a: 81, bL: 8},
+				{a: 209, bL: 8},
+				{a: 49, bL: 8},
+				{a: 177, bL: 8},
+				{a: 113, bL: 8},
+				{a: 241, bL: 8},
+				{a: 9, bL: 8},
+				{a: 137, bL: 8},
+				{a: 73, bL: 8},
+				{a: 201, bL: 8},
+				{a: 41, bL: 8},
+				{a: 169, bL: 8},
+				{a: 105, bL: 8},
+				{a: 233, bL: 8},
+				{a: 25, bL: 8},
+				{a: 153, bL: 8},
+				{a: 89, bL: 8},
+				{a: 217, bL: 8},
+				{a: 57, bL: 8},
+				{a: 185, bL: 8},
+				{a: 121, bL: 8},
+				{a: 249, bL: 8},
+				{a: 5, bL: 8},
+				{a: 133, bL: 8},
+				{a: 69, bL: 8},
+				{a: 197, bL: 8},
+				{a: 37, bL: 8},
+				{a: 165, bL: 8},
+				{a: 101, bL: 8},
+				{a: 229, bL: 8},
+				{a: 21, bL: 8},
+				{a: 149, bL: 8},
+				{a: 85, bL: 8},
+				{a: 213, bL: 8},
+				{a: 53, bL: 8},
+				{a: 181, bL: 8},
+				{a: 117, bL: 8},
+				{a: 245, bL: 8},
+				{a: 13, bL: 8},
+				{a: 141, bL: 8},
+				{a: 77, bL: 8},
+				{a: 205, bL: 8},
+				{a: 45, bL: 8},
+				{a: 173, bL: 8},
+				{a: 109, bL: 8},
+				{a: 237, bL: 8},
+				{a: 29, bL: 8},
+				{a: 157, bL: 8},
+				{a: 93, bL: 8},
+				{a: 221, bL: 8},
+				{a: 61, bL: 8},
+				{a: 189, bL: 8},
+				{a: 125, bL: 8},
+				{a: 253, bL: 8},
+				{a: 19, bL: 9},
+				{a: 275, bL: 9},
+				{a: 147, bL: 9},
+				{a: 403, bL: 9},
+				{a: 83, bL: 9},
+				{a: 339, bL: 9},
+				{a: 211, bL: 9},
+				{a: 467, bL: 9},
+				{a: 51, bL: 9},
+				{a: 307, bL: 9},
+				{a: 179, bL: 9},
+				{a: 435, bL: 9},
+				{a: 115, bL: 9},
+				{a: 371, bL: 9},
+				{a: 243, bL: 9},
+				{a: 499, bL: 9},
+				{a: 11, bL: 9},
+				{a: 267, bL: 9},
+				{a: 139, bL: 9},
+				{a: 395, bL: 9},
+				{a: 75, bL: 9},
+				{a: 331, bL: 9},
+				{a: 203, bL: 9},
+				{a: 459, bL: 9},
+				{a: 43, bL: 9},
+				{a: 299, bL: 9},
+				{a: 171, bL: 9},
+				{a: 427, bL: 9},
+				{a: 107, bL: 9},
+				{a: 363, bL: 9},
+				{a: 235, bL: 9},
+				{a: 491, bL: 9},
+				{a: 27, bL: 9},
+				{a: 283, bL: 9},
+				{a: 155, bL: 9},
+				{a: 411, bL: 9},
+				{a: 91, bL: 9},
+				{a: 347, bL: 9},
+				{a: 219, bL: 9},
+				{a: 475, bL: 9},
+				{a: 59, bL: 9},
+				{a: 315, bL: 9},
+				{a: 187, bL: 9},
+				{a: 443, bL: 9},
+				{a: 123, bL: 9},
+				{a: 379, bL: 9},
+				{a: 251, bL: 9},
+				{a: 507, bL: 9},
+				{a: 7, bL: 9},
+				{a: 263, bL: 9},
+				{a: 135, bL: 9},
+				{a: 391, bL: 9},
+				{a: 71, bL: 9},
+				{a: 327, bL: 9},
+				{a: 199, bL: 9},
+				{a: 455, bL: 9},
+				{a: 39, bL: 9},
+				{a: 295, bL: 9},
+				{a: 167, bL: 9},
+				{a: 423, bL: 9},
+				{a: 103, bL: 9},
+				{a: 359, bL: 9},
+				{a: 231, bL: 9},
+				{a: 487, bL: 9},
+				{a: 23, bL: 9},
+				{a: 279, bL: 9},
+				{a: 151, bL: 9},
+				{a: 407, bL: 9},
+				{a: 87, bL: 9},
+				{a: 343, bL: 9},
+				{a: 215, bL: 9},
+				{a: 471, bL: 9},
+				{a: 55, bL: 9},
+				{a: 311, bL: 9},
+				{a: 183, bL: 9},
+				{a: 439, bL: 9},
+				{a: 119, bL: 9},
+				{a: 375, bL: 9},
+				{a: 247, bL: 9},
+				{a: 503, bL: 9},
+				{a: 15, bL: 9},
+				{a: 271, bL: 9},
+				{a: 143, bL: 9},
+				{a: 399, bL: 9},
+				{a: 79, bL: 9},
+				{a: 335, bL: 9},
+				{a: 207, bL: 9},
+				{a: 463, bL: 9},
+				{a: 47, bL: 9},
+				{a: 303, bL: 9},
+				{a: 175, bL: 9},
+				{a: 431, bL: 9},
+				{a: 111, bL: 9},
+				{a: 367, bL: 9},
+				{a: 239, bL: 9},
+				{a: 495, bL: 9},
+				{a: 31, bL: 9},
+				{a: 287, bL: 9},
+				{a: 159, bL: 9},
+				{a: 415, bL: 9},
+				{a: 95, bL: 9},
+				{a: 351, bL: 9},
+				{a: 223, bL: 9},
+				{a: 479, bL: 9},
+				{a: 63, bL: 9},
+				{a: 319, bL: 9},
+				{a: 191, bL: 9},
+				{a: 447, bL: 9},
+				{a: 127, bL: 9},
+				{a: 383, bL: 9},
+				{a: 255, bL: 9},
+				{a: 511, bL: 9},
+				{a: 0, bL: 7},
+				{a: 64, bL: 7},
+				{a: 32, bL: 7},
+				{a: 96, bL: 7},
+				{a: 16, bL: 7},
+				{a: 80, bL: 7},
+				{a: 48, bL: 7},
+				{a: 112, bL: 7},
+				{a: 8, bL: 7},
+				{a: 72, bL: 7},
+				{a: 40, bL: 7},
+				{a: 104, bL: 7},
+				{a: 24, bL: 7},
+				{a: 88, bL: 7},
+				{a: 56, bL: 7},
+				{a: 120, bL: 7},
+				{a: 4, bL: 7},
+				{a: 68, bL: 7},
+				{a: 36, bL: 7},
+				{a: 100, bL: 7},
+				{a: 20, bL: 7},
+				{a: 84, bL: 7},
+				{a: 52, bL: 7},
+				{a: 116, bL: 7},
+				{a: 3, bL: 8},
+				{a: 131, bL: 8},
+				{a: 67, bL: 8},
+				{a: 195, bL: 8},
+				{a: 35, bL: 8},
+				{a: 163, bL: 8},
+				{a: 99, bL: 8},
+				{a: 227, bL: 8}
 			]))
 };
 var $folkertdev$elm_flate$Deflate$Internal$encodeCompressStatic = F3(
@@ -10701,10 +10621,10 @@ var $folkertdev$elm_flate$Deflate$Internal$encodeStatic = F2(
 var $folkertdev$elm_flate$Flate$deflateWithOptions = F2(
 	function (encoding, buffer) {
 		switch (encoding.$) {
-			case 'Raw':
+			case 0:
 				return $folkertdev$elm_flate$Deflate$Internal$encodeRaw(buffer);
-			case 'Static':
-				if (encoding.a.$ === 'NoCompression') {
+			case 2:
+				if (!encoding.a.$) {
 					var _v1 = encoding.a;
 					return A2($folkertdev$elm_flate$Deflate$Internal$encodeStatic, $elm$core$Maybe$Nothing, buffer);
 				} else {
@@ -10715,7 +10635,7 @@ var $folkertdev$elm_flate$Flate$deflateWithOptions = F2(
 						buffer);
 				}
 			default:
-				if (encoding.a.$ === 'NoCompression') {
+				if (!encoding.a.$) {
 					var _v2 = encoding.a;
 					return A2($folkertdev$elm_flate$Deflate$Internal$encodeDynamic, $elm$core$Maybe$Nothing, buffer);
 				} else {
@@ -10737,10 +10657,10 @@ var $folkertdev$elm_flate$Flate$deflateZlibWithOptions = F2(
 		};
 		var windowSize = function () {
 			switch (encoding.$) {
-				case 'Raw':
+				case 0:
 					return 0;
-				case 'Static':
-					if (encoding.a.$ === 'NoCompression') {
+				case 2:
+					if (!encoding.a.$) {
 						var _v1 = encoding.a;
 						return 0;
 					} else {
@@ -10748,7 +10668,7 @@ var $folkertdev$elm_flate$Flate$deflateZlibWithOptions = F2(
 						return windowSizeHelp(size);
 					}
 				default:
-					if (encoding.a.$ === 'NoCompression') {
+					if (!encoding.a.$) {
 						var _v2 = encoding.a;
 						return 0;
 					} else {
@@ -10764,7 +10684,7 @@ var $folkertdev$elm_flate$Flate$deflateZlibWithOptions = F2(
 			[
 				A2(
 				$elm$bytes$Bytes$Encode$unsignedInt32,
-				$elm$bytes$Bytes$BE,
+				1,
 				$folkertdev$elm_flate$Checksum$Adler32$adler32(buffer))
 			]);
 		var data = A2($folkertdev$elm_flate$Flate$deflateWithOptions, encoding, buffer);
@@ -10809,20 +10729,20 @@ var $justgook$elm_image$Image$Internal$PNG$encodePixel32 = F2(
 		var a = 255 & px;
 		return A2(
 			$elm$bytes$Bytes$Encode$unsignedInt32,
-			$elm$bytes$Bytes$BE,
+			1,
 			A4($justgook$elm_image$Image$Internal$PNG$packIntoInt32, r - prevR, g - prevG, b - prevB, a - prevA));
 	});
 var $justgook$elm_image$Image$Internal$PNG$encodeIDAT = F2(
 	function (_v0, arr) {
-		var order = _v0.order;
+		var order = _v0.bl;
 		var scanLineFilter = $elm$bytes$Bytes$Encode$unsignedInt8(1);
 		var _v1 = function () {
-			switch (order.$) {
-				case 'RightDown':
+			switch (order) {
+				case 0:
 					return _Utils_Tuple2($elm$core$Array$foldl, $elm$core$Array$foldl);
-				case 'RightUp':
+				case 1:
 					return _Utils_Tuple2($elm$core$Array$foldr, $elm$core$Array$foldl);
-				case 'LeftDown':
+				case 2:
 					return _Utils_Tuple2($elm$core$Array$foldl, $elm$core$Array$foldr);
 				default:
 					return _Utils_Tuple2($elm$core$Array$foldr, $elm$core$Array$foldr);
@@ -10865,15 +10785,15 @@ var $justgook$elm_image$Image$Internal$PNG$encodeIDAT = F2(
 	});
 var $justgook$elm_image$Image$Internal$PNG$encodeIHDR = F3(
 	function (width, height, _v0) {
-		var format = _v0.format;
+		var format = _v0.a$;
 		var interlace = 0;
 		var _v1 = function () {
-			switch (format.$) {
-				case 'RGBA':
+			switch (format) {
+				case 0:
 					return _Utils_Tuple2(8, 6);
-				case 'RGB':
+				case 1:
 					return _Utils_Tuple2(8, 2);
-				case 'LUMINANCE_ALPHA':
+				case 2:
 					return _Utils_Tuple2(16, 0);
 				default:
 					return _Utils_Tuple2(8, 0);
@@ -10884,8 +10804,8 @@ var $justgook$elm_image$Image$Internal$PNG$encodeIHDR = F3(
 		return $elm$bytes$Bytes$Encode$sequence(
 			_List_fromArray(
 				[
-					A2($elm$bytes$Bytes$Encode$unsignedInt32, $elm$bytes$Bytes$BE, width),
-					A2($elm$bytes$Bytes$Encode$unsignedInt32, $elm$bytes$Bytes$BE, height),
+					A2($elm$bytes$Bytes$Encode$unsignedInt32, 1, width),
+					A2($elm$bytes$Bytes$Encode$unsignedInt32, 1, height),
 					$elm$bytes$Bytes$Encode$unsignedInt8(depth),
 					$elm$bytes$Bytes$Encode$unsignedInt8(color),
 					$elm$bytes$Bytes$Encode$unsignedInt8(0),
@@ -10907,22 +10827,22 @@ var $justgook$elm_image$Image$Internal$PNG$encodeSignature = $elm$bytes$Bytes$En
 		]));
 var $justgook$elm_image$Image$Info$dimensions = function (meta) {
 	switch (meta.$) {
-		case 'Png':
-			var width = meta.a.width;
-			var height = meta.a.height;
-			return {height: height, width: width};
-		case 'Bmp':
-			var width = meta.a.width;
-			var height = meta.a.height;
-			return {height: height, width: width};
-		case 'Gif':
-			var width = meta.a.width;
-			var height = meta.a.height;
-			return {height: height, width: width};
+		case 0:
+			var width = meta.a.bL;
+			var height = meta.a.a1;
+			return {a1: height, bL: width};
+		case 1:
+			var width = meta.a.bL;
+			var height = meta.a.a1;
+			return {a1: height, bL: width};
+		case 2:
+			var width = meta.a.bL;
+			var height = meta.a.a1;
+			return {a1: height, bL: width};
 		default:
-			var width = meta.a.width;
-			var height = meta.a.height;
-			return {height: height, width: width};
+			var width = meta.a.bL;
+			var height = meta.a.a1;
+			return {a1: height, bL: width};
 	}
 };
 var $justgook$elm_image$Image$Internal$ImageData$splitAt = F2(
@@ -11037,40 +10957,40 @@ var $justgook$elm_image$Image$Internal$ImageData$toArray2d = function (image) {
 	toArray2d:
 	while (true) {
 		switch (image.$) {
-			case 'List':
+			case 0:
 				var meta = image.a;
 				var l = image.b;
 				return A3(
 					$justgook$elm_image$Image$Internal$ImageData$fromList,
-					$justgook$elm_image$Image$Info$dimensions(meta).width,
+					$justgook$elm_image$Image$Info$dimensions(meta).bL,
 					l,
 					$elm$core$Array$fromList(
 						_List_fromArray(
 							[$elm$core$Array$empty])));
-			case 'List2d':
+			case 1:
 				var l = image.b;
 				return A3(
 					$elm$core$List$foldl,
 					A2($elm$core$Basics$composeR, $elm$core$Array$fromList, $elm$core$Array$push),
 					$elm$core$Array$empty,
 					l);
-			case 'Array':
+			case 2:
 				var meta = image.a;
 				var arr = image.b;
 				return A3(
 					$justgook$elm_image$Image$Internal$ImageData$fromArray,
-					$justgook$elm_image$Image$Info$dimensions(meta).width,
+					$justgook$elm_image$Image$Info$dimensions(meta).bL,
 					arr,
 					$elm$core$Array$empty);
-			case 'Array2d':
+			case 3:
 				var arr = image.b;
 				return arr;
 			default:
 				var d = image.b;
 				var b = image.c;
 				var _v1 = A2($elm$bytes$Bytes$Decode$decode, d, b);
-				if (_v1.$ === 'Just') {
-					if (_v1.a.$ === 'Bytes') {
+				if (!_v1.$) {
+					if (_v1.a.$ === 4) {
 						var _v2 = _v1.a;
 						return $elm$core$Array$empty;
 					} else {
@@ -11118,33 +11038,33 @@ var $justgook$elm_image$Image$Internal$PNG$encode = function (imgData) {
 };
 var $justgook$elm_image$Image$Internal$ImageData$Array2d = F2(
 	function (a, b) {
-		return {$: 'Array2d', a: a, b: b};
+		return {$: 3, a: a, b: b};
 	});
 var $justgook$elm_image$Image$Internal$ImageData$Bytes = F3(
 	function (a, b, c) {
-		return {$: 'Bytes', a: a, b: b, c: c};
+		return {$: 4, a: a, b: b, c: c};
 	});
 var $justgook$elm_image$Image$Internal$ImageData$List = F2(
 	function (a, b) {
-		return {$: 'List', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $justgook$elm_image$Image$Internal$ImageData$List2d = F2(
 	function (a, b) {
-		return {$: 'List2d', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $justgook$elm_image$Image$Internal$ImageData$map = F2(
 	function (fn, image) {
 		map:
 		while (true) {
 			switch (image.$) {
-				case 'List':
+				case 0:
 					var meta = image.a;
 					var l = image.b;
 					return A2(
 						$justgook$elm_image$Image$Internal$ImageData$List,
 						meta,
 						A2($elm$core$List$map, fn, l));
-				case 'List2d':
+				case 1:
 					var meta = image.a;
 					var l = image.b;
 					return A2(
@@ -11154,14 +11074,14 @@ var $justgook$elm_image$Image$Internal$ImageData$map = F2(
 							$elm$core$List$map,
 							$elm$core$List$map(fn),
 							l));
-				case 'Array':
+				case 2:
 					var meta = image.a;
 					var arr = image.b;
 					return A2(
 						$justgook$elm_image$Image$Internal$ImageData$Array,
 						meta,
 						A2($elm$core$Array$map, fn, arr));
-				case 'Array2d':
+				case 3:
 					var meta = image.a;
 					var arr = image.b;
 					return A2(
@@ -11176,8 +11096,8 @@ var $justgook$elm_image$Image$Internal$ImageData$map = F2(
 					var d = image.b;
 					var b = image.c;
 					var _v1 = A2($elm$bytes$Bytes$Decode$decode, d, b);
-					if (_v1.$ === 'Just') {
-						if (_v1.a.$ === 'Bytes') {
+					if (!_v1.$) {
+						if (_v1.a.$ === 4) {
 							var _v2 = _v1.a;
 							return A3($justgook$elm_image$Image$Internal$ImageData$Bytes, meta, d, b);
 						} else {
@@ -11201,16 +11121,16 @@ var $justgook$elm_image$Image$Internal$Pixel$addChannel = $justgook$elm_image$Im
 		$elm$core$Basics$add(255)));
 var $justgook$elm_image$Image$Internal$ImageData$getInfo = function (image) {
 	switch (image.$) {
-		case 'Bytes':
+		case 4:
 			var meta = image.a;
 			return meta;
-		case 'Array2d':
+		case 3:
 			var meta = image.a;
 			return meta;
-		case 'List2d':
+		case 1:
 			var meta = image.a;
 			return meta;
-		case 'Array':
+		case 2:
 			var meta = image.a;
 			return meta;
 		default:
@@ -11228,42 +11148,42 @@ var $justgook$elm_image$Image$Internal$Pixel$px8to32 = function (px) {
 var $justgook$elm_image$Image$Internal$Pixel$toBit32 = function (image) {
 	var _v0 = $justgook$elm_image$Image$Internal$ImageData$getInfo(image);
 	switch (_v0.$) {
-		case 'Png':
-			var color = _v0.a.color;
+		case 0:
+			var color = _v0.a.ab;
 			switch (color.$) {
-				case 'Greyscale':
+				case 0:
 					return image;
-				case 'TrueColour':
+				case 2:
 					return image;
-				case 'IndexedColour':
+				case 4:
 					return image;
-				case 'GreyscaleAlpha':
+				case 1:
 					return A2($justgook$elm_image$Image$Internal$ImageData$map, $justgook$elm_image$Image$Internal$Pixel$px8AlphaTo32, image);
 				default:
 					return image;
 			}
-		case 'Bmp':
-			var bitsPerPixel = _v0.a.bitsPerPixel;
-			switch (bitsPerPixel.$) {
-				case 'BmpBitsPerPixel8':
+		case 1:
+			var bitsPerPixel = _v0.a.bQ;
+			switch (bitsPerPixel) {
+				case 0:
 					return A2($justgook$elm_image$Image$Internal$ImageData$map, $justgook$elm_image$Image$Internal$Pixel$px8to32, image);
-				case 'BmpBitsPerPixel16':
+				case 1:
 					return image;
-				case 'BmpBitsPerPixel24':
+				case 2:
 					return $justgook$elm_image$Image$Internal$Pixel$addChannel(image);
 				default:
 					return image;
 			}
-		case 'Gif':
+		case 2:
 			return image;
 		default:
-			var color = _v0.a.color;
+			var color = _v0.a.ab;
 			switch (color.$) {
-				case 'FromDataChannel1':
+				case 0:
 					return image;
-				case 'FromDataChannel2':
+				case 1:
 					return image;
-				case 'FromDataChannel3':
+				case 2:
 					return image;
 				default:
 					return image;
@@ -11290,23 +11210,23 @@ var $author$project$Main$weakClassify = F4(
 					$elm$core$List$foldl,
 					F2(
 						function (cell, pixels) {
-							var magnification = (image.size.width / cascade.size.width) | 0;
-							var top = cell.rect.location.y * magnification;
-							var left = cell.rect.location.x * magnification;
-							var right = left + (cell.rect.size.width * magnification);
-							var bottom = top + (cell.rect.size.height * magnification);
+							var magnification = (image.aG.bL / cascade.aG.bL) | 0;
+							var top = cell.cN.cs.db * magnification;
+							var left = cell.cN.cs.da * magnification;
+							var right = left + (cell.cN.aG.bL * magnification);
+							var bottom = top + (cell.cN.aG.a1 * magnification);
 							return A2(
 								$elm$core$Array$indexedMap,
 								F2(
 									function (idx, px) {
-										var row = (idx / image.size.width) | 0;
-										var col = A2($elm$core$Basics$modBy, image.size.width, idx);
-										return ((_Utils_cmp(col, left) > -1) && ((_Utils_cmp(col, right) < 0) && ((_Utils_cmp(row, top) > -1) && (_Utils_cmp(row, bottom) < 0)))) ? $elm$core$Basics$round(px + cell.factor) : px;
+										var row = (idx / image.aG.bL) | 0;
+										var col = A2($elm$core$Basics$modBy, image.aG.bL, idx);
+										return ((_Utils_cmp(col, left) > -1) && ((_Utils_cmp(col, right) < 0) && ((_Utils_cmp(row, top) > -1) && (_Utils_cmp(row, bottom) < 0)))) ? $elm$core$Basics$round(px + cell.cc) : px;
 									}),
 								pixels);
 						}),
-					A2($elm$core$Array$repeat, image.size.width * image.size.height, 0),
-					classifier.feature.cells);
+					A2($elm$core$Array$repeat, image.aG.bL * image.aG.a1, 0),
+					classifier.cd.bW);
 				var pixelFeatureValues = A2(
 					$elm$core$Array$indexedMap,
 					F2(
@@ -11316,14 +11236,14 @@ var $author$project$Main$weakClassify = F4(
 								0,
 								A2($elm$core$Array$get, idx, pixelFeatureFactors));
 						}),
-					image.data);
+					image.b3);
 				var featureValue = (A3($elm$core$Array$foldl, $elm$core$Basics$add, 0, pixelFeatureValues) / $elm$core$Array$length(pixelFeatureValues)) / 255.0;
 				return {
-					featureExtractedImageDataUrl: $justgook$elm_image$Image$toPngUrl(
+					ce: $justgook$elm_image$Image$toPngUrl(
 						$author$project$Main$featureExtractionImage(
-							{data: pixelFeatureValues, size: image.size})),
-					success: _Utils_cmp(featureValue, classifier.threshold) > -1,
-					value: featureValue
+							{b3: pixelFeatureValues, aG: image.aG})),
+					cX: _Utils_cmp(featureValue, classifier.bJ) > -1,
+					c5: featureValue
 				};
 			},
 			A2(
@@ -11332,14 +11252,14 @@ var $author$project$Main$weakClassify = F4(
 					$elm$core$Basics$composeL,
 					$elm$core$Array$get(classifierIdx),
 					function ($) {
-						return $.weakClassifiers;
+						return $.c7;
 					}),
-				A2($elm$core$Array$get, stageIdx, cascade.stages)));
+				A2($elm$core$Array$get, stageIdx, cascade.bG)));
 	});
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 'CascadeFiles':
+			case 0:
 				var files = msg.a;
 				return _Utils_Tuple2(
 					model,
@@ -11354,31 +11274,31 @@ var $author$project$Main$update = F2(
 							return $elm$core$Platform$Cmd$none;
 						}
 					}());
-			case 'CascadeXml':
+			case 1:
 				var cascadeXml = msg.a;
 				return _Utils_Tuple2(
 					model,
 					$author$project$Main$parseXmlCmd(cascadeXml));
-			case 'CascadeResult':
+			case 2:
 				var cascadeRes = msg.a;
 				return _Utils_Tuple2(
 					function () {
-						if (cascadeRes.$ === 'Ok') {
+						if (!cascadeRes.$) {
 							var cascade = cascadeRes.a;
 							return _Utils_update(
 								model,
-								{cascade: cascade, maybeDetection: $elm$core$Maybe$Nothing, maybeErrorMsg: $elm$core$Maybe$Nothing});
+								{bU: cascade, cu: $elm$core$Maybe$Nothing, cw: $elm$core$Maybe$Nothing});
 						} else {
 							var err = cascadeRes.a;
 							return _Utils_update(
 								model,
 								{
-									maybeErrorMsg: $elm$core$Maybe$Just('Failed to parse XML: ' + err)
+									cw: $elm$core$Maybe$Just('Failed to parse XML: ' + err)
 								});
 						}
 					}(),
 					$elm$core$Platform$Cmd$none);
-			case 'ImageFiles':
+			case 3:
 				var files = msg.a;
 				return _Utils_Tuple2(
 					model,
@@ -11393,83 +11313,83 @@ var $author$project$Main$update = F2(
 							return $elm$core$Platform$Cmd$none;
 						}
 					}());
-			case 'ImageDataUrl':
+			case 4:
 				var url = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{
-							image: {maybeGrayscalePixels: $elm$core$Maybe$Nothing, url: url}
+							cl: {cx: $elm$core$Maybe$Nothing, c4: url}
 						}),
 					$author$project$Main$getImagePixelsCmd(
-						{longEdgePx: $author$project$Common$imageLongEdgePx, url: url}));
-			case 'ImagePixels':
+						{af: $author$project$Common$imageLongEdgePx, c4: url}));
+			case 5:
 				var pixels = msg.a;
-				var image = model.image;
+				var image = model.cl;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{
-							image: _Utils_update(
+							cl: _Utils_update(
 								image,
 								{
-									maybeGrayscalePixels: $elm$core$Maybe$Just(pixels)
+									cx: $elm$core$Maybe$Just(pixels)
 								})
 						}),
 					$elm$core$Platform$Cmd$none);
-			case 'CreateCandidateStart':
+			case 6:
 				var imageSize = msg.a;
 				var event = msg.b;
 				return _Utils_Tuple2(
 					function () {
-						var magnification = model.renderedImageWidthPx / imageSize.width;
-						var cascadeWidth = model.cascade.size.width;
-						var cascadeHeight = model.cascade.size.height;
-						var _v4 = event.offsetPos;
+						var magnification = model.cO / imageSize.bL;
+						var cascadeWidth = model.bU.aG.bL;
+						var cascadeHeight = model.bU.aG.a1;
+						var _v4 = event.cB;
 						var offsetX = _v4.a;
 						var offsetY = _v4.b;
 						var candidateX = offsetX / magnification;
-						var toRight = imageSize.width - candidateX;
+						var toRight = imageSize.bL - candidateX;
 						var candidateY = offsetY / magnification;
-						var toBottom = imageSize.height - candidateY;
+						var toBottom = imageSize.a1 - candidateY;
 						var maxSize = (_Utils_cmp(toRight / cascadeWidth, toBottom / cascadeHeight) > 0) ? {
-							height: $elm$core$Basics$round(toBottom),
-							width: $elm$core$Basics$round((toBottom * cascadeWidth) / cascadeHeight)
+							a1: $elm$core$Basics$round(toBottom),
+							bL: $elm$core$Basics$round((toBottom * cascadeWidth) / cascadeHeight)
 						} : {
-							height: $elm$core$Basics$round((toRight * cascadeHeight) / cascadeWidth),
-							width: $elm$core$Basics$round(toRight)
+							a1: $elm$core$Basics$round((toRight * cascadeHeight) / cascadeWidth),
+							bL: $elm$core$Basics$round(toRight)
 						};
-						var _v5 = event.clientPos;
+						var _v5 = event.aP;
 						var clientX = _v5.a;
 						var clientY = _v5.b;
 						return _Utils_update(
 							model,
 							{
-								maybeDetection: $elm$core$Maybe$Just(
+								cu: $elm$core$Maybe$Just(
 									{
-										candidateArea: {
-											location: {
-												x: $elm$core$Basics$round(candidateX),
-												y: $elm$core$Basics$round(candidateY)
+										bT: {
+											cs: {
+												da: $elm$core$Basics$round(candidateX),
+												db: $elm$core$Basics$round(candidateY)
 											},
-											size: model.cascade.size
+											aG: model.bU.aG
 										},
-										maybeDragState: $elm$core$Maybe$Just(
+										cv: $elm$core$Maybe$Just(
 											{
-												maxSize: maxSize,
-												minSize: model.cascade.size,
-												startClientPoint: {
-													x: $elm$core$Basics$round(clientX),
-													y: $elm$core$Basics$round(clientY)
+												ct: maxSize,
+												cy: model.bU.aG,
+												cU: {
+													da: $elm$core$Basics$round(clientX),
+													db: $elm$core$Basics$round(clientY)
 												}
 											}),
-										stages: $elm$core$Array$empty,
-										status: $author$project$Common$Initializing
+										bG: $elm$core$Array$empty,
+										cV: $author$project$Common$Initializing
 									})
 							});
 					}(),
 					$elm$core$Platform$Cmd$none);
-			case 'CreateCandidateResize':
+			case 7:
 				var imageSize = msg.a;
 				var dragState = msg.b;
 				var event = msg.c;
@@ -11477,46 +11397,46 @@ var $author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{
-							maybeDetection: A2(
+							cu: A2(
 								$elm$core$Maybe$map,
 								function (detection) {
-									var minWidth = dragState.minSize.width;
-									var minHeight = dragState.minSize.height;
-									var maxWidth = dragState.maxSize.width;
-									var maxHeight = dragState.maxSize.height;
-									var magnification = model.renderedImageWidthPx / imageSize.width;
-									var cascadeWidth = model.cascade.size.width;
-									var cascadeHeight = model.cascade.size.height;
-									var area = detection.candidateArea;
-									var _v6 = event.clientPos;
+									var minWidth = dragState.cy.bL;
+									var minHeight = dragState.cy.a1;
+									var maxWidth = dragState.ct.bL;
+									var maxHeight = dragState.ct.a1;
+									var magnification = model.cO / imageSize.bL;
+									var cascadeWidth = model.bU.aG.bL;
+									var cascadeHeight = model.bU.aG.a1;
+									var area = detection.bT;
+									var _v6 = event.aP;
 									var clientX = _v6.a;
 									var clientY = _v6.b;
-									var distXUnrounded = (clientX - dragState.startClientPoint.x) / magnification;
+									var distXUnrounded = (clientX - dragState.cU.da) / magnification;
 									var distX = $elm$core$Basics$round(distXUnrounded / cascadeWidth) * cascadeWidth;
-									var distYUnrounded = (clientY - dragState.startClientPoint.y) / magnification;
+									var distYUnrounded = (clientY - dragState.cU.db) / magnification;
 									var distY = $elm$core$Basics$round(distYUnrounded / cascadeHeight) * cascadeHeight;
-									var size = ((_Utils_cmp(distX, minWidth) < 0) || (_Utils_cmp(distY, minHeight) < 0)) ? dragState.minSize : (((_Utils_cmp(distX, maxWidth) > 0) || (_Utils_cmp(distY, maxHeight) > 0)) ? dragState.maxSize : ((_Utils_cmp(distX / cascadeWidth, distY / cascadeHeight) > 0) ? {
-										height: $elm$core$Basics$round((distX * cascadeHeight) / cascadeWidth),
-										width: $elm$core$Basics$round(distX)
+									var size = ((_Utils_cmp(distX, minWidth) < 0) || (_Utils_cmp(distY, minHeight) < 0)) ? dragState.cy : (((_Utils_cmp(distX, maxWidth) > 0) || (_Utils_cmp(distY, maxHeight) > 0)) ? dragState.ct : ((_Utils_cmp(distX / cascadeWidth, distY / cascadeHeight) > 0) ? {
+										a1: $elm$core$Basics$round((distX * cascadeHeight) / cascadeWidth),
+										bL: $elm$core$Basics$round(distX)
 									} : {
-										height: $elm$core$Basics$round(distY),
-										width: $elm$core$Basics$round((distY * cascadeWidth) / cascadeHeight)
+										a1: $elm$core$Basics$round(distY),
+										bL: $elm$core$Basics$round((distY * cascadeWidth) / cascadeHeight)
 									}));
 									return _Utils_update(
 										detection,
 										{
-											candidateArea: _Utils_update(
+											bT: _Utils_update(
 												area,
-												{size: size})
+												{aG: size})
 										});
 								},
-								model.maybeDetection)
+								model.cu)
 						}),
 					$elm$core$Platform$Cmd$none);
-			case 'CreateCandidateStop':
+			case 8:
 				var imagePixels = msg.a;
 				var detection = msg.b;
-				var area = detection.candidateArea;
+				var area = detection.bT;
 				var areaGsPixelData = A3(
 					$elm$core$List$foldr,
 					$elm$core$Array$append,
@@ -11524,91 +11444,91 @@ var $author$project$Main$update = F2(
 					A2(
 						$elm$core$List$map,
 						function (row) {
-							var start = (row * imagePixels.size.width) + area.location.x;
-							var end = start + area.size.width;
-							return A3($elm$core$Array$slice, start, end, imagePixels.data);
+							var start = (row * imagePixels.aG.bL) + area.cs.da;
+							var end = start + area.aG.bL;
+							return A3($elm$core$Array$slice, start, end, imagePixels.b3);
 						},
-						A2($elm$core$List$range, area.location.y, (area.location.y + area.size.height) - 1)));
+						A2($elm$core$List$range, area.cs.db, (area.cs.db + area.aG.a1) - 1)));
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{
-							maybeDetection: $elm$core$Maybe$Just(
+							cu: $elm$core$Maybe$Just(
 								_Utils_update(
 									detection,
 									{
-										maybeDragState: $elm$core$Maybe$Nothing,
-										stages: $elm$core$Array$empty,
-										status: A3(
+										cv: $elm$core$Maybe$Nothing,
+										bG: $elm$core$Array$empty,
+										cV: A3(
 											$author$project$Common$Running,
 											-1,
 											-1,
-											{data: areaGsPixelData, size: area.size})
+											{b3: areaGsPixelData, aG: area.aG})
 									}))
 						}),
 					$elm$core$Platform$Cmd$none);
-			case 'PerformNextDetectionStep':
+			case 9:
 				var _v7 = A2(
 					$elm$core$Maybe$map,
 					function (d) {
-						return _Utils_Tuple2(d, d.status);
+						return _Utils_Tuple2(d, d.cV);
 					},
-					model.maybeDetection);
-				if ((_v7.$ === 'Just') && (_v7.a.b.$ === 'Running')) {
+					model.cu);
+				if ((!_v7.$) && (_v7.a.b.$ === 1)) {
 					var _v8 = _v7.a;
 					var detection = _v8.a;
 					var _v9 = _v8.b;
 					var lastStageIdx = _v9.a;
 					var lastClassifierIdx = _v9.b;
 					var image = _v9.c;
-					var _v10 = A4($author$project$Main$weakClassify, model.cascade, lastStageIdx, lastClassifierIdx + 1, image);
-					if (_v10.$ === 'Just') {
+					var _v10 = A4($author$project$Main$weakClassify, model.bU, lastStageIdx, lastClassifierIdx + 1, image);
+					if (!_v10.$) {
 						var weakClassification = _v10.a;
 						return _Utils_Tuple2(
 							_Utils_update(
 								model,
 								{
-									maybeDetection: $elm$core$Maybe$Just(
+									cu: $elm$core$Maybe$Just(
 										_Utils_update(
 											detection,
 											{
-												stages: function () {
-													var _v11 = A2($elm$core$Array$get, lastStageIdx, detection.stages);
-													if (_v11.$ === 'Just') {
+												bG: function () {
+													var _v11 = A2($elm$core$Array$get, lastStageIdx, detection.bG);
+													if (!_v11.$) {
 														var weakClassifications = _v11.a;
 														return A3(
 															$elm$core$Array$set,
 															lastStageIdx,
 															A2($elm$core$Array$push, weakClassification, weakClassifications),
-															detection.stages);
+															detection.bG);
 													} else {
-														return detection.stages;
+														return detection.bG;
 													}
 												}(),
-												status: (!weakClassification.success) ? $author$project$Common$Failed : A3($author$project$Common$Running, lastStageIdx, lastClassifierIdx + 1, image)
+												cV: (!weakClassification.cX) ? $author$project$Common$Failed : A3($author$project$Common$Running, lastStageIdx, lastClassifierIdx + 1, image)
 											}))
 								}),
 							$author$project$Main$scrollToClassification(
 								'stage' + ($elm$core$String$fromInt(lastStageIdx) + ('-classifier' + $elm$core$String$fromInt(lastClassifierIdx + 1)))));
 					} else {
-						var _v12 = A4($author$project$Main$weakClassify, model.cascade, lastStageIdx + 1, 0, image);
-						if (_v12.$ === 'Just') {
+						var _v12 = A4($author$project$Main$weakClassify, model.bU, lastStageIdx + 1, 0, image);
+						if (!_v12.$) {
 							var weakClassification = _v12.a;
 							return _Utils_Tuple2(
 								_Utils_update(
 									model,
 									{
-										maybeDetection: $elm$core$Maybe$Just(
+										cu: $elm$core$Maybe$Just(
 											_Utils_update(
 												detection,
 												{
-													stages: A2(
+													bG: A2(
 														$elm$core$Array$push,
 														$elm$core$Array$fromList(
 															_List_fromArray(
 																[weakClassification])),
-														detection.stages),
-													status: (!weakClassification.success) ? $author$project$Common$Failed : A3($author$project$Common$Running, lastStageIdx + 1, 0, image)
+														detection.bG),
+													cV: (!weakClassification.cX) ? $author$project$Common$Failed : A3($author$project$Common$Running, lastStageIdx + 1, 0, image)
 												}))
 									}),
 								$author$project$Main$scrollToClassification(
@@ -11618,10 +11538,10 @@ var $author$project$Main$update = F2(
 								_Utils_update(
 									model,
 									{
-										maybeDetection: $elm$core$Maybe$Just(
+										cu: $elm$core$Maybe$Just(
 											_Utils_update(
 												detection,
-												{status: $author$project$Common$Succeeded}))
+												{cV: $author$project$Common$Succeeded}))
 									}),
 								$elm$core$Platform$Cmd$none);
 						}
@@ -11629,23 +11549,23 @@ var $author$project$Main$update = F2(
 				} else {
 					return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 				}
-			case 'WindowWidthPx':
+			case 10:
 				var widthPx = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{renderedImageWidthPx: widthPx - model.otherContentWidthPx}),
+						{cO: widthPx - model.cF}),
 					$author$project$Main$getImagePixelsCmd(
-						{longEdgePx: $author$project$Common$imageLongEdgePx, url: model.image.url}));
-			case 'RenderedImageSize':
-				if (msg.a.$ === 'Ok') {
+						{af: $author$project$Common$imageLongEdgePx, c4: model.cl.c4}));
+			case 11:
+				if (!msg.a.$) {
 					var image = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								otherContentWidthPx: $elm$core$Basics$round(image.viewport.width - image.element.width),
-								renderedImageWidthPx: $elm$core$Basics$round(image.element.width)
+								cF: $elm$core$Basics$round(image.aK.bL - image.at.bL),
+								cO: $elm$core$Basics$round(image.at.bL)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -11659,10 +11579,10 @@ var $author$project$Main$update = F2(
 									$elm$core$Basics$composeL,
 									A2($elm$core$Basics$composeL, $author$project$Common$WindowWidthPx, $elm$core$Basics$round),
 									function ($) {
-										return $.width;
+										return $.bL;
 									}),
 								function ($) {
-									return $.viewport;
+									return $.aK;
 								}),
 							$elm$browser$Browser$Dom$getViewport));
 				}
@@ -11671,22 +11591,22 @@ var $author$project$Main$update = F2(
 		}
 	});
 var $author$project$Common$CascadeFiles = function (a) {
-	return {$: 'CascadeFiles', a: a};
+	return {$: 0, a: a};
 };
 var $author$project$Common$CreateCandidateResize = F3(
 	function (a, b, c) {
-		return {$: 'CreateCandidateResize', a: a, b: b, c: c};
+		return {$: 7, a: a, b: b, c: c};
 	});
 var $author$project$Common$CreateCandidateStart = F2(
 	function (a, b) {
-		return {$: 'CreateCandidateStart', a: a, b: b};
+		return {$: 6, a: a, b: b};
 	});
 var $author$project$Common$CreateCandidateStop = F2(
 	function (a, b) {
-		return {$: 'CreateCandidateStop', a: a, b: b};
+		return {$: 8, a: a, b: b};
 	});
 var $author$project$Common$ImageFiles = function (a) {
-	return {$: 'ImageFiles', a: a};
+	return {$: 3, a: a};
 };
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -11713,11 +11633,11 @@ var $author$project$View$detectionCandidateImgView = F2(
 			A2(
 				$elm$core$List$map,
 				function (row) {
-					var start = (row * imageGrayscalePixels.size.width) + area.location.x;
-					var end = start + area.size.width;
-					return A3($elm$core$Array$slice, start, end, imageGrayscalePixels.data);
+					var start = (row * imageGrayscalePixels.aG.bL) + area.cs.da;
+					var end = start + area.aG.bL;
+					return A3($elm$core$Array$slice, start, end, imageGrayscalePixels.b3);
 				},
-				A2($elm$core$List$range, area.location.y, (area.location.y + area.size.height) - 1)));
+				A2($elm$core$List$range, area.cs.db, (area.cs.db + area.aG.a1) - 1)));
 		var areaRgbaPixelData = A2(
 			$elm$core$Array$map,
 			function (px) {
@@ -11730,7 +11650,7 @@ var $author$project$View$detectionCandidateImgView = F2(
 				[
 					$elm$html$Html$Attributes$src(
 					$justgook$elm_image$Image$toPngUrl(
-						A2($justgook$elm_image$Image$fromArray, area.size.width, areaRgbaPixelData)))
+						A2($justgook$elm_image$Image$fromArray, area.aG.bL, areaRgbaPixelData)))
 				]),
 			_List_Nil);
 	});
@@ -11756,7 +11676,7 @@ var $elm$html$Html$Attributes$boolProperty = F2(
 	});
 var $elm$html$Html$Attributes$multiple = $elm$html$Html$Attributes$boolProperty('multiple');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
+	return {$: 0, a: a};
 };
 var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
 var $elm$html$Html$Events$on = F2(
@@ -11766,9 +11686,9 @@ var $elm$html$Html$Events$on = F2(
 			event,
 			$elm$virtual_dom$VirtualDom$Normal(decoder));
 	});
-var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$defaultOptions = {preventDefault: true, stopPropagation: false};
+var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$defaultOptions = {aC: true, aI: false};
 var $elm$virtual_dom$VirtualDom$Custom = function (a) {
-	return {$: 'Custom', a: a};
+	return {$: 3, a: a};
 };
 var $elm$html$Html$Events$custom = F2(
 	function (event, decoder) {
@@ -11779,28 +11699,28 @@ var $elm$html$Html$Events$custom = F2(
 	});
 var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$Event = F6(
 	function (keys, button, clientPos, offsetPos, pagePos, screenPos) {
-		return {button: button, clientPos: clientPos, keys: keys, offsetPos: offsetPos, pagePos: pagePos, screenPos: screenPos};
+		return {bS: button, aP: clientPos, cq: keys, cB: offsetPos, cG: pagePos, cR: screenPos};
 	});
-var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$BackButton = {$: 'BackButton'};
-var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$ErrorButton = {$: 'ErrorButton'};
-var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$ForwardButton = {$: 'ForwardButton'};
-var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$MainButton = {$: 'MainButton'};
-var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$MiddleButton = {$: 'MiddleButton'};
-var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$SecondButton = {$: 'SecondButton'};
+var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$BackButton = 4;
+var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$ErrorButton = 0;
+var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$ForwardButton = 5;
+var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$MainButton = 1;
+var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$MiddleButton = 2;
+var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$SecondButton = 3;
 var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$buttonFromId = function (id) {
 	switch (id) {
 		case 0:
-			return $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$MainButton;
+			return 1;
 		case 1:
-			return $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$MiddleButton;
+			return 2;
 		case 2:
-			return $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$SecondButton;
+			return 3;
 		case 3:
-			return $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$BackButton;
+			return 4;
 		case 4:
-			return $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$ForwardButton;
+			return 5;
 		default:
-			return $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$ErrorButton;
+			return 0;
 	}
 };
 var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$buttonDecoder = A2(
@@ -11817,7 +11737,7 @@ var $mpizenberg$elm_pointer_events$Internal$Decode$clientPos = A3(
 	A2($elm$json$Json$Decode$field, 'clientY', $elm$json$Json$Decode$float));
 var $mpizenberg$elm_pointer_events$Internal$Decode$Keys = F3(
 	function (alt, ctrl, shift) {
-		return {alt: alt, ctrl: ctrl, shift: shift};
+		return {bO: alt, b2: ctrl, cS: shift};
 	});
 var $mpizenberg$elm_pointer_events$Internal$Decode$keys = A4(
 	$elm$json$Json$Decode$map3,
@@ -11860,9 +11780,9 @@ var $mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$onWithOptions = F3(
 				$elm$json$Json$Decode$map,
 				function (ev) {
 					return {
-						message: tag(ev),
-						preventDefault: options.preventDefault,
-						stopPropagation: options.stopPropagation
+						C: tag(ev),
+						aC: options.aC,
+						aI: options.aI
 					};
 				},
 				$mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$eventDecoder));
@@ -11896,16 +11816,16 @@ var $author$project$View$featureView = F2(
 					A2(
 					$elm$html$Html$Attributes$style,
 					'height',
-					$elm$core$String$fromFloat((cascadeSize.height / cascadeSize.width) * widthPx) + 'px')
+					$elm$core$String$fromFloat((cascadeSize.a1 / cascadeSize.bL) * widthPx) + 'px')
 				]),
 			A2(
 				$elm$core$List$map,
 				function (cell) {
-					var y = cell.rect.location.y;
-					var x = cell.rect.location.x;
-					var w = cell.rect.size.width;
-					var h = cell.rect.size.height;
-					var factor = cell.factor;
+					var y = cell.cN.cs.db;
+					var x = cell.cN.cs.da;
+					var w = cell.cN.aG.bL;
+					var h = cell.cN.aG.a1;
+					var factor = cell.cc;
 					return A2(
 						$elm$html$Html$div,
 						_List_fromArray(
@@ -11914,23 +11834,23 @@ var $author$project$View$featureView = F2(
 								A2(
 								$elm$html$Html$Attributes$style,
 								'left',
-								$elm$core$String$fromFloat((x / cascadeSize.width) * 100) + '%'),
+								$elm$core$String$fromFloat((x / cascadeSize.bL) * 100) + '%'),
 								A2(
 								$elm$html$Html$Attributes$style,
 								'top',
-								$elm$core$String$fromFloat((y / cascadeSize.height) * 100) + '%'),
+								$elm$core$String$fromFloat((y / cascadeSize.a1) * 100) + '%'),
 								A2(
 								$elm$html$Html$Attributes$style,
 								'width',
-								$elm$core$String$fromFloat((w / cascadeSize.width) * 100) + '%'),
+								$elm$core$String$fromFloat((w / cascadeSize.bL) * 100) + '%'),
 								A2(
 								$elm$html$Html$Attributes$style,
 								'height',
-								$elm$core$String$fromFloat((h / cascadeSize.height) * 100) + '%'),
+								$elm$core$String$fromFloat((h / cascadeSize.a1) * 100) + '%'),
 								A2(
 								$elm$html$Html$Attributes$style,
 								'transform',
-								feature.tilted ? 'rotate(45deg)' : 'none'),
+								feature.c0 ? 'rotate(45deg)' : 'none'),
 								A2(
 								$elm$html$Html$Attributes$style,
 								'background-color',
@@ -11942,7 +11862,7 @@ var $author$project$View$featureView = F2(
 								$elm$core$String$fromFloat(factor))
 							]));
 				},
-				feature.cells));
+				feature.bW));
 	});
 var $elm$html$Html$li = _VirtualDom_node('li');
 var $elm$html$Html$span = _VirtualDom_node('span');
@@ -11965,7 +11885,7 @@ var $author$project$View$weakClassifierView = F6(
 					$elm$core$List$cons,
 					$elm$html$Html$Attributes$class('classifier'),
 					function () {
-						if ((maybeDetectionStatus.$ === 'Just') && (maybeDetectionStatus.a.$ === 'Running')) {
+						if ((!maybeDetectionStatus.$) && (maybeDetectionStatus.a.$ === 1)) {
 							var _v1 = maybeDetectionStatus.a;
 							var runningStageIdx = _v1.a;
 							return (!_Utils_eq(stageIdx, runningStageIdx)) ? _List_Nil : _List_fromArray(
@@ -11977,7 +11897,7 @@ var $author$project$View$weakClassifierView = F6(
 						}
 					}())),
 			function () {
-				if (maybeClassification.$ === 'Just') {
+				if (!maybeClassification.$) {
 					var classification = maybeClassification.a;
 					return _List_fromArray(
 						[
@@ -11987,14 +11907,14 @@ var $author$project$View$weakClassifierView = F6(
 							_List_fromArray(
 								[
 									$elm$html$Html$Attributes$class(
-									(_Utils_cmp(classification.value, classifier.threshold) > -1) ? 'positive' : 'negative'),
+									(_Utils_cmp(classification.c5, classifier.bJ) > -1) ? 'positive' : 'negative'),
 									$elm$html$Html$Attributes$title(
-									'Threshold: ' + $elm$core$String$fromFloat(classifier.threshold))
+									'Threshold: ' + $elm$core$String$fromFloat(classifier.bJ))
 								]),
 							_List_fromArray(
 								[
 									$elm$html$Html$text(
-									$elm$core$String$fromFloat(classification.value))
+									$elm$core$String$fromFloat(classification.c5))
 								])),
 							A2($elm$html$Html$br, _List_Nil, _List_Nil),
 							A2(
@@ -12003,7 +11923,7 @@ var $author$project$View$weakClassifierView = F6(
 								[
 									$elm$html$Html$Attributes$width(120),
 									A2($elm$html$Html$Attributes$style, 'border', 'solid black 1px'),
-									$elm$html$Html$Attributes$src(classification.featureExtractedImageDataUrl)
+									$elm$html$Html$Attributes$src(classification.ce)
 								]),
 							_List_Nil)
 						]);
@@ -12011,9 +11931,9 @@ var $author$project$View$weakClassifierView = F6(
 					return _List_fromArray(
 						[
 							$elm$html$Html$text(
-							'Threshold: ' + $elm$core$String$fromFloat(classifier.threshold)),
+							'Threshold: ' + $elm$core$String$fromFloat(classifier.bJ)),
 							A2($elm$html$Html$br, _List_Nil, _List_Nil),
-							A2($author$project$View$featureView, cascadeSize, classifier.feature)
+							A2($author$project$View$featureView, cascadeSize, classifier.cd)
 						]);
 				}
 			}());
@@ -12026,7 +11946,7 @@ var $author$project$View$stageView = F5(
 				$elm$core$List$cons,
 				$elm$html$Html$Attributes$class('stage'),
 				function () {
-					if ((maybeDetectionStatus.$ === 'Just') && (maybeDetectionStatus.a.$ === 'Running')) {
+					if ((!maybeDetectionStatus.$) && (maybeDetectionStatus.a.$ === 1)) {
 						var _v1 = maybeDetectionStatus.a;
 						var runningStageIdx = _v1.a;
 						return (!_Utils_eq(stageIdx, runningStageIdx)) ? _List_Nil : _List_fromArray(
@@ -12053,7 +11973,7 @@ var $author$project$View$stageView = F5(
 					_List_fromArray(
 						[
 							$elm$html$Html$text(
-							'Threshold: ' + $elm$core$String$fromFloat(stage.threshold))
+							'Threshold: ' + $elm$core$String$fromFloat(stage.bJ))
 						])),
 					A2(
 					$elm$html$Html$ol,
@@ -12074,7 +11994,7 @@ var $author$project$View$stageView = F5(
 									classifierIdx,
 									classifier);
 							}),
-						$elm$core$Array$toList(stage.weakClassifiers))),
+						$elm$core$Array$toList(stage.c7))),
 					A2($elm$html$Html$hr, _List_Nil, _List_Nil)
 				]));
 	});
@@ -12084,22 +12004,22 @@ var $author$project$View$view = function (model) {
 		$elm$html$Html$div,
 		function () {
 			var _v0 = _Utils_Tuple3(
-				model.image.maybeGrayscalePixels,
-				model.maybeDetection,
+				model.cl.cx,
+				model.cu,
 				A2(
 					$elm$core$Maybe$andThen,
 					function ($) {
-						return $.maybeDragState;
+						return $.cv;
 					},
-					model.maybeDetection));
-			if (((_v0.a.$ === 'Just') && (_v0.b.$ === 'Just')) && (_v0.c.$ === 'Just')) {
+					model.cu));
+			if (((!_v0.a.$) && (!_v0.b.$)) && (!_v0.c.$)) {
 				var pixels = _v0.a.a;
 				var detection = _v0.b.a;
 				var dragState = _v0.c.a;
 				return _List_fromArray(
 					[
 						$mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$onMove(
-						A2($author$project$Common$CreateCandidateResize, pixels.size, dragState)),
+						A2($author$project$Common$CreateCandidateResize, pixels.aG, dragState)),
 						$mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$onUp(
 						$elm$core$Basics$always(
 							A2($author$project$Common$CreateCandidateStop, pixels, detection))),
@@ -12161,14 +12081,14 @@ var $author$project$View$view = function (model) {
 							$elm$core$List$cons,
 							$elm$html$Html$Attributes$id('image-container'),
 							function () {
-								var _v1 = model.image.maybeGrayscalePixels;
-								if (_v1.$ === 'Just') {
+								var _v1 = model.cl.cx;
+								if (!_v1.$) {
 									var pixels = _v1.a;
 									return _List_fromArray(
 										[
 											A2($elm$html$Html$Attributes$style, 'cursor', 'crosshair'),
 											$mpizenberg$elm_pointer_events$Html$Events$Extra$Mouse$onDown(
-											$author$project$Common$CreateCandidateStart(pixels.size))
+											$author$project$Common$CreateCandidateStart(pixels.aG))
 										]);
 								} else {
 									return _List_Nil;
@@ -12181,13 +12101,13 @@ var $author$project$View$view = function (model) {
 								_List_fromArray(
 									[
 										$elm$html$Html$Attributes$id('image'),
-										$elm$html$Html$Attributes$src(model.image.url),
+										$elm$html$Html$Attributes$src(model.cl.c4),
 										A2($elm$html$Html$Attributes$style, 'width', '100%')
 									]),
 								_List_Nil),
 							function () {
-								var _v2 = _Utils_Tuple2(model.image.maybeGrayscalePixels, model.maybeDetection);
-								if ((_v2.a.$ === 'Just') && (_v2.b.$ === 'Just')) {
+								var _v2 = _Utils_Tuple2(model.cl.cx, model.cu);
+								if ((!_v2.a.$) && (!_v2.b.$)) {
 									var pixels = _v2.a.a;
 									var detection = _v2.b.a;
 									return _List_fromArray(
@@ -12195,12 +12115,12 @@ var $author$project$View$view = function (model) {
 											A2(
 											$elm$html$Html$div,
 											function () {
-												var magnification = model.renderedImageWidthPx / pixels.size.width;
-												var area = detection.candidateArea;
-												var height = area.size.height * magnification;
-												var left = area.location.x * magnification;
-												var top = area.location.y * magnification;
-												var width = area.size.width * magnification;
+												var magnification = model.cO / pixels.aG.bL;
+												var area = detection.bT;
+												var height = area.aG.a1 * magnification;
+												var left = area.cs.da * magnification;
+												var top = area.cs.db * magnification;
+												var width = area.aG.bL * magnification;
 												return _List_fromArray(
 													[
 														$elm$html$Html$Attributes$id('detection-candidate'),
@@ -12225,7 +12145,7 @@ var $author$project$View$view = function (model) {
 													]);
 											}(),
 											_List_Nil),
-											A2($author$project$View$detectionCandidateImgView, pixels, detection.candidateArea)
+											A2($author$project$View$detectionCandidateImgView, pixels, detection.bT)
 										]);
 								} else {
 									return _List_Nil;
@@ -12283,7 +12203,7 @@ var $author$project$View$view = function (model) {
 						_List_fromArray(
 							[
 								$elm$html$Html$text(
-								A2($elm$core$Maybe$withDefault, '', model.maybeErrorMsg))
+								A2($elm$core$Maybe$withDefault, '', model.cw))
 							])),
 						A2(
 						$elm$html$Html$div,
@@ -12291,43 +12211,43 @@ var $author$project$View$view = function (model) {
 						A2(
 							$elm$core$List$cons,
 							$elm$html$Html$text(
-								'h: ' + ($elm$core$String$fromInt(model.cascade.size.height) + (', w: ' + $elm$core$String$fromInt(model.cascade.size.width)))),
+								'h: ' + ($elm$core$String$fromInt(model.bU.aG.a1) + (', w: ' + $elm$core$String$fromInt(model.bU.aG.bL)))),
 							A2(
 								$elm$core$List$indexedMap,
 								F2(
 									function (idx, stage) {
 										return A5(
 											$author$project$View$stageView,
-											model.cascade.size,
+											model.bU.aG,
 											A2(
 												$elm$core$Maybe$map,
 												function ($) {
-													return $.status;
+													return $.cV;
 												},
-												model.maybeDetection),
+												model.cu),
 											A2(
 												$elm$core$Maybe$andThen,
 												A2(
 													$elm$core$Basics$composeL,
 													$elm$core$Array$get(idx),
 													function ($) {
-														return $.stages;
+														return $.bG;
 													}),
-												model.maybeDetection),
+												model.cu),
 											idx,
 											stage);
 									}),
-								$elm$core$Array$toList(model.cascade.stages))))
+								$elm$core$Array$toList(model.bU.bG))))
 					]))
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
-	{init: $author$project$Main$init, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$View$view});
+	{cn: $author$project$Main$init, cW: $author$project$Main$subscriptions, c3: $author$project$Main$update, c6: $author$project$View$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	A2(
 		$elm$json$Json$Decode$andThen,
 		function (cascadeJsonValue) {
 			return $elm$json$Json$Decode$succeed(
-				{cascadeJsonValue: cascadeJsonValue});
+				{bV: cascadeJsonValue});
 		},
 		A2($elm$json$Json$Decode$field, 'cascadeJsonValue', $elm$json$Json$Decode$value)))(0)}});}(this));
