@@ -4,9 +4,10 @@ import Array exposing (Array)
 import Browser.Dom as Dom
 import File exposing (File)
 import Html.Events.Extra.Mouse as Mouse
+import Json.Decode as JsonDecode
 
 
--- COMMON
+-- CONSTANTS
 modelColumnWidthPx : Int
 modelColumnWidthPx = 340
 
@@ -20,6 +21,9 @@ imageLongEdgePx : Int
 imageLongEdgePx = 480
 
 -- MODEL
+type alias Flags =
+  { cascadeJsonValue : JsonDecode.Value
+  }
 type alias Point =
   { x : Int
   , y : Int
@@ -104,6 +108,7 @@ type alias ImageData =
 type Msg
   = CascadeFiles (List File)
   | CascadeXml String
+  | CascadeResult (Result String Cascade)
   | ImageFiles (List File)
   | ImageDataUrl String
   | ImagePixels (Pixels Int)

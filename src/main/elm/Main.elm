@@ -8,41 +8,14 @@ import Browser.Events as Events
 import Common exposing (..)
 import File
 import Image exposing (Image)
+import Json.Decode as JsonDecode
 import Task
 import Time
 import Tuple
 import View exposing (view)
-import Xml.Decode as XmlDecode
 
 
-port getImagePixelsCmd : { url : String, longEdgePx : Int } -> Cmd msg
---port drawImagePixelsCmd : { width : Int, height: Int, data: Array Int } -> Cmd msg
-
-
--- INIT
-init : () -> (Model, Cmd Msg)
-init _ =
-  ( { cascade =
-      { size = { width = 24, height = 24 }
-      , stages = Array.empty
-      }
-    , image =
-      { url = defaultImageUrl
-      , maybeGrayscalePixels = Nothing
-      }
-    , maybeDetection = Nothing
-    , renderedImageWidthPx = 0
-    , otherContentWidthPx = defaultOtherContentWidthPx
-    , maybeErrorMsg = Nothing
-    }
-  , Cmd.batch
-    [ getImagePixelsCmd { url = defaultImageUrl, longEdgePx = imageLongEdgePx }
-    , Task.attempt RenderedImageSize (Dom.getElement "image")
-    ]
-  )
-
-
--- UPDATE
+-- JSON
 decodeSpaceDelimitedSize : String -> Maybe Size
 decodeSpaceDelimitedSize spaceDelimited =
   case String.split " " (String.trim spaceDelimited) of
@@ -72,55 +45,52 @@ decodeSpaceDelimitedCell spaceDelimited =
     _ -> Nothing
 
 
-featureXmlDecoder : XmlDecode.Decoder Feature
-featureXmlDecoder =
-  XmlDecode.map2 Feature
-  ( XmlDecode.path [ "rects", "_" ]
-    ( XmlDecode.list
-      ( XmlDecode.andThen
+featureJsonDecoder : JsonDecode.Decoder Feature
+featureJsonDecoder =
+  JsonDecode.map2 Feature
+  ( JsonDecode.at [ "rects", "_" ]
+    ( JsonDecode.list
+      ( JsonDecode.andThen
         ( \spaceDelimitedRect ->
           case decodeSpaceDelimitedCell spaceDelimitedRect of
-            Just rect -> XmlDecode.succeed rect
-            Nothing -> XmlDecode.fail "Unable to parse rect string"
+            Just rect -> JsonDecode.succeed rect
+            Nothing -> JsonDecode.fail "Unable to parse rect string"
         )
-        XmlDecode.string
+        JsonDecode.string
       )
     )
   )
-  ( XmlDecode.withDefault False
-    ( XmlDecode.path [ "tilted" ] (XmlDecode.single XmlDecode.bool) )
+  ( JsonDecode.map
+    ( Maybe.withDefault False )
+    ( JsonDecode.maybe ( JsonDecode.field "tilted" JsonDecode.bool ) )
   )
 
 
-cascadeOldXmlDecoder : XmlDecode.Decoder Cascade
-cascadeOldXmlDecoder =
-  XmlDecode.map2 Cascade
-  ( XmlDecode.andThen
-    ( \spaceDelimitedSize ->
-      case decodeSpaceDelimitedSize spaceDelimitedSize of
-        Just cascade -> XmlDecode.succeed cascade
-        Nothing -> XmlDecode.fail "Unable to parse size string"
+cascadeOldJsonDecoder : JsonDecode.Decoder Cascade
+cascadeOldJsonDecoder =
+  JsonDecode.at [ "opencv_storage", "cascade" ]
+  ( JsonDecode.map2 Cascade
+    ( JsonDecode.andThen
+      ( \spaceDelimitedSize ->
+        case decodeSpaceDelimitedSize spaceDelimitedSize of
+          Just cascade -> JsonDecode.succeed cascade
+          Nothing -> JsonDecode.fail "Unable to parse size string"
+      )
+      ( JsonDecode.field "size" JsonDecode.string )
     )
-    ( XmlDecode.path [ "cascade", "size" ] (XmlDecode.single XmlDecode.string) )
-  )
-  ( XmlDecode.andThen
-    ( XmlDecode.succeed << Array.fromList )
-    ( XmlDecode.path [ "cascade", "stages", "_" ]
-      ( XmlDecode.list
-        ( XmlDecode.map2 Stage
-          ( XmlDecode.path [ "stage_threshold" ] (XmlDecode.single XmlDecode.float) )
-          ( XmlDecode.andThen
-            ( XmlDecode.succeed << Array.fromList )
-            ( XmlDecode.path [ "trees", "_", "_" ]
-              ( XmlDecode.list
-                ( XmlDecode.map3 WeakClassifier
-                  ( XmlDecode.path [ "feature" ]
-                    ( XmlDecode.single featureXmlDecoder )
-                  )
-                  ( XmlDecode.path [ "threshold" ] (XmlDecode.single XmlDecode.float) )
-                  ( XmlDecode.map2 Tuple.pair
-                    ( XmlDecode.path [ "left_val" ] (XmlDecode.single XmlDecode.float) )
-                    ( XmlDecode.path [ "right_val" ] (XmlDecode.single XmlDecode.float) )
+    ( JsonDecode.at [ "stages", "_" ]
+      ( JsonDecode.array
+        ( JsonDecode.map2 Stage
+          ( JsonDecode.at [ "stage_threshold" ] JsonDecode.float )
+          ( JsonDecode.at [ "trees", "_" ]
+            ( JsonDecode.array
+              ( JsonDecode.field "_"
+                ( JsonDecode.map3 WeakClassifier
+                  ( JsonDecode.field "feature" featureJsonDecoder )
+                  ( JsonDecode.field "threshold" JsonDecode.float )
+                  ( JsonDecode.map2 Tuple.pair
+                    ( JsonDecode.field "left_val" JsonDecode.float )
+                    ( JsonDecode.field "right_val" JsonDecode.float )
                   )
                 )
               )
@@ -152,61 +122,51 @@ decodeSpaceDelimitedFloatPair spaceDelimited =
     _ -> Nothing
 
 
-cascadeNewXmlDecoder : XmlDecode.Decoder Cascade
-cascadeNewXmlDecoder =
-  XmlDecode.andThen
+cascadeNewJsonDecoder : JsonDecode.Decoder Cascade
+cascadeNewJsonDecoder =
+  JsonDecode.andThen
   ( \features ->
-    ( XmlDecode.map2 Cascade
-      ( XmlDecode.map2 Size
-        ( XmlDecode.path [ "cascade", "width" ] (XmlDecode.single XmlDecode.int) )
-        ( XmlDecode.path [ "cascade", "height" ] (XmlDecode.single XmlDecode.int) )
+    ( JsonDecode.map2 Cascade
+      ( JsonDecode.map2 Size
+        ( JsonDecode.at [ "opencv_storage", "cascade", "width" ] JsonDecode.int )
+        ( JsonDecode.at [ "opencv_storage", "cascade", "height" ] JsonDecode.int )
       )
-      ( XmlDecode.andThen
-        ( XmlDecode.succeed << Array.fromList )
-        ( XmlDecode.path [ "cascade", "stages", "_" ]
-          ( XmlDecode.list
-            ( XmlDecode.map2 Stage
-              ( XmlDecode.path [ "stageThreshold" ] (XmlDecode.single XmlDecode.float) )
-              ( XmlDecode.andThen
-                ( XmlDecode.succeed << Array.fromList )
-                ( XmlDecode.path [ "weakClassifiers", "_" ]
-                  ( XmlDecode.list
-                    ( XmlDecode.andThen
-                      ( \(featureIdx, threshold, leafValues) ->
-                        case Array.get featureIdx features of
-                          Just feature ->
-                            XmlDecode.succeed (WeakClassifier feature threshold leafValues)
-                          Nothing ->
-                            XmlDecode.fail ("feature index " ++ (String.fromInt featureIdx) ++ "is out of range")
+      ( JsonDecode.at [ "opencv_storage", "cascade", "stages", "_" ]
+        ( JsonDecode.array
+          ( JsonDecode.map2 Stage
+            ( JsonDecode.field "stageThreshold" JsonDecode.float )
+            ( JsonDecode.at [ "weakClassifiers", "_" ]
+              ( JsonDecode.array
+                ( JsonDecode.andThen
+                  ( \(featureIdx, threshold, leafValues) ->
+                    case Array.get featureIdx features of
+                      Just feature ->
+                        JsonDecode.succeed (WeakClassifier feature threshold leafValues)
+                      Nothing ->
+                        JsonDecode.fail ("feature index " ++ (String.fromInt featureIdx) ++ "is out of range")
+                  )
+                  ( JsonDecode.map2
+                    ( \(featureIdx, threshold) -> \leafValues ->
+                      ( featureIdx, threshold, leafValues )
+                    )
+                    ( JsonDecode.field "internalNodes"
+                      ( JsonDecode.andThen
+                        ( \spaceDelimitedInternalNodes ->
+                          case decodeSpaceDelimitedInternalNode spaceDelimitedInternalNodes of
+                            Just featureIdxThreshold -> JsonDecode.succeed featureIdxThreshold
+                            Nothing -> JsonDecode.fail "Unable to parse internalNodes string"
+                        )
+                        JsonDecode.string
                       )
-                      ( XmlDecode.map2
-                        ( \(featureIdx, threshold) -> \leafValues ->
-                          ( featureIdx, threshold, leafValues )
+                    )
+                    ( JsonDecode.field "leafValues"
+                      ( JsonDecode.andThen
+                        ( \spaceDelimitedPair ->
+                          case decodeSpaceDelimitedFloatPair spaceDelimitedPair of
+                            Just leafValues -> JsonDecode.succeed leafValues
+                            Nothing -> JsonDecode.fail "Unable to parse leafValues string"
                         )
-                        ( XmlDecode.path [ "internalNodes" ]
-                          ( XmlDecode.single
-                            ( XmlDecode.andThen
-                              ( \spaceDelimitedInternalNodes ->
-                                case decodeSpaceDelimitedInternalNode spaceDelimitedInternalNodes of
-                                  Just featureIdxThreshold -> XmlDecode.succeed featureIdxThreshold
-                                  Nothing -> XmlDecode.fail "Unable to parse internalNodes string"
-                              )
-                              XmlDecode.string
-                            )
-                          )
-                        )
-                        ( XmlDecode.path [ "leafValues"]
-                          ( XmlDecode.single
-                            ( XmlDecode.andThen
-                              ( \spaceDelimitedPair ->
-                                case decodeSpaceDelimitedFloatPair spaceDelimitedPair of
-                                  Just leafValues -> XmlDecode.succeed leafValues
-                                  Nothing -> XmlDecode.fail "Unable to parse leafValues string"
-                              )
-                              XmlDecode.string
-                            )
-                          )
-                        )
+                        JsonDecode.string
                       )
                     )
                   )
@@ -218,14 +178,48 @@ cascadeNewXmlDecoder =
       )
     )
   )
-  ( XmlDecode.map Array.fromList
-    ( XmlDecode.path [ "cascade", "features", "_" ] (XmlDecode.list featureXmlDecoder) )
+  ( JsonDecode.at [ "opencv_storage", "cascade", "features", "_" ] (JsonDecode.array featureJsonDecoder) )
+
+
+cascadeJsonDecoder : JsonDecode.Decoder Cascade
+cascadeJsonDecoder =
+  JsonDecode.oneOf [ cascadeOldJsonDecoder, cascadeNewJsonDecoder ]
+
+
+-- INIT
+init : Flags -> (Model, Cmd Msg)
+init flags =
+  ( let
+      model : Model
+      model =
+        { cascade =
+          { size = { width = 0, height = 0 }
+          , stages = Array.empty
+          }
+        , image =
+          { url = defaultImageUrl
+          , maybeGrayscalePixels = Nothing
+          }
+        , maybeDetection = Nothing
+        , renderedImageWidthPx = 0
+        , otherContentWidthPx = defaultOtherContentWidthPx
+        , maybeErrorMsg = Nothing
+        }
+    in
+      case JsonDecode.decodeValue cascadeJsonDecoder flags.cascadeJsonValue of
+        Ok cascade -> { model | cascade = cascade }
+        Err jsonErr -> { model | maybeErrorMsg = Just (JsonDecode.errorToString jsonErr) }
+  , Cmd.batch
+    [ getImagePixelsCmd { url = defaultImageUrl, longEdgePx = imageLongEdgePx }
+    , Task.attempt RenderedImageSize (Dom.getElement "image")
+    ]
   )
 
 
-cascadeXmlDecoder : XmlDecode.Decoder Cascade
-cascadeXmlDecoder =
-  XmlDecode.oneOf [ cascadeOldXmlDecoder, cascadeNewXmlDecoder ]
+-- UPDATE
+port getImagePixelsCmd : { url : String, longEdgePx : Int } -> Cmd msg
+--port drawImagePixelsCmd : { width : Int, height: Int, data: Array Int } -> Cmd msg
+port parseXmlCmd : String -> Cmd msg
 
 
 --pixelFactorsImage : Pixels Int -> Image
@@ -368,17 +362,20 @@ update msg model =
       )
 
     CascadeXml cascadeXml ->
-      ( case XmlDecode.decodeString cascadeXmlDecoder cascadeXml of
-          Ok cascade ->
-            { model
-            | cascade = cascade
-            , maybeDetection = Nothing
-            , maybeErrorMsg = Nothing
-            }
-          Err err ->
-            { model
-            | maybeErrorMsg = Just ("Failed to parse XML: " ++ err)
-            }
+      ( model, parseXmlCmd cascadeXml )
+
+    CascadeResult cascadeRes ->
+      ( case cascadeRes of
+        Ok cascade ->
+          { model
+          | cascade = cascade
+          , maybeDetection = Nothing
+          , maybeErrorMsg = Nothing
+          }
+        Err err ->
+          { model
+          | maybeErrorMsg = Just ("Failed to parse XML: " ++ err)
+          }
       , Cmd.none
       )
 
@@ -639,6 +636,7 @@ update msg model =
 
 -- SUBSCRIPTIONS
 port getImagePixelsSub : (ImageData -> msg) -> Sub msg
+port parseXmlSub : (JsonDecode.Value -> msg) -> Sub msg
 
 
 groupSubPixels : Array Int -> Array (Int, Int, Int)
@@ -674,6 +672,11 @@ subscriptions model =
       , data = (grayscale (groupSubPixels imgData.pixels))
       }
     )
+  , parseXmlSub
+    ( CascadeResult
+    <<Result.mapError JsonDecode.errorToString
+    <<JsonDecode.decodeValue cascadeJsonDecoder
+    )
   , case Maybe.map .status model.maybeDetection of
       Just (Running _ _ _) -> Time.every 250 (always PerformNextDetectionStep)
       _ -> Sub.none
@@ -682,6 +685,7 @@ subscriptions model =
 
 
 -- MAIN
+main : Program Flags Model Msg
 main =
   Browser.element
   { init = init

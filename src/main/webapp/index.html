@@ -69,67 +69,119 @@
 <body>
 <div id="app"></div>
 <script type="application/javascript">
-  let app = Elm.Main.init({
-    node: document.getElementById('app')
-  });
-  // app.ports.parseXmlCmd.subscribe(
-  //   function (xml) {
-  //     if (window.DOMParser) {
-  //       let cascade = new DOMParser().parseFromString(xml, 'text/xml');
-  //
-  //       console.log(cascade.querySelector('cascade'));
-  //     }
-  //   }
-  // );
-  app.ports.getImagePixelsCmd.subscribe(
-    function(image) {
-      let img = new Image();
-      img.src = image.url;
-      img.onload = () => {
-        let canvas = document.createElement('canvas');
-        if (img.width > img.height) {
-          canvas.width = image.longEdgePx;
-          canvas.height = img.height / img.width * canvas.width;
-        } else {
-          canvas.height = image.longEdgePx;
-          canvas.width = img.width / img.height * canvas.height;
-        }
+  function xmlToObject(xmlDoc) {
+    function parseValue(str) {
+      let num = Number(str);
 
-        // TODO call this on Elm animation frame instead
-        setTimeout(
-          function() {
-            let ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-            let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            app.ports.getImagePixelsSub.send(
-              {
-                width: imgData.width,
-                height: imgData.height,
-                pixels: Array.from(imgData.data)
-              }
-            );
-          },
-          50
-        );
-      };
+      if (isNaN(num)) return str.trim();
+      else return num;
     }
-  );
-  // app.ports.drawImagePixelsCmd.subscribe(
-  //   function(image) {
-  //     let canvas = document.getElementById('canvas');
-  //     canvas.width = image.width;
-  //     canvas.height = image.height;
-  //     if (image.width > 0 && image.height > 0) {
-  //       let ctx = canvas.getContext('2d');
-  //       let imgData = ctx.createImageData(image.width, image.height);
-  //       for (let i = 0; i < image.data.length; i++) {
-  //         imgData.data[i] = image.data[i];
-  //       }
-  //       ctx.putImageData(imgData, 0, 0);
-  //     }
-  //   }
-  // );
+
+    function populateObjectFromNode(obj, node) {
+      let fieldValue;
+      if ((node.attributes && node.attributes.length) ||
+        (node.children && node.children.length)) {
+        fieldValue = {};
+        if (node.attributes) {
+          for (let i = 0, len = node.attributes.length; i < len; i++) {
+            fieldValue[node.attributes[i].name] = parseValue(node.attributes[i].value);
+          }
+        }
+        if (node.children) {
+          for (let i = 0, len = node.children.length; i < len; i++) {
+            populateObjectFromNode(fieldValue, node.children[i]);
+          }
+        }
+      } else {
+        fieldValue = parseValue(node.firstChild.nodeValue);
+      }
+
+      if (obj[node.localName]) {
+        if (Array.isArray(obj[node.localName])) {
+          obj[node.localName].push(fieldValue);
+        } else {
+          obj[node.localName] = [obj[node.localName], fieldValue];
+        }
+      } else {
+        obj[node.localName] = fieldValue;
+      }
+    }
+
+    let obj = {};
+    populateObjectFromNode(obj, xmlDoc.firstElementChild);
+    return obj;
+  }
+
+  const xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function() {
+    if (xmlHttp.readyState === 4 && (xmlHttp.status === 0 || xmlHttp.status === 200)) {
+      const app = Elm.Main.init(
+        {
+          node: document.getElementById('app'),
+          flags: {
+            cascadeJsonValue: xmlToObject(xmlHttp.responseXML)
+          }
+        }
+      );
+      app.ports.parseXmlCmd.subscribe(
+        function (xml) {
+          let xmlDoc = new DOMParser().parseFromString(xml, 'text/xml');
+          app.ports.parseXmlSub.send(xmlToObject(xmlDoc));
+        }
+      );
+      app.ports.getImagePixelsCmd.subscribe(
+        function(image) {
+          let img = new Image();
+          img.src = image.url;
+          img.onload = () => {
+            let canvas = document.createElement('canvas');
+            if (img.width > img.height) {
+              canvas.width = image.longEdgePx;
+              canvas.height = img.height / img.width * canvas.width;
+            } else {
+              canvas.height = image.longEdgePx;
+              canvas.width = img.width / img.height * canvas.height;
+            }
+
+            // TODO call this on Elm animation frame instead
+            setTimeout(
+              function() {
+                let ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                app.ports.getImagePixelsSub.send(
+                  {
+                    width: imgData.width,
+                    height: imgData.height,
+                    pixels: Array.from(imgData.data)
+                  }
+                );
+              },
+              50
+            );
+          };
+        }
+      );
+      // app.ports.drawImagePixelsCmd.subscribe(
+      //   function(image) {
+      //     let canvas = document.getElementById('canvas');
+      //     canvas.width = image.width;
+      //     canvas.height = image.height;
+      //     if (image.width > 0 && image.height > 0) {
+      //       let ctx = canvas.getContext('2d');
+      //       let imgData = ctx.createImageData(image.width, image.height);
+      //       for (let i = 0; i < image.data.length; i++) {
+      //         imgData.data[i] = image.data[i];
+      //       }
+      //       ctx.putImageData(imgData, 0, 0);
+      //     }
+      //   }
+      // );
+    }
+  }
+  xmlHttp.open("GET", "model/haarcascade_puddingsface.xml", /* async = */ true);
+  xmlHttp.send();
 </script>
 </body>
 </html>
